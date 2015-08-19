@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	   http://www.springframework.org/schema/beans/spring-beans.xsd
+	   http://www.springframework.org/schema/context
+	   http://www.springframework.org/schema/context/spring-context.xsd
+	   http://www.springframework.org/schema/tx
+	   http://www.springframework.org/schema/tx/spring-tx.xsd
+	   http://www.springframework.org/schema/aop
+	   http://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <context:property-placeholder location="classpath:configs/properties/config.properties"/>
+
+    <!-- 配置SessionFactory -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.connection.driver_class">com.mysql.jdbc.Driver</prop>
+                <prop key="hibernate.connection.url">${mysql.jdbc.url}</prop>
+                <prop key="hibernate.connection.username">${mysql.jdbc.username}</prop>
+                <prop key="hibernate.connection.password">${mysql.jdbc.password}</prop>
+
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <!--<prop key="hibernate.hbm2ddl.auto">create</prop>-->
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="hibernate.connection.autocommit">true</prop>
+
+                <!--c3p0 配置-->
+                <prop key="hibernate.connection.provider_class">
+                    org.hibernate.c3p0.internal.C3P0ConnectionProvider
+                </prop>
+                <!--连接池中JDBC连接的最小数量。Hibernate默认为1-->
+                <prop key="hibernate.c3p0.min_size">5</prop>
+                <!--连接池中JDBC连接的最大数量。Hibernate默认为100-->
+                <prop key="hibernate.c3p0.max_size">20</prop>
+                <!--何时从连接池中移除一个空闲的连接（以秒为单位）时。Hibernate默认为0，永不过期-->
+                <prop key="hibernate.c3p0.timeout">300</prop>
+                <!--被缓存的预编译语句数量。用来提高性能。Hibernate默认为0，缓存不可用-->
+                <prop key="hibernate.c3p0.max_statements">100</prop>
+                <!--一个连接被自动验证前的闲置时间（以秒为单位）。Hibernate默认为0-->
+                <prop key="hibernate.c3p0.idle_test_period">3000</prop>
+            </props>
+        </property>
+        <property name="packagesToScan">
+            <list>
+                <value>com.ezb.jdb.model</value>
+            </list>
+        </property>
+    </bean>
+
+    <!-- 配置一个事务管理器 -->
+    <bean id="transactionManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory"/>
+    </bean>
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+
+    <tx:advice id="txAdvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="find*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="get*" propagation="REQUIRED" read-only="true"/>
+            <tx:method name="query*" propagation="REQUIRED"/>
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config expose-proxy="true">
+        <aop:pointcut id="allServiceMethod" expression="execution(* com.ezb.jdb.service.impl.*.*(..))"/>
+        <aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice"/>
+    </aop:config>
+</beans>

@@ -1,0 +1,60 @@
+package com.ezb.jdb.model;
+
+import com.alibaba.fastjson.annotation.JSONField;
+import lombok.Data;
+import org.hibernate.annotations.DynamicUpdate;
+import org.hibernate.annotations.GenericGenerator;
+
+import javax.persistence.*;
+import java.util.Date;
+
+/**
+ * 通讯录
+ * author : liufeng
+ * create time:2015/8/11 17:32
+ */
+@Data
+@Entity
+@Table(name = "T_FRIEND")
+@DynamicUpdate
+public class Friend {
+
+    @Id
+    @GeneratedValue(generator = "system-uuid")
+    @GenericGenerator(name = "system-uuid", strategy = "uuid")
+    private String id;
+
+    @Column
+    private Boolean state;//是否确认好友关系
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "friend_id")
+    private User friend;
+
+    @Column
+    private Double distance;
+
+    @Column(name="applydate")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date applyDate;//申请时间
+
+    @Column(name="confiredate")
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date confireDate;//确认时间
+
+    public boolean equals(Object obj) {
+        return (this == obj);
+    }
+
+    public int hashCode(){
+        return super.hashCode();
+    }
+
+    public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
+}
