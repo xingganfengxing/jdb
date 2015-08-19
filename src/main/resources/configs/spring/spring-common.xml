@@ -70,7 +70,9 @@
     </tx:advice>
 
     <aop:config expose-proxy="true">
-        <aop:pointcut id="allServiceMethod" expression="execution(* com.ezb.jdb.service.impl.*.*(..))"/>
-        <aop:advisor pointcut-ref="allServiceMethod" advice-ref="txAdvice"/>
+        <aop:pointcut id="mobileControllerMethod" expression="execution(* com.ezb.jdb.controller.*.*(..))"/>
+        <aop:pointcut id="adminControllerMethod" expression="execution(* com.ezb.jdb.controller.admin*.*(..))"/>
+        <aop:advisor pointcut-ref="mobileControllerMethod" advice-ref="txAdvice"/>
+        <aop:advisor pointcut-ref="adminControllerMethod" advice-ref="txAdvice"/>
     </aop:config>
 </beans>

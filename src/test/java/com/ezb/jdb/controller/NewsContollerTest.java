@@ -53,7 +53,7 @@ public class NewsContollerTest extends TestCase {
     @Rollback(false)
     public void createNewsCmt() {
         News news = new News();
-        news.setId("10");
+        news.setId("0");
 
         NewsCmt newsCmt = new NewsCmt();
         newsCmt.setContent("评论2");

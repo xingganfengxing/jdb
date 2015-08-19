@@ -32,11 +32,11 @@ if __name__ == '__main__':
     # print urllib2.urlopen(request).read()
 
     #发布资讯
-    register_openers()
-    params = {"phone": "11111112", "title": "资讯20000", "pic": open("aa.png", "rb")}
-    datagen, headers = multipart_encode(params)
-    request = urllib2.Request("http://172.16.16.135:8080/jdb/news/createnews", datagen, headers)
-    print urllib2.urlopen(request).read()
+    # register_openers()
+    # params = {"phone": "11111112", "title": "资讯20000", "pic": open("aa.png", "rb")}
+    # datagen, headers = multipart_encode(params)
+    # request = urllib2.Request("http://172.16.16.135:8080/jdb/news/viewnews", datagen, headers)
+    # print urllib2.urlopen(request).read()
 
     #创建活动
     # register_openers()
@@ -45,9 +45,9 @@ if __name__ == '__main__':
     # request = urllib2.Request("http://172.16.16.135:8080/jdb/activity/createactivity", datagen, headers)
     # print urllib2.urlopen(request).read()
 
-    # url = "http://172.16.16.135:8080/jdb/user/uploadheadpic"
-    # params = {"realname": "sdsd", "sex": 1, "phone": "1111111"}
-    # post_data = urllib.urlencode(params)
-    # req = urllib2.urlopen(url, post_data)
-    # content = req.read()
-    # print content
+    #查看新闻
+    register_openers()
+    params = {"curPage": "1"}
+    datagen, headers = multipart_encode(params)
+    request = urllib2.Request("http://172.16.16.135:8000/jdb/circle/querycircles", datagen, headers)
+    print urllib2.urlopen(request).read()
