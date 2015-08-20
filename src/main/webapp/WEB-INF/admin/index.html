@@ -2,7 +2,10 @@
 <head>
     <meta charset="UTF-8">
     <title>参加活动详细人员名单</title>
+    <script src="js/loader/sea.js"/>
+    <script src="js/loader/sea-config.js"/>
 </head>
+<%String basepath=request.getContextPath(); %>
 <body>
 <h3 align="center">参加活动详细人员名单</h3>
 <table style="BORDER-COLLAPSE: collapse;width: 98%" borderColor=#ccc cellSpacing=0 width=300 align=center
@@ -43,5 +46,9 @@
     </tr>
     </tbody>
 </table>
+<script>
+    var globalBaseUrl = '<%=basepath%>';
+    seajs.use('/jdb/resources/js/wap/yc_jobs');
+</script>
 </body>
 </html>
