@@ -56,6 +56,17 @@ public class FriendView {
 
     public static String convertUList2Json(User curUser, List<User> list) {
 
+        JSONArray jsonArray = getUserJsonArray(curUser, list);
+        return ResponseData.getResData(jsonArray);
+    }
+
+    /**
+     * 获取用户的jsonArray
+     * @param curUser
+     * @param list
+     * @return
+     */
+    public static JSONArray getUserJsonArray(User curUser, List<User> list) {
         JSONArray jsonArray = new JSONArray();
         for (User user : list) {
 
@@ -86,6 +97,6 @@ public class FriendView {
             );
             jsonArray.add(jsonObject);
         }
-        return ResponseData.getResData(jsonArray);
+        return jsonArray;
     }
 }

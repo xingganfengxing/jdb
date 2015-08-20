@@ -4,7 +4,7 @@
 # Create   : 2015/8/7 17:43
 import user, news, cmt
 import alumnus, activity, friend
-import circle, pic, message
+import circle, pic, message, focus
 
 
 def initdata():
@@ -21,6 +21,7 @@ def initdata():
     circle.initCircle()
     cmt.initCirCmt()
     message.initmessage()
+    focus.initfocus()
 
 
 if __name__ == '__main__':

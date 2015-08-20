@@ -29,7 +29,7 @@ public class News extends Fmodel {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
-    @Column(length = 32)
+    @Column(length = 64)
     private String title;
 
     @Column(length = 255)

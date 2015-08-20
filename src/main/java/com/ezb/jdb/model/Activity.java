@@ -28,7 +28,7 @@ public class Activity extends Fmodel {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
-    @Column(length = 32)
+    @Column(length = 64)
     private String title;//标题
 
     @Column(name = "picpath", length = 64)
