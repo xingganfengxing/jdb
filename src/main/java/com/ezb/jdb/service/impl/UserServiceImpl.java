@@ -50,6 +50,7 @@ public class UserServiceImpl implements IUserService {
                 alumnus.setPhone(user.getUsername());
                 alumnus.setUser(user);
                 user.setAlumnus(alumnus);
+                user.setState(1);
                 userDao.add(user);
                 return ResponseState.SUCCESS;
             } else {

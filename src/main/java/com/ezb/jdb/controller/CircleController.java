@@ -44,6 +44,22 @@ public class CircleController {
     }
 
     /**
+     * 我的圈子列表
+     *
+     * @param pageResult
+     * @param phone      当前用户手机号
+     * @param queryWords 查询关键字
+     * @return
+     */
+    @RequestMapping(value = "circle/querymycircles", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    String queryMyCircles(PageResult<Circle> pageResult, String phone, String queryWords) {
+        List<Circle> list = circleServiceImpl.queryMyCircles(pageResult, phone, queryWords).getResultList();
+        return ResponseData.getResData(list);
+    }
+
+    /**
      * 圈子评论列表
      *
      * @param pageResult

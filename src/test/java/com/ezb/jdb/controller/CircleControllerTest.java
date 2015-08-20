@@ -28,7 +28,7 @@ public class CircleControllerTest {
     private CircleController circleController;
 
     @Test
-    public void queryCircles(){
+    public void queryCircles() {
         PageResult<Circle> pageResult = new PageResult<Circle>();
         pageResult.setPageSize(10);
         pageResult.setCurPage(1);
@@ -37,7 +37,15 @@ public class CircleControllerTest {
     }
 
     @Test
-    public void queryCircmt(){
+    public void queryMyCircles() {
+        PageResult<Circle> pageResult = new PageResult<Circle>();
+        pageResult.setPageSize(10);
+        pageResult.setCurPage(1);
+        log.info(circleController.queryMyCircles(pageResult, "11111190", null));
+    }
+
+    @Test
+    public void queryCircmt() {
         PageResult<CirCmt> pageResult = new PageResult<CirCmt>();
         pageResult.setPageSize(10);
         pageResult.setCurPage(1);
@@ -46,7 +54,7 @@ public class CircleControllerTest {
 
     @Test
     @Rollback(false)
-    public void createCircmt(){
+    public void createCircmt() {
         Circle circle = new Circle();
         circle.setId("10");
 
@@ -64,14 +72,14 @@ public class CircleControllerTest {
 
     @Test
     @Rollback(false)
-    public void join(){
+    public void join() {
         log.info(circleController.join("1111116", "12"));
         log.info(circleController.join("1111117", "12"));
         log.info(circleController.join("1111118", "12"));
     }
 
     @Test
-    public void view(){
+    public void view() {
         log.info(circleController.viewCircle("12"));
     }
 }

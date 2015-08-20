@@ -15,6 +15,8 @@ public interface ICircleService {
 
     PageResult<Circle> queryCircles(PageResult<Circle> pageResult, String queryWords);
 
+    PageResult<Circle> queryMyCircles(PageResult<Circle> pageResult, String phone, String queryWords);
+
     String join(String phone, String id);
 
     Circle queryById(String id);

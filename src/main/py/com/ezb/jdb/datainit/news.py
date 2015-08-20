@@ -19,11 +19,12 @@ def initNews():
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
             "path" + str(i),
             str(1),
+            str(1),
             "title" + str(i),
             str(1),
             str(i)
         ]
-        cur.execute('insert into t_news values(%s,%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into t_news values(%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()

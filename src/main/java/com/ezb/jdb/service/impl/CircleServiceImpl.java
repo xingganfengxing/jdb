@@ -38,6 +38,14 @@ public class CircleServiceImpl implements ICircleService {
         return pageResult;
     }
 
+    public PageResult<Circle> queryMyCircles(PageResult<Circle> pageResult, String phone, String queryWords) {
+        pageResult = circleDao.queryMyCircles(pageResult, phone,queryWords);
+        for (Circle circle : pageResult.getResultList()) {
+            circle.setCmtCount(cirCmtDao.queryCount(circle.getId()));
+        }
+        return pageResult;
+    }
+
     public String join(String phone, String id) {
         User user = userDao.queryByPhone(phone);
         if (null != user) {

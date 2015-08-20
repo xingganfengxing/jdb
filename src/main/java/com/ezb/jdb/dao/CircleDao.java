@@ -17,14 +17,25 @@ import java.text.MessageFormat;
 public class CircleDao extends BaseDao<Circle> {
 
     public PageResult<Circle> queryCircles(PageResult<Circle> pageResult, String queryWords) {
-        String hql = "from Circle o ";
+        String hql = "from Circle o where o.state=1";
         if(null != queryWords){
             if(!StringUtils.isEmpty(queryWords.trim())){
-                hql += "where o.title like ''%{0}%'' ";
+                hql += " and o.title like ''%{0}%'' ";
             }
         }
         hql += " order by o.createTime desc";
 
         return query(MessageFormat.format(hql, queryWords), pageResult);
+    }
+
+    public PageResult<Circle> queryMyCircles(PageResult<Circle> pageResult, String phone,String queryWords) {
+        String hql = "from Circle o where o.state=1 and o.createUser.username=''{0}''";
+        if(null != queryWords){
+            if(!StringUtils.isEmpty(queryWords.trim())){
+                hql += " and o.title like ''%{1}%'' ";
+            }
+        }
+        hql += " order by o.createTime desc";
+        return query(MessageFormat.format(hql, phone,queryWords), pageResult);
     }
 }

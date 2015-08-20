@@ -44,7 +44,7 @@ public class UserDao extends BaseDao<User> {
         Double lat = user.getAlumnus().getLat();
         Double lng = user.getAlumnus().getLng();
 
-        String hql = "from User o where 1=1 and o.username not in " +
+        String hql = "from User o where o.state=1 and o.username not in " +
                 " (select o1.user.username from Friend o1 where o1.user.username=''{0}'')" +
                 " and o.username not in (select o2.friend.username from Friend o2 where o2.user.username=''{0}'')";
         paramList.add(phone);
@@ -113,7 +113,7 @@ public class UserDao extends BaseDao<User> {
         Double lat = user.getAlumnus().getLat();
         Double lng = user.getAlumnus().getLng();
 
-        String hql = "from User o where o.username != ''{0}''";
+        String hql = "from User o where o.state=1 and o.username != ''{0}''";
         hql += " order by round(6378.138*2*asin(sqrt(pow(sin( (o.alumnus.lat*pi()/180-{1}*pi()/180)/2),2)" +
                 "+cos(o.alumnus.lat*pi()/180)*cos({1}*pi()/180)* pow(sin( (o.alumnus.lng*pi()/180-" +
                 "{2}*pi()/180)/2),2)))*1000)/1000";

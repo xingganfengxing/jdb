@@ -27,7 +27,7 @@ public class NewsDao extends BaseDao<News> {
         List<Object> paramList = new ArrayList<Object>();
         int pIndex = 0;
 
-        String hql = "from News o where 1=1";
+        String hql = "from News o where o.state=1";
 
         if (!StringUtils.isEmpty(phone)) {
             hql += " and o.createUser.username=''{" + pIndex++ + "}'' ";

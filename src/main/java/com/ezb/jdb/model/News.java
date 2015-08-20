@@ -55,6 +55,9 @@ public class News extends Fmodel {
     @JoinColumn(name = "create_userid")
     private User createUser;//资讯创建人
 
+    @Column
+    private Integer state;//状态 0下线 1正常
+
     public String getTimePast(){
         return JdbDateUtils.interTime(createTime);
     }

@@ -54,4 +54,7 @@ public class Circle extends Fmodel {
             joinColumns = {@JoinColumn(name = "circle_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> members;
+
+    @Column
+    private Integer state;//状态 0下线 1正常
 }

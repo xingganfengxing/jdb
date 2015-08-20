@@ -92,4 +92,7 @@ public class Activity extends Fmodel {
             joinColumns = {@JoinColumn(name = "activity_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> joinUsers;//参加活动的人
+
+    @Column
+    private Integer state;//状态 0下线 1正常
 }

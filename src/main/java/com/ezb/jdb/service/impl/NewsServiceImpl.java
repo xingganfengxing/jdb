@@ -65,6 +65,7 @@ public class NewsServiceImpl implements INewsService {
             news.setCreateUser(user);
             news.setCreateTime(new Date());
             news.setPv(0);
+            news.setState(1);
             newsDao.add(news);
             return ResponseState.SUCCESS;
         } else {

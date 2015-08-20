@@ -27,11 +27,12 @@ def initActivity():
             "picpath" + str(i),
             random.randint(1, 100),
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            str(1),
             "title" + str(i),
             "topic" + str(i),
             str(i)
         ]
-        cur.execute('insert into t_activity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into t_activity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()

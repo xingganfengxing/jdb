@@ -38,4 +38,7 @@ public class User extends Fmodel {
     @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
     private Alumnus alumnus;
+
+    @Column
+    private Integer state;//状态 0停用 1正常
 }

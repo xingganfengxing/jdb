@@ -11,8 +11,8 @@ def inituser():
         cur = conn.cursor()
 
         for i in range(100):
-            value = [i, "pass" + str(i), 1, "111111" + str(i)]
-            cur.execute('insert into t_user values(%s,%s,%s,%s)', value)
+            value = [i, "pass" + str(i), str(1),str(1), "111111" + str(i)]
+            cur.execute('insert into t_user values(%s,%s,%s,%s,%s)', value)
         conn.commit()
         cur.close()
         conn.close()
