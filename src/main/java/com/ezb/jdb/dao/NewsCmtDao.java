@@ -20,7 +20,7 @@ public class NewsCmtDao<NewsCmt> extends BaseDao {
     }
 
     public List<NewsCmt> qNewsCmtByNewsId(String newsId) {
-        String hql = "from NewsCmt o where o.news.id=''{0}'' and o.parentNewsCmt.id is null";
+        String hql = "from NewsCmt o where o.news.id=''{0}'' order by o.createTime desc";
         return query(MessageFormat.format(hql,newsId));
     }
 }

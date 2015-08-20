@@ -52,23 +52,17 @@ public class NewsCmt {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id")
-    @JSONField(serialize = false)
     private NewsCmt parentNewsCmt;//父评论
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "parent_id")
-    private Set<NewsCmt> subNewsCmt;//子评论
 
     public boolean equals(Object obj) {
         return (this == obj);
     }
 
-    public int hashCode(){
+    public int hashCode() {
         return super.hashCode();
     }
 
     public String toString() {
         return getClass().getName() + "@" + Integer.toHexString(hashCode());
     }
-
 }

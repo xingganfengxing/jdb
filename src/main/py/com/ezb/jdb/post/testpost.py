@@ -31,23 +31,23 @@ if __name__ == '__main__':
     # request = urllib2.Request("http://172.16.16.135:8080/jdb/user/uploadheadpic", datagen, headers)
     # print urllib2.urlopen(request).read()
 
-    #发布资讯
+    # 发布资讯
     # register_openers()
     # params = {"phone": "11111112", "title": "资讯20000", "pic": open("aa.png", "rb")}
     # datagen, headers = multipart_encode(params)
     # request = urllib2.Request("http://172.16.16.135:8080/jdb/news/viewnews", datagen, headers)
     # print urllib2.urlopen(request).read()
 
-    #创建活动
+    # 创建活动
     # register_openers()
     # params = {"phone": "11111112", "title": "资讯20000"}
     # datagen, headers = multipart_encode(params)
     # request = urllib2.Request("http://172.16.16.135:8080/jdb/activity/createactivity", datagen, headers)
     # print urllib2.urlopen(request).read()
 
-    #查看新闻
+    # 查看新闻
     register_openers()
-    params = {"curPage": "1"}
+    params = { "id": "1"}
     datagen, headers = multipart_encode(params)
-    request = urllib2.Request("http://172.16.16.135:8000/jdb/circle/querycircles", datagen, headers)
+    request = urllib2.Request("http://172.16.16.135:8080/jdb/news/viewnews", datagen, headers)
     print urllib2.urlopen(request).read()
