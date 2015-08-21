@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import javax.annotation.Resource;
 
 /**
+ * 用户管理
  * author : liufeng
  * create time:2015/8/20 14:13
  */
@@ -21,7 +22,7 @@ public class UserManageController {
     @RequestMapping(value = "pc/admin/dologin")
     public String doLogin(User user) {
         if (userServiceImpl.login(user)) {
-            return "pc/index";
+            return "pc/admin/index";
         }
         return ResponseState.LOGIN_ERR;
     }
