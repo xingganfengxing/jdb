@@ -49,7 +49,7 @@ public class CircleControllerTest {
         PageResult<CirCmt> pageResult = new PageResult<CirCmt>();
         pageResult.setPageSize(10);
         pageResult.setCurPage(1);
-        log.info(circleController.queryCircmt(pageResult, "56"));
+        log.info(circleController.queryCircmt(pageResult, "85"));
     }
 
     @Test

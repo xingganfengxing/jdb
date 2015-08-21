@@ -51,12 +51,7 @@ public class AtvCmt {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id")
-    @JSONField(serialize = false)
     private AtvCmt parentAtvCmt;//父评论
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "parent_id")
-    private Set<AtvCmt> subAtvCmt;//子评论
 
     public boolean equals(Object obj) {
         return (this == obj);

@@ -15,7 +15,7 @@ import java.text.MessageFormat;
 @Repository
 public class CirCmtDao extends BaseDao<CirCmt> {
     public int queryCount(String circleId) {
-        String hql = "from CirCmt o where o.circle.id=''{0}'' and o.parentCirCmt.id is null";
+        String hql = "from CirCmt o where o.circle.id=''{0}'' order by o.createTime desc";
         return super.queryCount(MessageFormat.format(hql, circleId));
     }
 

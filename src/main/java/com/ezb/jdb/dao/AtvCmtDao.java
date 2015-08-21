@@ -16,12 +16,12 @@ import java.util.List;
 public class AtvCmtDao extends BaseDao<AtvCmt> {
 
     public List<AtvCmt> qAtvCmtByActivityId(String id) {
-        String hql = "from AtvCmt o where o.activity.id=''{0}'' and o.parentAtvCmt.id is null";
+        String hql = "from AtvCmt o where o.activity.id=''{0}'' order by o.createTime desc";
         return query(MessageFormat.format(hql, id));
     }
 
     public int likeAtvCmt(String id) {
         String hql = "update AtvCmt o set o.likeCount=o.likeCount+1 where o.id=''{0}''";
-        return executeHql(MessageFormat.format(hql,id));
+        return executeHql(MessageFormat.format(hql, id));
     }
 }
