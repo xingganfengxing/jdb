@@ -1,6 +1,7 @@
 package com.ezb.jdb.controller;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.controller.mobile.MessageController;
 import com.ezb.jdb.model.Message;
 import com.ezb.jdb.model.User;
 import lombok.extern.slf4j.Slf4j;

@@ -5,5 +5,7 @@
  */
 define(function (require, exports, module) {
     var $ = jQuery = require("jquery");
-    alert($('#username').val());
+    $("#submitBtn").on('click', function(){
+        alert("test");
+    });
 });

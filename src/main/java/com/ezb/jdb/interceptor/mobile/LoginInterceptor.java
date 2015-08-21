@@ -1,5 +1,6 @@
-package com.ezb.jdb.interceptor;
+package com.ezb.jdb.interceptor.mobile;
 
+import com.ezb.jdb.common.ResponseState;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,10 +16,10 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest,
                              HttpServletResponse httpServletResponse,
                              Object o) throws Exception {
-
 //        boolean isLogin = (null != httpServletRequest.getSession().getAttribute("isLogin"));
-//        if(!isLogin){
-//            httpServletResponse.getWriter().println("please login");
+//        if (!isLogin) {
+//            httpServletResponse.setContentType("text/json;UTF-8");
+//            httpServletResponse.getWriter().println(ResponseState.UNLOGIN);
 //        }
 //        return isLogin;
         return true;

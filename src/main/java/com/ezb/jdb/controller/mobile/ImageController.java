@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.IOUtils;
@@ -20,7 +20,7 @@ import java.io.OutputStream;
 @Slf4j
 public class ImageController {
 
-    @RequestMapping(value = "/image/showimage")
+    @RequestMapping(value = "mobile/image/showimage")
     public void showImage(HttpServletRequest request,
                           HttpServletResponse response, String picpath) {
 

@@ -11,7 +11,7 @@ public class ResponseState {
 
     public static String SUCCESS = getResState("0", "");
     public static String INVALID_PHONE = getResState("100", "手机号码不存在");
-    public static String LOG_ERR = ResponseState.getResState("101", "用户名或密码错误!");
+    public static String LOGIN_ERR = ResponseState.getResState("101", "用户名或密码错误!");
     public static String LIKE_OPT_ERR = ResponseState.getResState("102", "点赞操作失败!");
     public static String REGED_PHONE = ResponseState.getResState("103", "手机号已注册!");
     public static String FAIL = ResponseState.getResState("104", "操作失败!");
@@ -30,6 +30,7 @@ public class ResponseState {
     public static String MAIL_ERR = ResponseState.getResState("116","邮件发送失败");
     public static String SMS_CONN_ERR = ResponseState.getResState("117","SMS 连接失败");
     public static String SMS_IO_ERR = ResponseState.getResState("118","SMS IO异常");
+    public static String UNLOGIN = ResponseState.getResState("119", "请先登录!");
 
 
     /**

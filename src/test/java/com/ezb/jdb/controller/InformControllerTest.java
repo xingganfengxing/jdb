@@ -1,5 +1,6 @@
 package com.ezb.jdb.controller;
 
+import com.ezb.jdb.controller.mobile.InformController;
 import com.ezb.jdb.model.Inform;
 import com.ezb.jdb.model.User;
 import com.ezb.jdb.service.IUserService;

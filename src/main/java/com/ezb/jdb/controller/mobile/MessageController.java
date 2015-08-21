@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.model.Message;
@@ -27,7 +27,7 @@ public class MessageController {
      * @param message 消息内容
      * @return
      */
-    @RequestMapping(value = "message/sendmessage", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/message/sendmessage", method = RequestMethod.POST)
     public
     @ResponseBody
     String sendMessage(Message message) {
@@ -40,7 +40,7 @@ public class MessageController {
      * @param phone
      * @return
      */
-    @RequestMapping(value = "message/unreadcount", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/message/unreadcount", method = RequestMethod.POST)
     public
     @ResponseBody
     String unReadCount(String phone) {
@@ -53,7 +53,7 @@ public class MessageController {
      * @param phone
      * @return
      */
-    @RequestMapping(value = "message/unreadmessage", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/message/unreadmessage", method = RequestMethod.POST)
     public
     @ResponseBody
     String unReadMessage(PageResult<Message> pageResult, String phone) {
@@ -67,7 +67,7 @@ public class MessageController {
      * @param receiverPhone
      * @return
      */
-    @RequestMapping(value = "message/query2usermessage", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/message/query2usermessage", method = RequestMethod.POST)
     public
     @ResponseBody
     String query2UserMessage(PageResult<Message> pageResult, String senderPhone, String receiverPhone) {
@@ -80,7 +80,7 @@ public class MessageController {
      * @param id 消息id
      * @return
      */
-    @RequestMapping(value = "message/delmessage", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/message/delmessage", method = RequestMethod.POST)
     public
     @ResponseBody
     String delMessage(String id) {

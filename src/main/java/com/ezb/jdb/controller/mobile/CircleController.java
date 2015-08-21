@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.common.ResponseData;
@@ -35,7 +35,7 @@ public class CircleController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "circle/querycircles", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/querycircles", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryCircles(PageResult<Circle> pageResult, String queryWords) {
@@ -51,7 +51,7 @@ public class CircleController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "circle/querymycircles", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/querymycircles", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryMyCircles(PageResult<Circle> pageResult, String phone, String queryWords) {
@@ -66,7 +66,7 @@ public class CircleController {
      * @param circleid
      * @return
      */
-    @RequestMapping(value = "circle/querycircmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/querycircmt", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryCircmt(PageResult<CirCmt> pageResult, String circleid) {
@@ -79,7 +79,7 @@ public class CircleController {
      *
      * @return
      */
-    @RequestMapping(value = "circle/createcircmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/createcircmt", method = RequestMethod.POST)
     public
     @ResponseBody
     String createCircmt(String phone, CirCmt cirCmt) {
@@ -91,7 +91,7 @@ public class CircleController {
      *
      * @return
      */
-    @RequestMapping(value = "circle/join", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/join", method = RequestMethod.POST)
     public
     @ResponseBody
     String join(String phone, String id) {
@@ -103,7 +103,7 @@ public class CircleController {
      *
      * @return
      */
-    @RequestMapping(value = "circle/viewcircle", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/viewcircle", method = RequestMethod.POST)
     public
     @ResponseBody
     String viewCircle(String id) {

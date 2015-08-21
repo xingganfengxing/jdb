@@ -1,6 +1,7 @@
 package com.ezb.jdb.controller;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.controller.mobile.NewsController;
 import com.ezb.jdb.model.News;
 import com.ezb.jdb.model.NewsCmt;
 import junit.framework.TestCase;

@@ -1,5 +1,6 @@
 package com.ezb.jdb.controller;
 
+import com.ezb.jdb.controller.mobile.IndexController;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

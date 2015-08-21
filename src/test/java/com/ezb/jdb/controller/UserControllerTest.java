@@ -1,9 +1,8 @@
 package com.ezb.jdb.controller;
 
-import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.controller.mobile.UserController;
 import com.ezb.jdb.model.Alumnus;
 import com.ezb.jdb.model.User;
-import com.ezb.jdb.service.IInvitateCodeService;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

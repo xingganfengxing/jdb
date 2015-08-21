@@ -1,10 +1,9 @@
 package com.ezb.jdb.controller;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.controller.mobile.ActivityController;
 import com.ezb.jdb.model.Activity;
 import com.ezb.jdb.model.AtvCmt;
-import com.ezb.jdb.model.News;
-import com.ezb.jdb.model.NewsCmt;
 import junit.framework.TestCase;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;

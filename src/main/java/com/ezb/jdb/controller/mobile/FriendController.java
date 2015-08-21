@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.common.ResponseData;
@@ -40,7 +40,7 @@ public class FriendController {
      * @param state      0 带通过的好友 1表示已通过的好友
      * @return
      */
-    @RequestMapping(value = "friend/queryfriend", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/friend/queryfriend", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryFriend(PageResult<Friend> pageResult, String phone, String queryWords, Integer state) {
@@ -56,7 +56,7 @@ public class FriendController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "friend/confirefriend", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/friend/confirefriend", method = RequestMethod.POST)
     public
     @ResponseBody
     String confireFriend(String id) {
@@ -70,7 +70,7 @@ public class FriendController {
      * @param phone2
      * @return
      */
-    @RequestMapping(value = "friend/confirefriend2phone", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/friend/confirefriend2phone", method = RequestMethod.POST)
     public
     @ResponseBody
     String confireFriend2Phone(String phone1, String phone2) {
@@ -87,7 +87,7 @@ public class FriendController {
      * @param orderby    排序规则 "username","location"
      * @return
      */
-    @RequestMapping(value = "friend/queryunfriend", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/friend/queryunfriend", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryUnFriend(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
@@ -103,7 +103,7 @@ public class FriendController {
      * @param phone 当前用户
      * @return
      */
-    @RequestMapping(value = "user/querynearusers", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/querynearusers", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryNearUsers(PageResult<User> pageResult, String phone) {
@@ -123,7 +123,7 @@ public class FriendController {
      * @param phone2
      * @return
      */
-    @RequestMapping(value = "friend/addfriend", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/friend/addfriend", method = RequestMethod.POST)
     public
     @ResponseBody
     String addFriend(String phone1, String phone2) {

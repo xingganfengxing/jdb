@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ezb.jdb.common.PageResult;
@@ -60,7 +60,7 @@ public class ActivityController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "activity/queryactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/queryactivity", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryActivity(PageResult<Activity> pageResult, String queryWords) {
@@ -76,7 +76,7 @@ public class ActivityController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "activity/querymyactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/querymyactivity", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryMyActivity(PageResult<Activity> pageResult, String phone, String queryWords) {
@@ -95,7 +95,7 @@ public class ActivityController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "activity/querymyjoinactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/querymyjoinactivity", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryMyJoinActivity(PageResult<Activity> pageResult, String phone, String queryWords) {
@@ -111,7 +111,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "activity/viewactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/viewactivity", method = RequestMethod.POST)
     public
     @ResponseBody
     String viewActivity(String id) {
@@ -128,7 +128,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "activity/createactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/createactivity", method = RequestMethod.POST)
     public
     @ResponseBody
     String createActivity(HttpServletRequest request, Activity activity, String phone) {
@@ -140,7 +140,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "activity/createatvcmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/createatvcmt", method = RequestMethod.POST)
     public
     @ResponseBody
     String createAtvCmt(String phone, AtvCmt atvCmt) {
@@ -152,7 +152,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "activity/likeatvcmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/likeatvcmt", method = RequestMethod.POST)
     public
     @ResponseBody
     String likeAtvCmt(String phone, String id) {
@@ -164,7 +164,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "activity/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/signup", method = RequestMethod.POST)
     public
     @ResponseBody
     String signup(String phone, String id) {
@@ -176,7 +176,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "activity/queryjoinusers", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/queryjoinusers", method = RequestMethod.POST)
     public
     @ResponseBody
     String queryJoinUsers(String id) {
@@ -192,7 +192,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "activity/sendjoinusers2email", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/sendjoinusers2email", method = RequestMethod.POST)
     public
     @ResponseBody
     String sendJoinUsers2Email(String id) {

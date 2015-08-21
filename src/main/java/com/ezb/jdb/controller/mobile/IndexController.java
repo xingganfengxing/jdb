@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.alibaba.fastjson.JSONObject;
 import com.ezb.jdb.common.PageResult;
@@ -40,7 +40,7 @@ public class IndexController {
      * @param userSize   附近用户个数
      * @return
      */
-    @RequestMapping(value = "index/indexdata", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/index/indexdata", method = RequestMethod.POST)
     public
     @ResponseBody
     String indexData(String phone, Integer focusSize, Integer circleSize, Integer userSize) {

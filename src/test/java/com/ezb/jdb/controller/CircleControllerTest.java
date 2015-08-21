@@ -1,6 +1,7 @@
 package com.ezb.jdb.controller;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.controller.mobile.CircleController;
 import com.ezb.jdb.model.CirCmt;
 import com.ezb.jdb.model.Circle;
 import lombok.extern.slf4j.Slf4j;

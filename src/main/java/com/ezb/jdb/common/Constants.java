@@ -11,4 +11,5 @@ public interface Constants {
     String MILL_SEC_FMT = "yyyyMMddHHmmssSSS";
     String ORDERBY_LOCATION = "location";
     String ORDERBY_USERNAME = "username";
+    String VERIFYCODE_KEY = "validateCode";
 }

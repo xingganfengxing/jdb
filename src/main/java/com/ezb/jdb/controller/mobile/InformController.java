@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.model.Inform;
 import com.ezb.jdb.service.IInformService;
@@ -25,7 +25,7 @@ public class InformController {
      *
      * @return
      */
-    @RequestMapping(value = "inform/createinform", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/inform/createinform", method = RequestMethod.POST)
     public
     @ResponseBody
     String createInform(String phone,Inform inform) {

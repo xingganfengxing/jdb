@@ -2,6 +2,7 @@ package com.ezb.jdb.controller;
 
 import com.ezb.jdb.common.Constants;
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.controller.mobile.FriendController;
 import com.ezb.jdb.model.Alumnus;
 import com.ezb.jdb.model.Friend;
 import com.ezb.jdb.model.User;
