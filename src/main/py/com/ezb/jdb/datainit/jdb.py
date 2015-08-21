@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 # Author   : liufeng
 # Create   : 2015/8/7 17:43
-import user, news, cmt
+import user, news, cmt, admin
 import alumnus, activity, friend
 import circle, pic, message, focus
 
@@ -22,6 +22,7 @@ def initdata():
     cmt.initCirCmt()
     message.initmessage()
     focus.initfocus()
+    admin.initAdmin()
 
 
 if __name__ == '__main__':

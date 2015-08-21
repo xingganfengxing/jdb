@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.common.Constants;
 import com.ezb.jdb.common.PageResult;

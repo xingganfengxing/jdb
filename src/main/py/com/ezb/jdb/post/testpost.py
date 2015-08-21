@@ -49,5 +49,5 @@ if __name__ == '__main__':
     register_openers()
     params = { "id": "1"}
     datagen, headers = multipart_encode(params)
-    request = urllib2.Request("http://172.16.16.135:8080/jdb/news/viewnews", datagen, headers)
+    request = urllib2.Request("http://172.16.16.135:8080/jdb/mobile/news/viewnews", datagen, headers)
     print urllib2.urlopen(request).read()

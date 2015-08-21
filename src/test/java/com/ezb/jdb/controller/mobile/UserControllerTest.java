@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.controller.mobile.UserController;
 import com.ezb.jdb.model.Alumnus;
@@ -38,7 +38,6 @@ public class UserControllerTest {
         User user = new User();
         user.setUsername("111111");
         user.setPassword("111111");
-        user.setType(1);
         log.info(userController.verifycode("888"));
     }
 

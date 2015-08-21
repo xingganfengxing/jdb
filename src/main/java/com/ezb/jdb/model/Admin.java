@@ -1,8 +1,7 @@
 package com.ezb.jdb.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
 import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.GenericGenerator;
 
@@ -10,36 +9,37 @@ import javax.persistence.*;
 import java.util.Date;
 
 /**
- * 用户
+ * 系统管理员
  * author : liufeng
- * create time: 2015/8/1 15:39.
+ * create time:2015/8/21 14:02
  */
 @Data
 @Entity
-@ToString(callSuper = true)
-@EqualsAndHashCode(callSuper = true)
-@Table(name = "T_USER")
+@Table(name = "T_ADMIN")
 @DynamicUpdate
-public class User extends Fmodel {
+public class Admin {
 
     @Id
     @GeneratedValue(generator = "system-uuid")
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
+    @Column
+    private Integer level;//管理员级别 0超级管理员
+
     @Column(length = 32)
-    private String username;//默认手机号
+    private String username;
 
     @Column(length = 32)
     private String password;
 
-    @OneToOne(mappedBy = "user",cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
-    private Alumnus alumnus;
+    @Column(length = 16)
+    private String realName;
 
-    @Column
-    private Integer state;//状态 0停用 1正常
+    @Column(length = 16)
+    private String phone;
 
     @Column(name="createtime")
-    private Date createTime;//注册日期
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    private Date createTime;
 }

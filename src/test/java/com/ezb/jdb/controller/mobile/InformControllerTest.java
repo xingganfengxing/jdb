@@ -1,4 +1,4 @@
-package com.ezb.jdb.controller;
+package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.controller.mobile.InformController;
 import com.ezb.jdb.model.Inform;

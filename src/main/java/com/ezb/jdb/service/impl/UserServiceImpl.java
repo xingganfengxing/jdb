@@ -13,13 +13,10 @@ import com.ezb.jdb.tool.JdbFileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import javax.transaction.Transactional;
-import java.io.File;
-import java.util.List;
+import java.util.Date;
 
 /**
  * author : liufeng
@@ -51,6 +48,7 @@ public class UserServiceImpl implements IUserService {
                 alumnus.setUser(user);
                 user.setAlumnus(alumnus);
                 user.setState(1);
+                user.setCreateTime(new Date());
                 userDao.add(user);
                 return ResponseState.SUCCESS;
             } else {
@@ -69,6 +67,7 @@ public class UserServiceImpl implements IUserService {
         }
         return false;
     }
+
 
     /**
      * 上传头像

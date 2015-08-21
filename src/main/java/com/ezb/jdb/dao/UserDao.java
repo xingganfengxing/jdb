@@ -118,6 +118,11 @@ public class UserDao extends BaseDao<User> {
                 "+cos(o.alumnus.lat*pi()/180)*cos({1}*pi()/180)* pow(sin( (o.alumnus.lng*pi()/180-" +
                 "{2}*pi()/180)/2),2)))*1000)/1000";
 
-        return query(MessageFormat.format(hql,phone,lat,lng), pageResult);
+        return query(MessageFormat.format(hql, phone, lat, lng), pageResult);
+    }
+
+    public User adminLogin(User user) {
+        String hql = "from User user where user.username=''{0}'' and user.password=''{1}'' and o.type=0";
+        return queryUnique(MessageFormat.format(hql, user.getUsername(), user.getPassword()));
     }
 }
