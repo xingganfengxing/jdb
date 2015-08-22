@@ -15,13 +15,12 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest,
                              HttpServletResponse httpServletResponse,
                              Object o) throws Exception {
-//        boolean isLogin = (null != httpServletRequest.getSession().getAttribute("isLogin"));
-//        if  (!isLogin) {
-//            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()
-//                    + "/jsp/pc/admin/login.jsp");
-//        }
-//        return isLogin;
-        return true;
+        boolean isLogin = (null != httpServletRequest.getSession().getAttribute("isLogin"));
+        if  (!isLogin) {
+            httpServletResponse.sendRedirect(httpServletRequest.getContextPath()
+                    + "/admin/login.jsp");
+        }
+        return isLogin;
     }
 
     public void postHandle(HttpServletRequest httpServletRequest,
