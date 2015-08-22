@@ -12,4 +12,7 @@ public interface Constants {
     String ORDERBY_LOCATION = "location";
     String ORDERBY_USERNAME = "username";
     String VERIFYCODE_KEY = "validateCode";
+    String VIEWURL_CIRCLE = "pc/admin/circle/view";
+    String VIEWURL_ACTIVITY = "pc/admin/activity/view";
+    String VIEWURL_NEWS = "pc/admin/news/view";
 }

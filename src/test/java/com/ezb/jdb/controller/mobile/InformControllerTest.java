@@ -42,7 +42,7 @@ public class InformControllerTest {
         inform.setAssoName(user.getAlumnus().getRealName());
         inform.setOtherInfo("otherinfo");
         inform.setReason("不健康");
-        inform.setType(1);
+        inform.setType("资讯");
 
         log.info(informController.createInform(user.getUsername(),inform));
     }

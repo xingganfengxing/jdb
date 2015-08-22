@@ -1,6 +1,6 @@
 package com.ezb.jdb.dao;
 
-import com.ezb.jdb.common.FocusType;
+import com.ezb.jdb.common.NavType;
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.dao.base.BaseDao;
 import com.ezb.jdb.model.Focus;
@@ -20,8 +20,8 @@ public class FocusDao extends BaseDao<Focus> {
      * @return
      */
     public PageResult<Focus> getTopFocus(PageResult<Focus> pageResult) {
-        String hql = "from Focus o where (o.type='" + FocusType.NEWS + "' " +
-                "or o.type='" + FocusType.ACTIVITY + "') order by o.position";
+        String hql = "from Focus o where (o.type='" + NavType.NEWS + "' " +
+                "or o.type='" + NavType.ACTIVITY + "') order by o.position";
         return query(hql, pageResult);
     }
 
@@ -32,7 +32,7 @@ public class FocusDao extends BaseDao<Focus> {
      * @return
      */
     public PageResult<Focus> getCircleFocus(PageResult<Focus> pageResult) {
-        String hql = "from Focus o where o.type='" + FocusType.CIRCLE + "' order by o.position";
+        String hql = "from Focus o where o.type='" + NavType.CIRCLE + "' order by o.position";
         return query(hql, pageResult);
     }
 }

@@ -1,6 +1,6 @@
 package com.ezb.jdb.controller.pc.admin;
 
-import com.ezb.jdb.common.FocusType;
+import com.ezb.jdb.common.NavType;
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.common.ResponseData;
 import com.ezb.jdb.common.ResponseState;
@@ -76,17 +76,17 @@ public class FocusController {
     @ResponseBody
     String dataBind(String id, String type) {
 
-        if (StringUtils.equals(FocusType.ACTIVITY.toString(), type)) {
+        if (StringUtils.equals(NavType.ACTIVITY.toString(), type)) {
             Activity activity = activityServiceImpl.queryById(id);
             return ResponseData.getResData(activity);
         }
 
-        if (StringUtils.equals(FocusType.NEWS.toString(), type)) {
+        if (StringUtils.equals(NavType.NEWS.toString(), type)) {
             News news = newsServiceImpl.queryNewsById(id);
             return ResponseData.getResData(news);
         }
 
-        if (StringUtils.equals(FocusType.CIRCLE.toString(), type)) {
+        if (StringUtils.equals(NavType.CIRCLE.toString(), type)) {
             Circle circle = circleServiceImpl.queryById(id);
             return ResponseData.getResData(circle);
         }

@@ -5,6 +5,7 @@
 import user, news, cmt, admin
 import alumnus, activity, friend
 import circle, pic, message, focus
+import inform
 
 
 def initdata():
@@ -23,6 +24,7 @@ def initdata():
     message.initmessage()
     focus.initfocus()
     admin.initAdmin()
+    inform.initinform()
 
 
 if __name__ == '__main__':

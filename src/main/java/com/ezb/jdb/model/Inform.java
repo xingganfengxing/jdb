@@ -24,8 +24,8 @@ public class Inform {
     @GenericGenerator(name = "system-uuid", strategy = "uuid")
     private String id;
 
-    @Column
-    private Integer type;//被举报的类型 某活动? 某人？
+    @Column(length = 8)
+    private String type;
 
     @Column(name="asso_id",length = 32)
     private String assoId;//关联id
@@ -38,6 +38,9 @@ public class Inform {
 
     @Column(name="otherinfo",length = 255)
     private String otherInfo;//其他说明
+
+    @Column(length = 64)
+    private String viewurl;//查看页面
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "create_userid")

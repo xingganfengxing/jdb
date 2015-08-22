@@ -35,7 +35,7 @@ public class Focus {
     private String refId;//绑定id
 
     @Column(name = "viewurl", length = 32)
-    private String viewUrl;
+    private String viewurl;
 
     @Column
     private Integer position;//位置 第几位焦点图
