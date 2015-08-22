@@ -32,6 +32,7 @@ public class ResponseState {
     public static String SMS_IO_ERR = ResponseState.getResState("118","SMS IO异常");
     public static String UNLOGIN = ResponseState.getResState("119", "请先登录!");
     public static String USERNAME_EXISIT = ResponseState.getResState("120", "用户名已存在!");
+    public static String FOCUSTYPE_ERR = ResponseState.getResState("121", "焦点类型错误!");
 
 
     /**

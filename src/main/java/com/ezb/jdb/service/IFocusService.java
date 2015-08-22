@@ -3,6 +3,8 @@ package com.ezb.jdb.service;
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.model.Focus;
 
+import java.util.List;
+
 /**
  * 焦点
  * author : liufeng
@@ -23,4 +25,6 @@ public interface IFocusService {
      * @return
      */
     PageResult<Focus> getCircleFocus(PageResult<Focus> pageResult);
+
+    String saveFocusDatas(List<Focus> focusList);
 }
