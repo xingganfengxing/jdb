@@ -23,18 +23,12 @@ public class MAdminConrollerTest {
     private MAdminController adminController;
 
     @Test
-    public void goLogin(){
-        Admin admin = new Admin();
-        admin.setUsername("username0");
-        admin.setPassword("pass0");
-        log.info(adminController.doLogin(admin));
-
-        admin.setPassword("xxxxx");
-        log.info(adminController.doLogin(admin));
+    public void goLogin() {
+        log.info(adminController.doLogin(null, "username0", "pass0"));
     }
 
     @Test
-    public void saveorupdate(){
+    public void saveorupdate() {
         Admin admin = new Admin();
         admin.setUsername("usernamexxxx");
         admin.setPassword("passxxxx");
@@ -45,22 +39,20 @@ public class MAdminConrollerTest {
     }
 
     @Test
-    public void delete(){
+    public void delete() {
         String ids = "3,4,100,1000";
         log.info(adminController.delete(ids));
     }
 
     @Test
-    public void query(){
+    public void query() {
         PageResult<Admin> pageResult = new PageResult<Admin>();
         pageResult.setCurPage(1);
         pageResult.setPageSize(10);
         log.info(adminController.query(pageResult, "", "", "", ""));
-        log.info(adminController.query(pageResult,"username2","","",""));
-        log.info(adminController.query(pageResult,"","realName2","",""));
-        log.info(adminController.query(pageResult,"","realName2","2015-08-21",""));
-        log.info(adminController.query(pageResult,"","realName2","2015-08-21","2015-08-21 10:00:00"));
-
+        log.info(adminController.query(pageResult, "username2", "", "", ""));
+        log.info(adminController.query(pageResult, "", "realName2", "", ""));
+        log.info(adminController.query(pageResult, "", "realName2", "2015-08-21", ""));
+        log.info(adminController.query(pageResult, "", "realName2", "2015-08-21", "2015-08-21 10:00:00"));
     }
-
 }

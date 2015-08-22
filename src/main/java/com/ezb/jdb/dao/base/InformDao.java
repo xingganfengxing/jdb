@@ -51,6 +51,8 @@ public class InformDao extends BaseDao<Inform> {
             paramList.add(state);
         }
 
+        hql += "order by o.createTime desc";
+
         return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
     }
 

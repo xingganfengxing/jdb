@@ -10,11 +10,13 @@ import com.ezb.jdb.model.Admin;
  */
 public interface IAdminService {
 
-    boolean login(Admin admin);
+    boolean login(String username,String pass);
 
     String saveOrUpdate(Admin admin);
 
     String delete(String ids);
 
     String query(PageResult<Admin> pageResult, String username, String realName, String startTime, String endTime);
+
+    Admin queryByNameAndPass(String username,String pass);
 }

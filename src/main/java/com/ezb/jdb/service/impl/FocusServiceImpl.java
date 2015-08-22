@@ -9,10 +9,13 @@ import com.ezb.jdb.model.Focus;
 import com.ezb.jdb.model.FocusData;
 import com.ezb.jdb.service.IFocusService;
 import com.ezb.jdb.tool.JdbBeanUtils;
+import com.ezb.jdb.tool.JdbFileUtils;
 import org.apache.commons.lang.StringUtils;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -25,6 +28,9 @@ public class FocusServiceImpl implements IFocusService {
 
     @Resource
     private FocusDao focusDao;
+
+    @Value("${uploadWarPath}")
+    private String uploadWarPath;
 
     public PageResult<Focus> getTopFocus(PageResult<Focus> pageResult) {
         return focusDao.getTopFocus(pageResult);
@@ -50,16 +56,30 @@ public class FocusServiceImpl implements IFocusService {
                     focus.setViewurl(Constants.VIEWURL_ACTIVITY + "?id=" + focus.getRefId());
                 }
             }
-            if (null != focus.getId()) {
-                Focus oldFocus = focusDao.get(Focus.class, focus.getId());
-                if (null != oldFocus) {
-                    JdbBeanUtils.copyProperties(focus, oldFocus);
-                    focusDao.update(oldFocus);
-                }
-            } else {
-                focusDao.add(focus);
-            }
+            saveOne(focus);
         }
+        return ResponseState.SUCCESS;
+    }
+
+    private void saveOne(Focus focus) {
+        if (null != focus.getId()) {
+            Focus oldFocus = focusDao.get(Focus.class, focus.getId());
+            if (null != oldFocus) {
+                JdbBeanUtils.copyProperties(focus, oldFocus);
+                focusDao.update(oldFocus);
+            }
+        } else {
+            focusDao.add(focus);
+        }
+    }
+
+    public String saveOne(HttpServletRequest request, Focus focus) {
+        String rpath = JdbFileUtils.uploadFile(request, uploadWarPath);
+        if (StringUtils.equals(rpath, ResponseState.PIC_SAVE_ERR)) {
+            return ResponseState.PIC_SAVE_ERR_JSON;
+        }
+        focus.setPicpath(rpath);
+        saveOne(focus);
         return ResponseState.SUCCESS;
     }
 }

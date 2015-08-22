@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 管理员管理
@@ -22,10 +23,14 @@ public class MAdminController {
     private IAdminService adminServiceImpl;
 
     @RequestMapping(value = "pc/admin/admin/dologin")
-    public String doLogin(Admin admin) {
+    public String doLogin(HttpServletRequest request, String username, String pass) {
 
-        if (adminServiceImpl.login(admin)) {
-            return "pc/admin/index";
+        Admin admin = adminServiceImpl.queryByNameAndPass(username, pass);
+        if (null != admin) {
+            if (null != request) {
+                request.getSession().setAttribute("admin_id", admin.getId());
+                return "pc/admin/index";
+            }
         }
         return ResponseState.LOGIN_ERR;
     }
@@ -66,6 +71,6 @@ public class MAdminController {
     public String query(PageResult<Admin> pageResult,
                         String username, String realName,
                         String startTime, String endTime) {
-        return adminServiceImpl.query(pageResult,username,realName,startTime,endTime);
+        return adminServiceImpl.query(pageResult, username, realName, startTime, endTime);
     }
 }

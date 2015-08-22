@@ -24,8 +24,8 @@ public class AdminServiceImpl implements IAdminService {
     @Resource
     private AdminDao adminDao;
 
-    public boolean login(Admin admin) {
-        return adminDao.login(admin);
+    public boolean login(String username,String pass) {
+        return adminDao.login(username,pass);
     }
 
     public String saveOrUpdate(Admin admin) {
@@ -55,5 +55,9 @@ public class AdminServiceImpl implements IAdminService {
                         String realName, String startTime, String endTime) {
         pageResult = adminDao.query(pageResult,username,realName,startTime,endTime);
         return ResponseData.getResData(pageResult);
+    }
+
+    public Admin queryByNameAndPass(String username, String pass) {
+        return adminDao.queryByNameAndPass(username,pass);
     }
 }

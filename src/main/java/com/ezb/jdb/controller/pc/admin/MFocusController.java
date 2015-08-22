@@ -15,7 +15,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 焦点图设置相关
@@ -95,6 +97,7 @@ public class MFocusController {
 
     /**
      * 焦点数据保存
+     *
      * @return
      */
     @RequestMapping(value = "pc/admin/focus/datasave", method = RequestMethod.POST)
@@ -102,6 +105,18 @@ public class MFocusController {
     @ResponseBody
     String dataSave(FocusData focusData) {
         return focusServiceImpl.saveFocusDatas(focusData.getFocuses());
+    }
+
+    /**
+     * 保存单个焦点图
+     *
+     * @return
+     */
+    @RequestMapping(value = "pc/admin/focus/saveone", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    String saveOne(HttpServletRequest request, Focus focus) {
+        return focusServiceImpl.saveOne(request, focus);
     }
 
 }

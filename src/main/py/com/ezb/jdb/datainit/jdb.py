@@ -11,6 +11,7 @@ import inform
 def initdata():
     """初始化数据"""
     user.inituser()
+    admin.initAdmin()
     news.initNews()
     pic.resetPicPath("t_news")
     cmt.initNewsCmt()
@@ -23,9 +24,7 @@ def initdata():
     cmt.initCirCmt()
     message.initmessage()
     focus.initfocus()
-    admin.initAdmin()
     inform.initinform()
-
 
 if __name__ == '__main__':
     initdata()

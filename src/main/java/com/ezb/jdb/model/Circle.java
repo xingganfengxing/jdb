@@ -47,7 +47,7 @@ public class Circle extends Fmodel {
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "create_userid")
-    private User createUser;//圈子创建人
+    private Admin createUser;//圈子创建人
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "T_JOIN_USER_CIRCLE",

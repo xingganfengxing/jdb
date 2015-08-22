@@ -33,6 +33,7 @@ public class ResponseState {
     public static String UNLOGIN = ResponseState.getResState("119", "请先登录!");
     public static String USERNAME_EXISIT = ResponseState.getResState("120", "用户名已存在!");
     public static String FOCUSTYPE_ERR = ResponseState.getResState("121", "焦点类型错误!");
+    public static String SESSION_ERR = ResponseState.getResState("122", "用户未登录或session失效!");
 
 
     /**

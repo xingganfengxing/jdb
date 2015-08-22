@@ -7,6 +7,8 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
 
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 圈子
@@ -18,8 +20,8 @@ public class CircleDao extends BaseDao<Circle> {
 
     public PageResult<Circle> queryCircles(PageResult<Circle> pageResult, String queryWords) {
         String hql = "from Circle o where o.state=1";
-        if(null != queryWords){
-            if(!StringUtils.isEmpty(queryWords.trim())){
+        if (null != queryWords) {
+            if (!StringUtils.isEmpty(queryWords.trim())) {
                 hql += " and o.title like ''%{0}%'' ";
             }
         }
@@ -28,14 +30,51 @@ public class CircleDao extends BaseDao<Circle> {
         return query(MessageFormat.format(hql, queryWords), pageResult);
     }
 
-    public PageResult<Circle> queryMyCircles(PageResult<Circle> pageResult, String phone,String queryWords) {
+    public PageResult<Circle> queryMyCircles(PageResult<Circle> pageResult, String phone, String queryWords) {
         String hql = "from Circle o where o.state=1 and o.createUser.username=''{0}''";
-        if(null != queryWords){
-            if(!StringUtils.isEmpty(queryWords.trim())){
+        if (null != queryWords) {
+            if (!StringUtils.isEmpty(queryWords.trim())) {
                 hql += " and o.title like ''%{1}%'' ";
             }
         }
         hql += " order by o.createTime desc";
-        return query(MessageFormat.format(hql, phone,queryWords), pageResult);
+        return query(MessageFormat.format(hql, phone, queryWords), pageResult);
+    }
+
+    public PageResult<Circle> query(PageResult<Circle> pageResult, String id, String title, String startTime, String endTime) {
+
+        int index = 0;
+        List<String> paramList = new ArrayList<String>();
+
+        String hql = "from Circle o where 1=1";
+
+        if (!StringUtils.isEmpty(id)) {
+            hql += " and o.id=''{" + index++ + "}''";
+            paramList.add(id);
+        }
+
+        if (!StringUtils.isEmpty(title)) {
+            hql += " and o.title like ''{" + index++ + "}''";
+            paramList.add(title);
+        }
+
+        if (!StringUtils.isEmpty(startTime)) {
+            hql += " and o.createTime >= ''{" + index++ + "}''";
+            paramList.add(startTime);
+        }
+
+        if (!StringUtils.isEmpty(endTime)) {
+            hql += " and o.createTime <= ''{" + index++ + "}''";
+            paramList.add(endTime);
+        }
+
+        hql += " order by o.createTime desc";
+
+        return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
+    }
+
+    public int offline(String id) {
+        String hql = "update Circle o set o.state=0 where o.id=''{0}''";
+        return executeHql(MessageFormat.format(hql,id));
     }
 }

@@ -3,6 +3,7 @@ package com.ezb.jdb.service;
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.model.Focus;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -27,4 +28,6 @@ public interface IFocusService {
     PageResult<Focus> getCircleFocus(PageResult<Focus> pageResult);
 
     String saveFocusDatas(List<Focus> focusList);
+
+    String saveOne(HttpServletRequest request, Focus focus);
 }

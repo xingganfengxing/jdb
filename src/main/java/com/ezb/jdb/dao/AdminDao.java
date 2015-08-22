@@ -17,9 +17,9 @@ import java.util.List;
 @Repository
 public class AdminDao extends BaseDao<Admin> {
 
-    public boolean login(Admin admin) {
+    public boolean login(String username,String pass) {
         String hql = " from Admin o where o.username=''{0}'' and o.password=''{1}''";
-        return queryCount(MessageFormat.format(hql, admin.getUsername(), admin.getPassword())) == 1;
+        return queryCount(MessageFormat.format(hql, username, pass)) == 1;
     }
 
     /**
@@ -69,5 +69,10 @@ public class AdminDao extends BaseDao<Admin> {
         }
 
         return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
+    }
+
+    public Admin queryByNameAndPass(String username, String pass) {
+        String hql = "from Admin o where o.username=''{0}'' and o.id!=''{1}''";
+        return queryUnique(MessageFormat.format(hql,username,pass));
     }
 }
