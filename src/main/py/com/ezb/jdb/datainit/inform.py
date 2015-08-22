@@ -25,11 +25,12 @@ def initinform():
                 time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
                 "otherinfo" + str(i),
                 "reason" + str(i),
+                random.randint(0,1),
                 type[typeIndex],
                 viewurl[typeIndex] + "id=" + str(refId),
                 random.randint(0, 99)
             ]
-            cur.execute('insert into t_inform values(%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
+            cur.execute('insert into t_inform values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
         conn.commit()
         cur.close()
         conn.close()

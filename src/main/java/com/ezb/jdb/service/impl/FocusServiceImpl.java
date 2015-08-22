@@ -37,7 +37,7 @@ public class FocusServiceImpl implements IFocusService {
     public String saveFocusDatas(List<Focus> focusList) {
         for (Focus focus : focusList) {
 
-            if(null != focus.getType()){
+            if (null != focus.getType()) {
                 if (StringUtils.equals(focus.getType(), NavType.CIRCLE.toString())) {
                     focus.setViewurl(Constants.VIEWURL_CIRCLE + "?id=" + focus.getRefId());
                 }
@@ -50,11 +50,12 @@ public class FocusServiceImpl implements IFocusService {
                     focus.setViewurl(Constants.VIEWURL_ACTIVITY + "?id=" + focus.getRefId());
                 }
             }
-
-            Focus oldFocus = focusDao.get(Focus.class, focus.getId());
-            if (null != oldFocus) {
-                JdbBeanUtils.copyProperties(focus, oldFocus);
-                focusDao.update(oldFocus);
+            if (null != focus.getId()) {
+                Focus oldFocus = focusDao.get(Focus.class, focus.getId());
+                if (null != oldFocus) {
+                    JdbBeanUtils.copyProperties(focus, oldFocus);
+                    focusDao.update(oldFocus);
+                }
             } else {
                 focusDao.add(focus);
             }

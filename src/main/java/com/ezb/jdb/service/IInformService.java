@@ -1,5 +1,6 @@
 package com.ezb.jdb.service;
 
+import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.model.Inform;
 
 /**
@@ -10,4 +11,12 @@ import com.ezb.jdb.model.Inform;
 public interface IInformService {
 
     String addInform(String phone,Inform inform);
+
+    PageResult<Inform> query(PageResult<Inform> pageResult,
+                             String realname, String startTime,
+                             String endTime, String reason, String state);
+
+    String del(String ids);
+
+    String handle(String id);
 }

@@ -1,7 +1,14 @@
 package com.ezb.jdb.dao.base;
 
+import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.model.Inform;
+import com.ezb.jdb.model.Message;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Repository;
+
+import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 举报
@@ -10,4 +17,50 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class InformDao extends BaseDao<Inform> {
+
+    public PageResult<Inform> query(PageResult<Inform> pageResult,
+                                    String realname, String startTime,
+                                    String endTime, String reason, String state) {
+        int index = 0;
+        List<String> paramList = new ArrayList<String>();
+
+        String hql = "from Inform o where 1=1";
+
+        if (!StringUtils.isEmpty(realname)) {
+            hql += " and o.createUser.alumnus.realName like ''%{" + index++ + "}%''";
+            paramList.add(realname);
+        }
+
+        if (!StringUtils.isEmpty(startTime)) {
+            hql += " and o.createTime>=''{" + index++ + "}''";
+            paramList.add(startTime);
+        }
+
+        if (!StringUtils.isEmpty(endTime)) {
+            hql += " and o.createTime<=''{" + index++ + "}''";
+            paramList.add(endTime);
+        }
+
+        if (!StringUtils.isEmpty(reason)) {
+            hql += " and o.reason like ''%{" + index++ + "}%''";
+            paramList.add(reason);
+        }
+
+        if (!StringUtils.isEmpty(state)) {
+            hql += " and o.state=''{" + index++ + "}''";
+            paramList.add(state);
+        }
+
+        return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
+    }
+
+    public int del(String id) {
+        String hql = "delete from Inform o where o.id=''{0}''";
+        return executeHql(MessageFormat.format(hql, id));
+    }
+
+    public int handle(String id) {
+        String hql = "update Inform o set o.state=1 where id=''{0}''";
+        return executeHql(MessageFormat.format(hql,id));
+    }
 }

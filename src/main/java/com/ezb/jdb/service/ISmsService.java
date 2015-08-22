@@ -9,7 +9,7 @@ package com.ezb.jdb.service;
 public interface ISmsService {
 
     /**
-     * 给制定手机号发送消息
+     * 给指定手机号发送消息
      * @param phone
      * @param content
      */

@@ -9,7 +9,6 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import javax.annotation.Resource;
-import java.util.Date;
 
 /**
  * 管理员维护
@@ -19,9 +18,9 @@ import java.util.Date;
 @Slf4j
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = {"classpath:configs/spring/*.xml"})
-public class AdminConrollerTest {
+public class MAdminConrollerTest {
     @Resource
-    private AdminController adminController;
+    private MAdminController adminController;
 
     @Test
     public void goLogin(){

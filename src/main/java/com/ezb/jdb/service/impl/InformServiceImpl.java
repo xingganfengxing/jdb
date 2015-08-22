@@ -2,6 +2,7 @@ package com.ezb.jdb.service.impl;
 
 import com.ezb.jdb.common.Constants;
 import com.ezb.jdb.common.NavType;
+import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.common.ResponseState;
 import com.ezb.jdb.dao.UserDao;
 import com.ezb.jdb.dao.base.InformDao;
@@ -57,5 +58,28 @@ public class InformServiceImpl implements IInformService {
 
             return ResponseState.SUCCESS;
         }
+    }
+
+    public PageResult<Inform> query(PageResult<Inform> pageResult,
+                                    String realname, String startTime,
+                                    String endTime, String reason, String state) {
+        return informDao.query(pageResult, realname, startTime, endTime, reason, state);
+    }
+
+    public String del(String ids) {
+        String[] idArrs = StringUtils.splitByWholeSeparator(ids, ",");
+        for (String id : idArrs) {
+            if (informDao.del(id) != 1) {
+                return ResponseState.FAIL;
+            }
+        }
+        return ResponseState.SUCCESS;
+    }
+
+    public String handle(String id) {
+        if (informDao.handle(id) == 1) {
+            return ResponseState.SUCCESS;
+        }
+        return ResponseState.FAIL;
     }
 }

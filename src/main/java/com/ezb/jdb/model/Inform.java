@@ -42,6 +42,9 @@ public class Inform {
     @Column(length = 64)
     private String viewurl;//查看页面
 
+    @Column
+    private Integer state;//状态 (已处理，待处理)
+
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "create_userid")
     private User createUser;//举报人
