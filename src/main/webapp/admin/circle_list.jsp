@@ -19,40 +19,7 @@
 </head>
 <body>
 <!-- header-->
-<header>
-    <div class="header clearfix">
-        <h1 class="yx-logo">
-            <a href="/">交大邦应用管理后台<i>1.0 系统</i></a>
-        </h1>
-        <a href="javascript:;" class="sidebar-toggle">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </a>
-        <div class="login-user">
-            <div class="top-infor">
-                <span>
-                    <i class="fa fa-question-circle"></i>
-                    <a href="">帮助</a>
-                </span>
-                <span>
-                    <i class="fa fa-sign-in"></i>
-                    <a href="javascript:;">退出</a>
-                </span>
-            </div>
-            <div class="top-infor">
-                <span>
-                    <i class="fa fa-user"></i>
-                    管理员：<a href="###">Admin</a>
-                </span>
-                <span>
-                    <i class="fa fa-wrench"></i>
-                    <a href="javascript:;">修改密码</a>
-                </span>
-            </div>
-        </div>
-    </div>
-</header>
+<jsp:include page="header.jsp" />
 <!-- crumbs-->
 <div class="gx-crumbs clearfix">
 
@@ -66,54 +33,7 @@
 </div>
 
 <div class="yx-wrapper clearfix">
-    <aside class="left-side">
-        <section class="sidebar">
-            <!-- 侧边菜单 begin -->
-            <ul class="sidebar-menu">
-                <li class="active">
-                    <a href="index.jsp">
-                        <i class="fa fa-home"></i>
-                        <span>首页</span>
-                    </a>
-                </li>
-                <li class="treeview">
-                    <a href="administrator.jsp">
-                        <i class="fa fa-gear"></i>
-                        <span>系统管理</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="administrator.jsp"><i class="fa fa-angle-double-right"></i>创建管理员</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>角色管理</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>权限管理</a></li>
-                        <li><a href="#"><i class="fa fa-angle-double-right"></i>管理员日志</a></li>
-                    </ul>
-                </li>
-                <li class="treeview">
-                    <a href="home_setting.jsp">
-                        <i class="fa fa-list-ol"></i>
-                        <span>业务管理</span>
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </a>
-                    <ul class="treeview-menu">
-                        <li><a href="home_setting.jsp"><i class="fa fa-angle-double-right"></i>首页设置</a></li>
-                        <li><a href="report_manage.jsp"><i class="fa fa-angle-double-right"></i>举报管理</a></li>
-                        <li><a href="circle_list.jsp"><i class="fa fa-angle-double-right"></i>圈子管理</a></li>
-                        <li><a href="user_manage.jsp"><i class="fa fa-angle-double-right"></i>用户管理</a></li>
-                        <li><a href="activity_manage.jsp"><i class="fa fa-angle-double-right"></i>活动管理</a></li>
-                        <li><a href="new_manage.jsp"><i class="fa fa-angle-double-right"></i>咨询管理</a></li>
-                    </ul>
-                </li>
-                <!--<li>-->
-                <!--<a href="">-->
-                <!--<i class="fa fa-envelope"></i> <span>邮箱</span>-->
-                <!--<small class="badge pull-right bg-yellow">12</small>-->
-                <!--</a>-->
-                <!--</li>-->
-            </ul>
-            <!-- 侧边菜单 end -->
-        </section>
-    </aside>
+    <jsp:include page="left.jsp" />
 
     <aside class="right-side">
         <section class="content">
