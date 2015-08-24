@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.imageio.ImageIO;
 import javax.servlet.ServletException;
@@ -119,17 +120,19 @@ public class VerifyCodeController {
      * @return
      */
     @RequestMapping(value = "login/checkverifycode")
-    public String checkVerifycode(HttpServletRequest request,
-                                  @RequestParam(required = true) String verifyCode) {
+    public
+    @ResponseBody
+    String checkVerifycode(HttpServletRequest request,
+                           @RequestParam(required = true) String verifycode) {
         Object vobj = request.getSession().getAttribute(Constants.VERIFYCODE_KEY);
         String verifyCodeServer = "";
         if (null != vobj) {
             verifyCodeServer = (String) vobj;
-            if (StringUtils.equals(verifyCode, verifyCodeServer)) {
-                return ResponseState.SUCCESS;
+            if (StringUtils.equalsIgnoreCase(verifycode, verifyCodeServer)) {
+                return "true";
             }
         }
-        return ResponseState.VERIFYCODE_ERR;
+        return "false";
     }
 }
 

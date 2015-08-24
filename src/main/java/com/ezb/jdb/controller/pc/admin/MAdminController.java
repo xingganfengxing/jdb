@@ -1,15 +1,13 @@
 package com.ezb.jdb.controller.pc.admin;
 
 import com.ezb.jdb.common.PageResult;
-import com.ezb.jdb.common.ResponseState;
 import com.ezb.jdb.model.Admin;
 import com.ezb.jdb.service.IAdminService;
-import com.ezb.jdb.service.IUserService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpServletRequest;
 
 /**
  * 管理员管理
@@ -22,19 +20,6 @@ public class MAdminController {
     @Resource
     private IAdminService adminServiceImpl;
 
-    @RequestMapping(value = "pc/admin/admin/dologin")
-    public String doLogin(HttpServletRequest request, String username, String pass) {
-
-        Admin admin = adminServiceImpl.queryByNameAndPass(username, pass);
-        if (null != admin) {
-            if (null != request) {
-                request.getSession().setAttribute("admin_id", admin.getId());
-                return "pc/admin/index";
-            }
-        }
-        return ResponseState.LOGIN_ERR;
-    }
-
     /**
      * 添加或更新系统管理员
      *
@@ -42,7 +27,9 @@ public class MAdminController {
      * @return
      */
     @RequestMapping(value = "pc/admin/admin/saveorupdate")
-    public String saveOrUpdate(Admin admin) {
+    public
+    @ResponseBody
+    String saveOrUpdate(Admin admin) {
         return adminServiceImpl.saveOrUpdate(admin);
     }
 
@@ -53,7 +40,9 @@ public class MAdminController {
      * @return
      */
     @RequestMapping(value = "pc/admin/admin/delete")
-    public String delete(String ids) {
+    public
+    @ResponseBody
+    String delete(String ids) {
         return adminServiceImpl.delete(ids);
     }
 
@@ -68,9 +57,11 @@ public class MAdminController {
      * @return
      */
     @RequestMapping(value = "pc/admin/admin/query")
-    public String query(PageResult<Admin> pageResult,
-                        String username, String realName,
-                        String startTime, String endTime) {
+    public
+    @ResponseBody
+    String query(PageResult<Admin> pageResult,
+                 String username, String realName,
+                 String startTime, String endTime) {
         return adminServiceImpl.query(pageResult, username, realName, startTime, endTime);
     }
 }

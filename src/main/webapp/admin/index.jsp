@@ -38,7 +38,7 @@
                 </span>
                 <span>
                     <i class="fa fa-sign-in"></i>
-                    <a href="javascript:;">退出</a>
+                    <a href="javascript:window.location='<%=basepath%>/pc/login/loginout';">退出</a>
                 </span>
             </div>
             <div class="top-infor">

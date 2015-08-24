@@ -1,5 +1,6 @@
 package com.ezb.jdb.interceptor.pc.admin;
 
+import com.ezb.jdb.common.Constants;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,7 +16,7 @@ public class LoginInterceptor implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest httpServletRequest,
                              HttpServletResponse httpServletResponse,
                              Object o) throws Exception {
-        boolean isLogin = (null != httpServletRequest.getSession().getAttribute("isLogin"));
+        boolean isLogin = (null != httpServletRequest.getSession().getAttribute(Constants.ADMINID));
         if  (!isLogin) {
             httpServletResponse.sendRedirect(httpServletRequest.getContextPath()
                     + "/admin/login.jsp");

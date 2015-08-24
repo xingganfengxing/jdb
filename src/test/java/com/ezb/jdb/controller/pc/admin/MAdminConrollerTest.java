@@ -20,11 +20,14 @@ import javax.annotation.Resource;
 @ContextConfiguration(locations = {"classpath:configs/spring/*.xml"})
 public class MAdminConrollerTest {
     @Resource
-    private MAdminController adminController;
+    private MAdminController mAdminController;
+
+    @Resource
+    private MLoginController mLoginController;
 
     @Test
     public void goLogin() {
-        log.info(adminController.doLogin(null, "username0", "pass0"));
+        log.info(mLoginController.doLogin(null, "username0", "pass0"));
     }
 
     @Test
@@ -35,13 +38,13 @@ public class MAdminConrollerTest {
         admin.setPhone("2122212");
         admin.setRealName("realNamexxx");
         admin.setLevel(1);
-        log.info(adminController.saveOrUpdate(admin));
+        log.info(mAdminController.saveOrUpdate(admin));
     }
 
     @Test
     public void delete() {
         String ids = "3,4,100,1000";
-        log.info(adminController.delete(ids));
+        log.info(mAdminController.delete(ids));
     }
 
     @Test
@@ -49,10 +52,10 @@ public class MAdminConrollerTest {
         PageResult<Admin> pageResult = new PageResult<Admin>();
         pageResult.setCurPage(1);
         pageResult.setPageSize(10);
-        log.info(adminController.query(pageResult, "", "", "", ""));
-        log.info(adminController.query(pageResult, "username2", "", "", ""));
-        log.info(adminController.query(pageResult, "", "realName2", "", ""));
-        log.info(adminController.query(pageResult, "", "realName2", "2015-08-21", ""));
-        log.info(adminController.query(pageResult, "", "realName2", "2015-08-21", "2015-08-21 10:00:00"));
+        log.info(mAdminController.query(pageResult, "", "", "", ""));
+        log.info(mAdminController.query(pageResult, "username2", "", "", ""));
+        log.info(mAdminController.query(pageResult, "", "realName2", "", ""));
+        log.info(mAdminController.query(pageResult, "", "realName2", "2015-08-21", ""));
+        log.info(mAdminController.query(pageResult, "", "realName2", "2015-08-21", "2015-08-21 10:00:00"));
     }
 }

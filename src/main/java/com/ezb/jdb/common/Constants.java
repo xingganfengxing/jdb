@@ -15,4 +15,5 @@ public interface Constants {
     String VIEWURL_CIRCLE = "pc/admin/circle/view";
     String VIEWURL_ACTIVITY = "pc/admin/activity/view";
     String VIEWURL_NEWS = "pc/admin/news/view";
+    String ADMINID = "admin_id";
 }

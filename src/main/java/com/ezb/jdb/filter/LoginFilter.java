@@ -1,5 +1,6 @@
 package com.ezb.jdb.filter;
 
+import com.ezb.jdb.common.Constants;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.servlet.*;
@@ -34,7 +35,7 @@ public class LoginFilter implements Filter {
             return;
         }
 
-        Object loginuser = req.getSession().getAttribute("admin_id");
+        Object loginuser = req.getSession().getAttribute(Constants.ADMINID);
         if (loginuser == null) {
             res.sendRedirect(indexPath);
             return;
