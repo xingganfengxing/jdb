@@ -10,12 +10,13 @@ $(function () {
         focusInvalid: false,
         onkeyup: false,
         submitHandler: function (form) {
-            var responseObj = $.ajax({
-                url: basePath + "/pc/login/dologin",
-                data: {username: $("#username").val(), password: $("#password").val()},
-                async: false
-            });
-            var obj = $.parseJSON(responseObj.responseText);
+            var obj = ajax(
+                "/pc/login/dologin",
+                {
+                    username: $("#username").val(),
+                    password: $("#password").val()
+                }
+            );
             if (obj.code == "0") {
                 window.location = basePath + "/admin/index.jsp";
             } else {

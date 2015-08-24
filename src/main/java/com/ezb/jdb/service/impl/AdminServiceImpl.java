@@ -1,5 +1,6 @@
 package com.ezb.jdb.service.impl;
 
+import com.ezb.jdb.common.Constants;
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.common.ResponseData;
 import com.ezb.jdb.common.ResponseState;
@@ -11,6 +12,7 @@ import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 import java.util.Date;
 
 /**
@@ -58,6 +60,27 @@ public class AdminServiceImpl implements IAdminService {
     }
 
     public Admin queryByNameAndPass(String username, String pass) {
-        return adminDao.queryByNameAndPass(username,pass);
+        return adminDao.queryByNameAndPass(username, pass);
+    }
+
+    public String queryCurAdmin(HttpServletRequest request) {
+        Object object = request.getSession().getAttribute(Constants.ADMINID);
+        if(null == object){
+            return ResponseState.SESSION_ERR;
+        }
+        String adminId = (String)object;
+        return ResponseData.getResData(adminDao.get(Admin.class, adminId));
+    }
+
+    public String updatePass(HttpServletRequest request,String password) {
+        Object object = request.getSession().getAttribute(Constants.ADMINID);
+        if(null == object){
+            return ResponseState.SESSION_ERR;
+        }
+        String adminId = (String)object;
+        Admin admin = adminDao.get(Admin.class,adminId);
+        admin.setPassword(password);
+        adminDao.update(admin);
+        return ResponseState.SUCCESS;
     }
 }

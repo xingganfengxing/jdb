@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="css/login.css"/>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
-    <script src="js/basepath.js"></script>
+    <script src="js/base.js"></script>
     <script src="js/web/login.js"></script>
 </head>
 <body>

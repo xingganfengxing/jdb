@@ -225,6 +225,9 @@
                             <port>8000</port>
                         </connector>
                     </connectors>
+                    <webAppConfig>
+                        <defaultsDescriptor>src/main/resources/webdefault.xml</defaultsDescriptor>
+                    </webAppConfig>
                 </configuration>
             </plugin>
         </plugins>

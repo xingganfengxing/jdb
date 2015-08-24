@@ -6,3 +6,12 @@ function getBasePath() {
     var projectName = pathName.substring(0, pathName.substr(1).indexOf('/') + 1);
     return (localhostPaht + projectName);
 }
+
+function ajax(url,data){
+    var responseObj = $.ajax({
+        url: basePath + url,
+        data: data,
+        async: false
+    });
+   return $.parseJSON(responseObj.responseText);
+}

@@ -12,9 +12,12 @@
  */
 $.fn.popUpBox = function (p) {
     var d = {
-            fn : function () {},
-            fnY : function () {},
-            fnN : function () {}
+            fn: function () {
+            },
+            fnY: function () {
+            },
+            fnN: function () {
+            }
         },
         o = $.extend(d, p || {}),
         bg = $('<div class="popUpBoxBg"></div>'),
@@ -30,66 +33,40 @@ $.fn.popUpBox = function (p) {
     $this
         .find(".popUpBoxYes")
         .unbind("click")
-        .click(function(e) {
-            if(!o.fnY()) _this.close();
+        .click(function (e) {
+            if (!o.fnY()) _this.close();
         })
     ;
     $this
         .find(".popUpBoxNo")
         .unbind("click")
-        .click(function(e) {
-            if(!o.fnN()) _this.close();
+        .click(function (e) {
+            if (!o.fnN()) _this.close();
         })
     ;
     $this
         .css({
-            "margin-left" : -$this.outerWidth() / 2,
-            "margin-top" : -$this.outerHeight() /2
+            "margin-left": -$this.outerWidth() / 2,
+            "margin-top": -$this.outerHeight() / 2
         })
         .show()
     ;
     o.fn();
 }
-
-
-// 创建管理员
-function createAdmin() {
-    $(".create-admin").popUpBox({
-        fn : function () {},
-        fnN : function () {},
-        fnY : function () {}
-    });
-}
-$('#cAdmin').on('click',function(e){
-    e.preventDefault();
-    createAdmin();
-})
-
-// 编辑管理员
-function editAdmin() {
-    $(".edit-admin").popUpBox({
-        fn : function () {},
-        fnN : function () {},
-        fnY : function () {}
-    });
-}
-$('.edit-admin-btn').on('click',function(e){
-    e.preventDefault();
-    editAdmin();
-})
-
 //状态弹出
 function statusDialog(v) {
     $(".status-admin").popUpBox({
-        fn : function () {
+        fn: function () {
             $('.status-conts').find('p').text(v);
         },
-        fnN : function () {},
-        fnY : function () {}
+        fnN: function () {
+        },
+        fnY: function () {
+        }
     });
 }
 //提交发布提示
-$('#submit-succ').on('click',function(e){
+$('#submit-succ').on('click', function (e) {
     e.preventDefault();
     var str = "成功！";
     statusDialog(str);

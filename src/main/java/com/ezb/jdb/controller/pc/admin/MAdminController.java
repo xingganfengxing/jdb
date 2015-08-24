@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 /**
  * 管理员管理
@@ -19,6 +20,30 @@ public class MAdminController {
 
     @Resource
     private IAdminService adminServiceImpl;
+
+    /**
+     * 修改密码
+     *
+     * @return
+     */
+    @RequestMapping(value = "pc/admin/admin/updatepass")
+    public
+    @ResponseBody
+    String updatePass(HttpServletRequest request,String password) {
+        return adminServiceImpl.updatePass(request,password);
+    }
+
+    /**
+     * 查询当前用户
+     *
+     * @return
+     */
+    @RequestMapping(value = "pc/admin/admin/querycuradmin")
+    public
+    @ResponseBody
+    String queryCurAdmin(HttpServletRequest request) {
+        return adminServiceImpl.queryCurAdmin(request);
+    }
 
     /**
      * 添加或更新系统管理员

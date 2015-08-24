@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%String basepath = request.getContextPath();%>
+<script src="js/base.js"></script>
 <header>
     <div class="header clearfix">
         <h1 class="yx-logo">
@@ -29,9 +30,39 @@
                 </span>
                 <span>
                     <i class="fa fa-wrench"></i>
-                    <a href="javascript:;">修改密码</a>
+                    <a href="#" id="editPass">修改密码</a>
                 </span>
             </div>
         </div>
     </div>
 </header>
+
+<!-- 修改密码 -->
+<div class="popUpBox edit-pass">
+    <h1 class="popUpBoxTit">
+        修改密码
+        <a class="popUpBoxNo"  href="javascript:void(0)"></a>
+    </h1>
+    <div class="popUpBoxCon">
+        <div class="newPop-menu">
+            <ul>
+                <li>
+                    <label><span>*</span>账&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp户：</label>
+                    <b><span id="username"></span></b>
+                </li>
+                <li>
+                    <label><span>*</span>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码：</label>
+                    <input id="password" name="password" type="password" class="newpop-tet"/>
+                </li>
+                <li>
+                    <label><span>*</span>再次输入：</label>
+                    <input id="password1" name="password1" type="password" class="newpop-tet"/>
+                </li>
+            </ul>
+            <div class="addCancle">
+                <button id="updateBtn" class="gx-button gx-button-info">修改</button>
+                <button id="resetBtn" class="gx-button gx-button-error">重置</button>
+            </div>
+        </div>
+    </div>
+</div>

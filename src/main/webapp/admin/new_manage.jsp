@@ -131,12 +131,6 @@
         </section>
     </aside>
 </div>
-<!--<footer>-->
-    <!--<div class="footer">-->
-        <!--<p>一休理财管理 ©2015 yixiu.com 京ICP备888888号</p>-->
-        <!--<p>登录IP:192.168.1.1 2015-5-30 上次登录IP:192.168.1.1 2015-6-23</p>-->
-    <!--</div>-->
-<!--</footer>-->
 <script src="js/jquery.min.js"></script>
 <script src="js/admin_yc.js"></script>
 <script src="js/bootstrap-datetimepicker.js"></script>
@@ -149,5 +143,4 @@
     });
 
 </script>
-</body>
-</html>
+<jsp:include page="footer.jsp" />

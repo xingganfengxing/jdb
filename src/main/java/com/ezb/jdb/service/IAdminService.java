@@ -3,6 +3,8 @@ package com.ezb.jdb.service;
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.model.Admin;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * 系统管理员
  * author : liufeng
@@ -19,4 +21,8 @@ public interface IAdminService {
     String query(PageResult<Admin> pageResult, String username, String realName, String startTime, String endTime);
 
     Admin queryByNameAndPass(String username,String pass);
+
+    String queryCurAdmin(HttpServletRequest request);
+
+    String updatePass(HttpServletRequest request,String password);
 }

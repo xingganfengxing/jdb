@@ -42,76 +42,32 @@
                                     <label class="gx-texttitle">
                                         账号：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qusername" type="text" class="gx-textbox" placeholder="请输入您的账号">
                                     <label class="gx-texttitle">
                                         姓名：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的姓名">
+                                    <input id="qrealName" type="text" class="gx-textbox" placeholder="请输入您的姓名">
                                 </div>
                                 <div class="group-item">
                                     <label class="gx-texttitle">
                                         注册日期：
                                     </label>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
+                                    <input id="qstartTime" type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
                                     <span>
                                        到
                                     </span>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
+                                    <input id="qendTime" type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
                                 </div>
-                                <button class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
+                                <button id="query">查询</button>
+                                <button id="reset">重置</button>
                             </div>
                             <div class="admin-table">
-                                <table class="tab">
-                                    <tr class="tab-h">
-                                        <td class="tab-first"></td>
-                                        <td class="tab-two">账号</td>
-                                        <td class="tab-three">姓名</td>
-                                        <td class="tab-four">
-                                            <select class="gx-textbox">
-                                                <option>会员状态</option>
-                                                <option>删除</option>
-                                                <option>正常</option>
-                                            </select>
-                                        </td>
-                                        <td class="tab-five">注册日期</td>
-                                        <td class="tab-six">操作</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tab-first">
-                                            <input type="checkbox"/>
-                                        </td>
-                                        <td class="tab-two">56476547@qq.com</td>
-                                        <td class="tab-three">孙凯</td>
-                                        <td class="tab-four">正常</td>
-                                        <td class="tab-five">2014-11-13</td>
-                                        <td class="tab-six">
-                                            <b class="gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn">编辑</b>
-                                            <span class="gx-button gx-button-error gx-button-actived gx-button-small">删除</span>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td class="tab-first">
-                                            <input type="checkbox"/>
-                                        </td>
-                                        <td class="tab-two">56476547@qq.com</td>
-                                        <td class="tab-three">孙凯</td>
-                                        <td class="tab-four">删除</td>
-                                        <td class="tab-five">2014-11-13</td>
-                                        <td class="tab-six">
-                                            <b class="gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn">编辑</b>
-                                            <span class="gx-button gx-button-error gx-button-actived gx-button-small">删除</span>
-                                        </td>
-                                    </tr>
+                                <table class="tab" id="datatable">
                                 </table>
+                                <input type="hidden" name="curPage" id="curPage" value="1" />
+                                <input type="hidden" name="pageCount" id="pageCount" value="1" />
                                 <div class="clearfix">
-                                    <nav class="gx-pager">
-                                        <a class="gx-pager-disabled" href="###"><i class="gx-icon">«</i></a>
-                                        <a class="gx-pager-actived" href="###">1</a>
-                                        <a href="###">2</a>
-                                        ...
-                                        <a href="###">99</a>
-                                        <a href="###">100</a>
-                                        <a href="###"><i class="gx-icon">»</i></a>
+                                    <nav id="pageDiv" class="gx-pager">
                                     </nav>
                                 </div>
                             </div>
@@ -121,17 +77,6 @@
         </section>
     </aside>
 </div>
-
-<!-- 状态弹出 -->
-<!--<div class="popUpBox status-admin">-->
-    <!--<h1 class="popUpBoxTit">-->
-        <!--温馨提示-->
-        <!--<a class="popUpBoxNo"  href="javascript:void(0)"></a>-->
-    <!--</h1>-->
-    <!--<div class="popUpBoxCon status-conts">-->
-        <!--<p>状态提示！</p>-->
-    <!--</div>-->
-<!--</div>-->
 
 <!-- 新建系统管理员弹窗 -->
 <div class="popUpBox create-admin">
@@ -210,23 +155,10 @@
         </div>
     </div>
 </div>
-<!--<div class="newPop gx-hide"></div>-->
-
-
-<!--<footer>-->
-    <!--<div class="footer">-->
-        <!--<p>一休理财管理 ©2015 yixiu.com 京ICP备888888号</p>-->
-        <!--<p>登录IP:192.168.1.1 2015-5-30 上次登录IP:192.168.1.1 2015-6-23</p>-->
-    <!--</div>-->
-<!--</footer>-->
-
-
 <script src="js/jquery.min.js"></script>
 <script src="js/admin_yc.js"></script>
-<script src="js/dialog.js"></script>
 <script src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({
         format: 'yyyy-mm-dd hh:ii',
@@ -234,6 +166,5 @@
     });
 
 </script>
-
-</body>
-</html>
+<script src="js/web/admin.js"></script>
+<jsp:include page="footer.jsp" />

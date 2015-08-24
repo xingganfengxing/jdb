@@ -9,7 +9,7 @@ import com.alibaba.fastjson.JSONObject;
  */
 public class ResponseState {
 
-    public static String SUCCESS = getResState("0", "");
+    public static String SUCCESS = getResState("0", "操作成功");
     public static String INVALID_PHONE = getResState("100", "手机号码不存在");
     public static String LOGIN_ERR = ResponseState.getResState("101", "用户名或密码错误!");
     public static String LIKE_OPT_ERR = ResponseState.getResState("102", "点赞操作失败!");

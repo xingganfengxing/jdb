@@ -18,10 +18,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href="administrator.jsp"><i class="fa fa-angle-double-right"></i>创建管理员</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>角色管理</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>权限管理</a></li>
-                    <li><a href="#"><i class="fa fa-angle-double-right"></i>管理员日志</a></li>
+                    <li><a href="administrator.jsp"><i class="fa fa-angle-double-right"></i>管理员维护</a></li>
                 </ul>
             </li>
             <li class="treeview">
@@ -39,12 +36,6 @@
                     <li><a href="new_manage.jsp"><i class="fa fa-angle-double-right"></i>咨询管理</a></li>
                 </ul>
             </li>
-            <!--<li>-->
-            <!--<a href="">-->
-            <!--<i class="fa fa-envelope"></i> <span>邮箱</span>-->
-            <!--<small class="badge pull-right bg-yellow">12</small>-->
-            <!--</a>-->
-            <!--</li>-->
         </ul>
         <!-- 侧边菜单 end -->
     </section>
