@@ -11,6 +11,7 @@ function ajax(url,data){
     var responseObj = $.ajax({
         url: basePath + url,
         data: data,
+        type: 'POST',
         async: false
     });
    return $.parseJSON(responseObj.responseText);

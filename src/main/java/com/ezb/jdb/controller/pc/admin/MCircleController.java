@@ -33,7 +33,7 @@ public class MCircleController {
      * @param endTime    结束时间
      * @return
      */
-    @RequestMapping(value = "pc/admin/circle/query", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/circle/query")
     public
     @ResponseBody
     String query(PageResult<Circle> pageResult,
@@ -51,7 +51,7 @@ public class MCircleController {
      *
      * @return
      */
-    @RequestMapping(value = "pc/admin/circle/view", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/circle/view")
     public
     @ResponseBody
     String view(String id) {
@@ -64,7 +64,7 @@ public class MCircleController {
      *
      * @return
      */
-    @RequestMapping(value = "pc/admin/circle/save", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/circle/save")
     public
     @ResponseBody
     String save(HttpServletRequest request, Circle circle) {
@@ -76,7 +76,7 @@ public class MCircleController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "pc/admin/circle/offline", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/circle/offline")
     public
     @ResponseBody
     String offline(String id){

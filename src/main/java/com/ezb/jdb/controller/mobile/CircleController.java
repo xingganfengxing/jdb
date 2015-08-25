@@ -35,7 +35,7 @@ public class CircleController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "mobile/circle/querycircles", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/querycircles")
     public
     @ResponseBody
     String queryCircles(PageResult<Circle> pageResult, String queryWords) {
@@ -51,7 +51,7 @@ public class CircleController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "mobile/circle/querymycircles", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/querymycircles")
     public
     @ResponseBody
     String queryMyCircles(PageResult<Circle> pageResult, String phone, String queryWords) {
@@ -66,7 +66,7 @@ public class CircleController {
      * @param circleid
      * @return
      */
-    @RequestMapping(value = "mobile/circle/querycircmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/querycircmt")
     public
     @ResponseBody
     String queryCircmt(PageResult<CirCmt> pageResult, String circleid) {
@@ -79,7 +79,7 @@ public class CircleController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/circle/createcircmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/createcircmt")
     public
     @ResponseBody
     String createCircmt(String phone, CirCmt cirCmt) {
@@ -91,7 +91,7 @@ public class CircleController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/circle/join", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/join")
     public
     @ResponseBody
     String join(String phone, String id) {
@@ -103,7 +103,7 @@ public class CircleController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/circle/viewcircle", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/circle/viewcircle")
     public
     @ResponseBody
     String viewCircle(String id) {

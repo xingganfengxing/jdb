@@ -14,7 +14,12 @@ def resetPicPath(table):
     ]
     conn = initconn.getConn()
     cur = conn.cursor()
-    for i in range(100):
+
+    totalCount = 100
+    if table == "t_focus":
+        totalCount = 11
+
+    for i in range(totalCount):
         value = [
             picpath[random.randint(0, 2)],
             i
@@ -28,4 +33,4 @@ def resetPicPath(table):
 if __name__ == '__main__':
     resetPicPath("t_news")
     resetPicPath("t_activity")
-
+    resetPicPath("t_focus")

@@ -25,7 +25,7 @@ public class InformController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/inform/createinform", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/inform/createinform")
     public
     @ResponseBody
     String createInform(String phone,Inform inform) {

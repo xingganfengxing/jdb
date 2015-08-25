@@ -4,7 +4,7 @@
 <html>
 <head lang="zh-CN">
     <meta charset="UTF-8">
-    <title>咨询管理</title>
+    <title>资讯管理</title>
     <meta name="description" content="">
     <meta name="keywords" content="">
     <meta name="author" content="Globak-x">
@@ -29,7 +29,7 @@
     <span>当前位置：</span>
     <span>首页</span>
     <i class="fa fa-angle-right"></i>
-    <a href="">咨询管理</a>
+    <a href="">资讯管理</a>
 </div>
 
 <div class="yx-wrapper clearfix">
@@ -42,11 +42,11 @@
                             <div class="administrator clearfix administrator-margin">
                                 <div class="group-item">
                                     <label class="gx-texttitle">
-                                        咨询编号：
+                                        资讯编号：
                                     </label>
                                     <input type="text" class="gx-textbox" placeholder="请输入您的账号">
                                     <label class="gx-texttitle">
-                                        咨询名称：
+                                        资讯名称：
                                     </label>
                                     <input type="text" class="gx-textbox" placeholder="请输入您的账号">
                                 </div>
@@ -65,11 +65,11 @@
                             <div class="administrator clearfix administrator-margin">
                                 <div class="group-item">
                                     <label class="gx-texttitle1">
-                                        咨询创建账号：
+                                        资讯创建账号：
                                     </label>
                                     <input type="text" class="gx-textbox" placeholder="请输入您的账号">
                                     <label class="gx-texttitle1">
-                                        咨询创建着：
+                                        资讯创建着：
                                     </label>
                                     <input type="text" class="gx-textbox" placeholder="请输入您的账号">
                                 </div>
@@ -78,24 +78,24 @@
                                 <table class="tab">
                                     <tr class="tab-h">
                                         <td>序号</td>
-                                        <td>咨询编号</td>
+                                        <td>资讯编号</td>
                                         <td>活动名称</td>
                                         <td>
                                             <select class="gx-textbox">
-                                                <option>咨询类型</option>
+                                                <option>资讯类型</option>
                                             </select>
                                         </td>
                                         <td>
                                             <select class="gx-textbox">
-                                                <option>咨询状态</option>
+                                                <option>资讯状态</option>
                                                 <option>正常</option>
                                                 <option>下线</option>
                                                 <option>删除</option>
                                             </select>
                                         </td>
-                                        <td>咨询创建账号</td>
-                                        <td>咨询创建者</td>
-                                        <td>咨询创建时间</td>
+                                        <td>资讯创建账号</td>
+                                        <td>资讯创建者</td>
+                                        <td>资讯创建时间</td>
                                         <td>操作</td>
                                     </tr>
                                     <tr>

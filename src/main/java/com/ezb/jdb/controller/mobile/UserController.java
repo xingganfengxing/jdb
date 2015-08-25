@@ -29,7 +29,7 @@ public class UserController {
     @Resource
     private IInvitateCodeService invitateCodeServiceImpl;
 
-    @RequestMapping(value = "mobile/user/login", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/login")
     public
     @ResponseBody
     String login(HttpServletRequest request, User user) throws IOException {
@@ -46,7 +46,7 @@ public class UserController {
      * @param username
      * @return 验证码
      */
-    @RequestMapping(value = "mobile/user/verifycode", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/verifycode")
     public
     @ResponseBody
     String verifycode(String username) {
@@ -60,7 +60,7 @@ public class UserController {
      * @param username
      * @return 邀请码
      */
-    @RequestMapping(value = "mobile/user/makeinvitatecode", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/makeinvitatecode")
     public
     @ResponseBody
     String makeInvitateCode(String username) {
@@ -68,7 +68,7 @@ public class UserController {
         return ResponseData.getResData(invitateCode);
     }
 
-    @RequestMapping(value = "mobile/user/register", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/register")
     public
     @ResponseBody
     String register(User user, String invitateCode, String verifyCode) {
@@ -80,7 +80,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/user/uploadheadpic", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/uploadheadpic")
     public
     @ResponseBody
     String uploadHeadPic(HttpServletRequest request,String phone) {
@@ -92,7 +92,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/user/perfinfo", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/perfinfo")
     public
     @ResponseBody
     String perfinfo(Alumnus alumnus, String phone) {
@@ -104,7 +104,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/user/resetpwd", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/resetpwd")
     public
     @ResponseBody
     String resetPwd(String username, String password, String verifyCode) {
@@ -116,7 +116,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/user/resetphone", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/resetphone")
     public
     @ResponseBody
     String resetPhone(String phone, String newphone, String verifyCode) {
@@ -128,7 +128,7 @@ public class UserController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/user/viewuser", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/user/viewuser")
     public
     @ResponseBody
     String viewUser(String phone) {

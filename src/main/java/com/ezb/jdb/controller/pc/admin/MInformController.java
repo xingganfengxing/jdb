@@ -31,7 +31,7 @@ public class MInformController {
      * @param state      处理状态
      * @return
      */
-    @RequestMapping(value = "pc/admin/inform/query", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/inform/query")
     public
     @ResponseBody
     String query(
@@ -49,7 +49,7 @@ public class MInformController {
         return ResponseData.getResData(pageResult);
     }
 
-    @RequestMapping(value = "pc/admin/inform/del", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/inform/del")
     public
     @ResponseBody
     String del(String ids){
@@ -61,7 +61,7 @@ public class MInformController {
      * @param id
      * @return
      */
-    @RequestMapping(value = "pc/admin/inform/handle", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/inform/handle")
     public
     @ResponseBody
     String handle(String id){

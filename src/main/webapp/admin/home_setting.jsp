@@ -41,7 +41,7 @@
                         <div class="home">
                             <div class="homeSetting">
                                 <h2>首页焦点图</h2>
-                                <div class="clearfix">
+                                <div id="newsAndAtvs" class="clearfix">
                                     <dl class="fl">
                                         <dt>1位 焦点图</dt>
                                         <dt><img src="img/banner.png"/></dt>
@@ -51,8 +51,7 @@
                                                     <label>类&nbsp&nbsp&nbsp&nbsp型：</label>
                                                     <select>
                                                         <option>活动</option>
-                                                        <option>咨询</option>
-                                                        <option>自定义</option>
+                                                        <option>资讯</option>
                                                     </select>
                                                 </div>
                                                 <button class="gx-button gx-button-error gx-button-small fr">清空</button>
@@ -82,8 +81,7 @@
                                                     <label>类&nbsp&nbsp&nbsp&nbsp型：</label>
                                                     <select>
                                                         <option>活动</option>
-                                                        <option>咨询</option>
-                                                        <option>自定义</option>
+                                                        <option>资讯</option>
                                                     </select>
                                                 </div>
                                                 <button class="gx-button gx-button-error gx-button-small fr">清空</button>
@@ -113,8 +111,7 @@
                                                     <label>类&nbsp&nbsp&nbsp&nbsp型：</label>
                                                     <select>
                                                         <option>活动</option>
-                                                        <option>咨询</option>
-                                                        <option>自定义</option>
+                                                        <option>资讯</option>
                                                     </select>
                                                 </div>
                                                 <button class="gx-button gx-button-error gx-button-small fr">清空</button>
@@ -144,8 +141,7 @@
                                                     <label>类&nbsp&nbsp&nbsp&nbsp型：</label>
                                                     <select>
                                                         <option>活动</option>
-                                                        <option>咨询</option>
-                                                        <option>自定义</option>
+                                                        <option>资讯</option>
                                                     </select>
                                                 </div>
                                                 <button class="gx-button gx-button-error gx-button-small fr">清空</button>
@@ -175,8 +171,7 @@
                                                     <label>类&nbsp&nbsp&nbsp&nbsp型：</label>
                                                     <select>
                                                         <option>活动</option>
-                                                        <option>咨询</option>
-                                                        <option>自定义</option>
+                                                        <option>资讯</option>
                                                     </select>
                                                 </div>
                                                 <button class="gx-button gx-button-error gx-button-small fr">清空</button>
@@ -206,8 +201,7 @@
                                                     <label>类&nbsp&nbsp&nbsp&nbsp型：</label>
                                                     <select>
                                                         <option>活动</option>
-                                                        <option>咨询</option>
-                                                        <option>自定义</option>
+                                                        <option>资讯</option>
                                                     </select>
                                                 </div>
                                                 <button class="gx-button gx-button-error gx-button-small fr">清空</button>
@@ -228,7 +222,6 @@
                                             </div>
                                         </dd>
                                     </dl>
-
                                 </div>
                                 <div class="homeWord">
                                     <div class="homeDetails fl">
@@ -300,4 +293,5 @@
         </section>
     </aside>
 </div>
+<script src="js/web/home_setting.js"></script>
 <jsp:include page="footer.jsp" />

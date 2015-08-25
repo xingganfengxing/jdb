@@ -13,8 +13,9 @@ import com.ezb.jdb.view.ActivityView;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.ServletRequestDataBinder;
-import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -60,7 +61,7 @@ public class ActivityController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "mobile/activity/queryactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/queryactivity")
     public
     @ResponseBody
     String queryActivity(PageResult<Activity> pageResult, String queryWords) {
@@ -76,7 +77,7 @@ public class ActivityController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "mobile/activity/querymyactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/querymyactivity")
     public
     @ResponseBody
     String queryMyActivity(PageResult<Activity> pageResult, String phone, String queryWords) {
@@ -95,7 +96,7 @@ public class ActivityController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "mobile/activity/querymyjoinactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/querymyjoinactivity")
     public
     @ResponseBody
     String queryMyJoinActivity(PageResult<Activity> pageResult, String phone, String queryWords) {
@@ -111,7 +112,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/activity/viewactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/viewactivity")
     public
     @ResponseBody
     String viewActivity(String id) {
@@ -128,7 +129,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/activity/createactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/createactivity")
     public
     @ResponseBody
     String createActivity(HttpServletRequest request, Activity activity, String phone) {
@@ -140,7 +141,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/activity/createatvcmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/createatvcmt")
     public
     @ResponseBody
     String createAtvCmt(String phone, AtvCmt atvCmt) {
@@ -152,7 +153,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/activity/likeatvcmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/likeatvcmt")
     public
     @ResponseBody
     String likeAtvCmt(String phone, String id) {
@@ -164,7 +165,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/activity/signup", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/signup")
     public
     @ResponseBody
     String signup(String phone, String id) {
@@ -176,7 +177,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/activity/queryjoinusers", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/queryjoinusers")
     public
     @ResponseBody
     String queryJoinUsers(String id) {
@@ -192,7 +193,7 @@ public class ActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/activity/sendjoinusers2email", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/activity/sendjoinusers2email")
     public
     @ResponseBody
     String sendJoinUsers2Email(String id) {

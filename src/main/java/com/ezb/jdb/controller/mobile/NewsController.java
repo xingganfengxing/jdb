@@ -43,7 +43,7 @@ public class NewsController {
      * @param type       资讯类别
      * @return
      */
-    @RequestMapping(value = "mobile/news/querynews", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/news/querynews")
     public
     @ResponseBody
     String queryNews(PageResult<News> pageResult, String queryWords, String type) {
@@ -60,7 +60,7 @@ public class NewsController {
      * @param queryWords 查询关键字
      * @return
      */
-    @RequestMapping(value = "mobile/news/querymynews", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/news/querymynews")
     public
     @ResponseBody
     String queryMyNews(PageResult<News> pageResult, String phone, String queryWords, String type) {
@@ -76,7 +76,7 @@ public class NewsController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/news/viewnews", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/news/viewnews")
     public
     @ResponseBody
     String viewNews(String id) {
@@ -93,7 +93,7 @@ public class NewsController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/news/createnews", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/news/createnews")
     public
     @ResponseBody
     String createNews(HttpServletRequest request, News news, String phone) {
@@ -105,7 +105,7 @@ public class NewsController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/news/createnewscmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/news/createnewscmt")
     public
     @ResponseBody
     String createNewsCmt(String phone, NewsCmt newsCmt) {
@@ -117,7 +117,7 @@ public class NewsController {
      *
      * @return
      */
-    @RequestMapping(value = "mobile/news/likenewscmt", method = RequestMethod.POST)
+    @RequestMapping(value = "mobile/news/likenewscmt")
     public
     @ResponseBody
     String likeNewsCmt(String phone, String id) {

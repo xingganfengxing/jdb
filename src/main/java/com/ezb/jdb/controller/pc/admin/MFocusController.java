@@ -45,7 +45,7 @@ public class MFocusController {
      *
      * @return
      */
-    @RequestMapping(value = "pc/admin/focus/newsactivity", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/focus/newsactivity")
     public
     @ResponseBody
     String newsActivity(PageResult<Focus> pageResult) {
@@ -58,7 +58,7 @@ public class MFocusController {
      *
      * @return
      */
-    @RequestMapping(value = "pc/admin/focus/circle", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/focus/circle")
     public
     @ResponseBody
     String circle(PageResult<Focus> pageResult) {
@@ -73,7 +73,7 @@ public class MFocusController {
      * @param type 类型
      * @return
      */
-    @RequestMapping(value = "pc/admin/focus/databind", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/focus/databind")
     public
     @ResponseBody
     String dataBind(String id, String type) {
@@ -100,7 +100,7 @@ public class MFocusController {
      *
      * @return
      */
-    @RequestMapping(value = "pc/admin/focus/datasave", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/focus/datasave")
     public
     @ResponseBody
     String dataSave(FocusData focusData) {
@@ -112,7 +112,7 @@ public class MFocusController {
      *
      * @return
      */
-    @RequestMapping(value = "pc/admin/focus/saveone", method = RequestMethod.POST)
+    @RequestMapping(value = "pc/admin/focus/saveone")
     public
     @ResponseBody
     String saveOne(HttpServletRequest request, Focus focus) {
