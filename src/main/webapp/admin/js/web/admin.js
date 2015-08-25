@@ -92,39 +92,56 @@ function binddata(curpage, pageSize) {
     }
 }
 
-//绑定分页
-function bindPage() {
+/**
+ * 初始化分页
+ * @param innerPageSize 展示页面数
+ * @param curPage 当前页面
+ * @param pageCount 总页数
+ */
+function bindPage(innerPageSize, curPage, pageCount) {
     $("#pageDiv").empty();
-    $("#pageDiv").append("<a class=\"gx-pager-disabled\" href=\"###\"><i class=\"gx-icon\">«</i></a>");
 
-    if (parseInt($("#curPage").val()) <= parseInt($("#pageCount").val())-3) {
-        $("#pageDiv").append("<a class=\"gx-pager-actived\" href=\"javascript:bindCurPage(" + $("#curPage").val() + ")\">" + $("#curPage").val() + "</a>");
+    //页面大小
+    var innerPageCount = parseInt(pageCount / innerPageSize);
+    if (pageCount % innerPageSize != 0) {
+        innerPageCount += 1;
     }
 
-    if ((parseInt($("#curPage").val()) + 1) <= parseInt($("#pageCount").val())-2) {
-        $("#pageDiv").append("<a href=\"javascript:bindCurPage(" + (parseInt($("#curPage").val()) + 1) + ")\">" + (parseInt($("#curPage").val()) + 1) + "</a>");
+    //当前页
+    var innerCurPage = parseInt(curPage / innerPageSize) + 1;
+    if (curPage % innerPageSize == 0) {
+        innerCurPage -= 1;
     }
 
-    if ($("#pageCount").val() >= 4) {
-        $("#pageDiv").append(" ... ")
+    var startPage = (innerCurPage-1) * innerPageSize + 1;
+    if (startPage == 1) {
+        $("#pageDiv").append("<a class=\"gx-pager-disabled\" href=\"###\"><i class=\"gx-icon\">«</i></a>");
+    } else {
+        $("#pageDiv").append("<a class=\"gx-icon\" href=\"javascript:bindCurPage("
+            + (innerCurPage - 1) * innerPageSize + ")\"><i class=\"gx-icon\">«</i></a>");
     }
 
-    if (parseInt($("#pageCount").val()) - 1 >= 5) {
-        $("#pageDiv").append("<a href=\"javascript:bindCurPage(" + (parseInt($("#pageCount").val()) - 1) + ")\">" + (parseInt($("#pageCount").val()) - 1) + "</a>");
+    for (var i = startPage; i < startPage + innerPageSize && i <= pageCount; i++) {
+        if (i == curPage) {
+            $("#pageDiv").append("<a class=\"gx-pager-actived\" href=\"javascript:bindCurPage(" + i + ")\">" + i + "</a>");
+        } else {
+            $("#pageDiv").append("<a href=\"javascript:bindCurPage(" + i + ")\">" + i + "</a>");
+        }
     }
 
-    if ($("#pageCount").val() >= 5) {
-        $("#pageDiv").append("<a href=\"javascript:bindCurPage(" + $("#pageCount").val() + ")\">" + $("#pageCount").val() + "</a>");
+    if (innerCurPage == innerPageCount) {
+        $("#pageDiv").append("<a class=\"gx-pager-disabled\" href=\"###\"><i class=\"gx-icon\">»</i></a>");
+    } else {
+        $("#pageDiv").append("<a href=\"javascript:bindCurPage("
+            + (innerCurPage * innerPageSize + 1) + ")\"><i class=\"gx-icon\">»</i></a>");
     }
-
-    $("#pageDiv").append("<a href=\"###\"><i class=\"gx-icon\">»</i></a>");
 }
 
 function bindCurPage(curPage) {
     $("#curPage").val(curPage);
     binddata(curPage, pageSize);
-    bindPage();
+    bindPage(5, $("#curPage").val(), $("#pageCount").val());
 }
 
 binddata(1, pageSize);
-bindPage();
+bindPage(5, $("#curPage").val(), $("#pageCount").val());
