@@ -35,8 +35,8 @@ public class UserDao extends BaseDao<User> {
         return queryCount(MessageFormat.format(hql, phone));
     }
 
-    public PageResult<User> queryUser(PageResult<User> pageResult,
-                                      String phone, Alumnus alumnus, String orderby) {
+    public PageResult<User> queryUnFriendUser(PageResult<User> pageResult,
+                                              String phone, Alumnus alumnus, String orderby) {
 
         List<Object> paramList = new ArrayList<Object>();
 
@@ -49,6 +49,12 @@ public class UserDao extends BaseDao<User> {
                 " and o.username not in (select o2.friend.username from Friend o2 where o2.user.username=''{0}'')";
         paramList.add(phone);
 
+        hql = buildHql(alumnus, orderby, paramList, lat, lng, hql);
+
+        return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
+    }
+
+    private String buildHql(Alumnus alumnus, String orderby, List<Object> paramList, Double lat, Double lng, String hql) {
         int i = 1;
 
         if (null != alumnus) {
@@ -103,8 +109,7 @@ public class UserDao extends BaseDao<User> {
         if (StringUtils.equals(Constants.ORDERBY_USERNAME, orderby)) {
             hql += " order by o.alumnus.realName";
         }
-
-        return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
+        return hql;
     }
 
     public PageResult<User> queryNearUsers(PageResult<User> pageResult, String phone) {
@@ -121,8 +126,16 @@ public class UserDao extends BaseDao<User> {
         return query(MessageFormat.format(hql, phone, lat, lng), pageResult);
     }
 
-    public User adminLogin(User user) {
-        String hql = "from User user where user.username=''{0}'' and user.password=''{1}'' and o.type=0";
-        return queryUnique(MessageFormat.format(hql, user.getUsername(), user.getPassword()));
+    public PageResult<User> queryAllUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
+        List<Object> paramList = new ArrayList<Object>();
+
+        User user = queryByPhone(phone);
+        Double lat = user.getAlumnus().getLat();
+        Double lng = user.getAlumnus().getLng();
+
+        String hql = "from User o where o.state=1";
+        hql = buildHql(alumnus, orderby, paramList, lat, lng, hql);
+
+        return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
     }
 }

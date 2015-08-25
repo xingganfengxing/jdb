@@ -1,7 +1,6 @@
 package com.ezb.jdb.controller.mobile;
 
 import com.ezb.jdb.common.PageResult;
-import com.ezb.jdb.common.ResponseData;
 import com.ezb.jdb.common.ResponseState;
 import com.ezb.jdb.model.Alumnus;
 import com.ezb.jdb.model.Friend;
@@ -91,7 +90,25 @@ public class FriendController {
     public
     @ResponseBody
     String queryUnFriend(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
-        List<User> list = userServiceImpl.queryUser(pageResult, phone, alumnus, orderby).getResultList();
+        List<User> list = userServiceImpl.queryUnFriendUser(pageResult, phone, alumnus, orderby).getResultList();
+        User user = userServiceImpl.queryUserByPhone(phone);
+        return FriendView.convertUList2Json(user, list);
+    }
+
+    /**
+     * 查询所有校友
+     *
+     * @param pageResult
+     * @param phone      当前用户的手机号
+     * @param alumnus    查询条件
+     * @param orderby    排序规则 "username","location"
+     * @return
+     */
+    @RequestMapping(value = "mobile/friend/queryallfriend", method = RequestMethod.POST)
+    public
+    @ResponseBody
+    String queryAllFriend(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
+        List<User> list = userServiceImpl.queryAllUser(pageResult, phone, alumnus, orderby).getResultList();
         User user = userServiceImpl.queryUserByPhone(phone);
         return FriendView.convertUList2Json(user, list);
     }

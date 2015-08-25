@@ -79,6 +79,28 @@ public class FriendControllerTest {
 
     @Test
     @Rollback(false)
+    public void queryAllFriend(){
+
+        PageResult<User> pageResult = new PageResult<User>();
+        pageResult.setCurPage(1);
+        pageResult.setPageSize(10);
+        log.info(friendController.queryUnFriend(pageResult, "11111196", null, null));
+
+
+        Alumnus alumnus = new Alumnus();
+        alumnus.setRealName("realname1");
+        alumnus.setSex(1);
+        alumnus.setSchool("school1");
+        alumnus.setDepartment("department1");
+        alumnus.setGrade("grade1");
+        log.info(friendController.queryAllFriend(pageResult, "11111196", alumnus, null));
+
+        log.info(friendController.queryAllFriend(pageResult, "11111196", null, Constants.ORDERBY_USERNAME));
+        log.info(friendController.queryAllFriend(pageResult, "11111196", null, Constants.ORDERBY_LOCATION));
+    }
+
+    @Test
+    @Rollback(false)
     public void addFriend(){
         String phone1 = "1111111";
         String phone2 = "1111112";

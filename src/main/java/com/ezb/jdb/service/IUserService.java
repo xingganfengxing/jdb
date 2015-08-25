@@ -26,11 +26,13 @@ public interface IUserService {
 
     void update(User user);
 
-    PageResult<User> queryUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby);
+    PageResult<User> queryUnFriendUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby);
 
     String resetPwd(String phone, String password, String verifyCode);
 
     String resetPhone(String phone, String newPhone,String verifyCode);
 
     PageResult<User> queryNearUsers(PageResult<User> pageResult, String phone);
+
+    PageResult<User> queryAllUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby);
 }

@@ -122,8 +122,8 @@ public class UserServiceImpl implements IUserService {
         userDao.update(user);
     }
 
-    public PageResult<User> queryUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
-        return userDao.queryUser(pageResult, phone, alumnus, orderby);
+    public PageResult<User> queryUnFriendUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
+        return userDao.queryUnFriendUser(pageResult, phone, alumnus, orderby);
     }
 
     public String resetPwd(String phone, String password, String verifyCode) {
@@ -159,5 +159,9 @@ public class UserServiceImpl implements IUserService {
 
     public PageResult<User> queryNearUsers(PageResult<User> pageResult, String phone) {
         return userDao.queryNearUsers(pageResult, phone);
+    }
+
+    public PageResult<User> queryAllUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
+        return userDao.queryAllUser(pageResult, phone, alumnus, orderby);
     }
 }
