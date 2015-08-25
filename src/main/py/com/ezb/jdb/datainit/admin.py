@@ -17,10 +17,10 @@ def initAdmin():
             0,
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
             0,
-            "pass0",
+            "123456",
             "111111" + str(0),
-            "realname0",
-            "username0"
+            "超级管理员",
+            "superadmin"
         ]
         cur.execute('insert into t_admin values(%s,%s,%s,%s,%s,%s,%s)', value)
 

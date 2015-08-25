@@ -11,6 +11,9 @@
                     <span>首页</span>
                 </a>
             </li>
+            <%
+                if (request.getSession().getAttribute("isSuper") != null) {
+            %>
             <li class="treeview">
                 <a href="administrator.jsp">
                     <i class="fa fa-gear"></i>
@@ -21,6 +24,9 @@
                     <li><a href="administrator.jsp"><i class="fa fa-angle-double-right"></i>管理员维护</a></li>
                 </ul>
             </li>
+            <%
+                }
+            %>
             <li class="treeview">
                 <a href="home_setting.jsp">
                     <i class="fa fa-list-ol"></i>
@@ -33,7 +39,7 @@
                     <li><a href="circle_list.jsp"><i class="fa fa-angle-double-right"></i>圈子管理</a></li>
                     <li><a href="user_manage.jsp"><i class="fa fa-angle-double-right"></i>用户管理</a></li>
                     <li><a href="activity_manage.jsp"><i class="fa fa-angle-double-right"></i>活动管理</a></li>
-                    <li><a href="new_manage.jsp"><i class="fa fa-angle-double-right"></i>咨询管理</a></li>
+                    <li><a href="new_manage.jsp"><i class="fa fa-angle-double-right"></i>资讯管理</a></li>
                 </ul>
             </li>
         </ul>

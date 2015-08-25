@@ -29,8 +29,21 @@ public class MAdminController {
     @RequestMapping(value = "pc/admin/admin/updatepass")
     public
     @ResponseBody
-    String updatePass(HttpServletRequest request,String password) {
-        return adminServiceImpl.updatePass(request,password);
+    String updatePass(HttpServletRequest request, String password) {
+        return adminServiceImpl.updatePass(request, password);
+    }
+
+    /**
+     * 查询某个管理员账户
+     *
+     * @param id
+     * @return
+     */
+    @RequestMapping(value = "pc/admin/admin/viewadmin")
+    public
+    @ResponseBody
+    String viewAdmin(String id) {
+        return adminServiceImpl.queryById(id);
     }
 
     /**

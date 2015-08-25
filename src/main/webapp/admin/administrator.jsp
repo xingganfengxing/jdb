@@ -1,4 +1,4 @@
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jstl/core" %>
 <%String basepath = request.getContextPath();%>
 <html>
@@ -89,28 +89,28 @@
             <ul>
                 <li>
                     <label><span>*</span>账&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp户：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="addUsername" name="username" type="text" class="newpop-tet"/>
                 </li>
                 <li>
                     <label><span>*</span>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="addPassword" name="password" type="text" class="newpop-tet"/>
                 </li>
                 <li>
                     <label><span>*</span>再次输入：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="addPassword1" name="password1" type="text" class="newpop-tet"/>
                 </li>
                 <li>
                     <label><span>*</span>真实姓名：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="addRealName" name="realName" type="text" class="newpop-tet"/>
                 </li>
                 <li>
                     <label>&nbsp电&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp话：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="addPhone" name="phone" type="text" class="newpop-tet"/>
                 </li>
             </ul>
             <div class="addCancle">
-                <button class="gx-button gx-button-info">添加</button>
-                <button class="gx-button gx-button-error">取消</button>
+                <button id="addAdminBtn" class="gx-button gx-button-info">添加</button>
+                <button class="gx-button gx-button-error popUpBoxNo">取消</button>
             </div>
         </div>
     </div>
@@ -128,29 +128,30 @@
         <div class="newPop-menu">
             <ul>
                 <li>
+                    <input id="editId" name="id" type="hidden" value=""/>
                     <label><span>*</span>账&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp户：</label>
-                    <b>jiaodabang</b>
+                    <b><span id="editUserName"></span></b>
                 </li>
                 <li>
                     <label><span>*</span>密&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp码：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="editPassword" name="password" type="password" class="newpop-tet"/>
                 </li>
                 <li>
                     <label><span>*</span>再次输入：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="editPassword1" name="password1" type="password" class="newpop-tet"/>
                 </li>
                 <li>
                     <label><span>*</span>真实姓名：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="editRealName" name="realName" type="text" class="newpop-tet"/>
                 </li>
                 <li>
                     <label>&nbsp电&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp话：</label>
-                    <input type="text" class="newpop-tet"/>
+                    <input id="editPhone" name="phone" type="text" class="newpop-tet"/>
                 </li>
             </ul>
             <div class="addCancle">
-                <button class="gx-button gx-button-info">添加</button>
-                <button class="gx-button gx-button-error">取消</button>
+                <button id="updataAdminBtn" class="gx-button gx-button-info">更新</button>
+                <button class="gx-button gx-button-error popUpBoxNo">取消</button>
             </div>
         </div>
     </div>

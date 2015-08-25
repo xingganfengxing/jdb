@@ -61,7 +61,7 @@
             </ul>
             <div class="addCancle">
                 <button id="updateBtn" class="gx-button gx-button-info">修改</button>
-                <button id="resetBtn" class="gx-button gx-button-error">重置</button>
+                <button class="gx-button gx-button-error popUpBoxNo">取消</button>
             </div>
         </div>
     </div>

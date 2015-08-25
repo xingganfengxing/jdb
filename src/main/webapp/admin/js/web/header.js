@@ -13,11 +13,6 @@ $('#updateBtn').on('click', function (e) {
     }
 })
 
-$('#resetBtn').on('click', function (e) {
-    $("#password").val("");
-    $("#password1").val("");
-})
-
 // 加载当前用户用户名
 function editPass() {
     $(".edit-pass").popUpBox({

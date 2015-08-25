@@ -11,15 +11,22 @@ function createAdmin() {
         }
     });
 }
-$('#cAdmin').on('click', function (e) {
-    e.preventDefault();
-    createAdmin();
-})
 
 // 编辑管理员
-function editAdmin() {
+function editAdmin(id) {
     $(".edit-admin").popUpBox({
         fn: function () {
+            var obj = ajax("/pc/admin/admin/viewadmin", {id: id});
+            if (obj.code != "0") {
+                alert(obj.error);
+            } else {
+                $("#editId").val(obj.data.id);
+                $("#editUserName").html(obj.data.username);
+                $("#editPassword").val(obj.data.password);
+                $("#editPassword1").val(obj.data.password);
+                $("#editRealName").val(obj.data.realName);
+                $("#editPhone").val(obj.data.phone);
+            }
         },
         fnN: function () {
         },
@@ -27,25 +34,6 @@ function editAdmin() {
         }
     });
 }
-
-$('.edit-admin-btn').on('click', function (e) {
-    e.preventDefault();
-    editAdmin();
-})
-
-$('#query').on('click', function (e) {
-    e.preventDefault();
-    binddata($("#curPage").val(), pageSize);
-    bindPage();
-})
-
-$('#reset').on('click', function (e) {
-    e.preventDefault();
-    $("#qusername").val("");
-    $("#qrealName").val("");
-    $("#qstartTime").val("");
-    $("#qendTime").val()
-})
 
 //数据加载
 function binddata(curpage, pageSize) {
@@ -85,11 +73,28 @@ function binddata(curpage, pageSize) {
             "<td class=\"tab-five\">" + obj.data.resultList[i].createTime + "</td>" +
             "<td class=\"tab-six\">" +
             "<b class=\"gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn\">编辑</b>" +
-            "<span class=\"gx-button gx-button-error gx-button-actived gx-button-small\">删除</span>" +
+            "<span class=\"delAdminBtn gx-button gx-button-error gx-button-actived gx-button-small\">删除</span>" +
             "</td>" +
             "</tr>"
         );
     }
+
+    $(".delAdminBtn").on('click', function (e) {
+        var name = $(this).parents('tr').children('.tab-three').text();
+        if (confirm("删除管理员也将删除该管理员创建的圈子信息,确定删除管理员(" + name + ")?")) {
+            var id = $(this).parents('tr').children('.tab-first').text();
+            var obj = ajax("/pc/admin/admin/delete", {ids: id});
+            alert(obj.error);
+            binddata($("#curPage").val(), pageSize);
+            bindPage(5, $("#curPage").val(), $("#pageCount").val());
+        }
+    })
+
+    $('.edit-admin-btn').on('click', function (e) {
+        e.preventDefault();
+        var id = $(this).parents('tr').children('.tab-first').text();
+        editAdmin(id);
+    })
 }
 
 /**
@@ -113,7 +118,7 @@ function bindPage(innerPageSize, curPage, pageCount) {
         innerCurPage -= 1;
     }
 
-    var startPage = (innerCurPage-1) * innerPageSize + 1;
+    var startPage = (innerCurPage - 1) * innerPageSize + 1;
     if (startPage == 1) {
         $("#pageDiv").append("<a class=\"gx-pager-disabled\" href=\"###\"><i class=\"gx-icon\">«</i></a>");
     } else {
@@ -143,5 +148,58 @@ function bindCurPage(curPage) {
     bindPage(5, $("#curPage").val(), $("#pageCount").val());
 }
 
+$('#cAdmin').on('click', function (e) {
+    e.preventDefault();
+    createAdmin();
+})
+
+
+$('#query').on('click', function (e) {
+    e.preventDefault();
+    binddata($("#curPage").val(), pageSize);
+    bindPage(5, $("#curPage").val(), $("#pageCount").val());
+})
+
+$('#updataAdminBtn').on('click', function (e) {
+    e.preventDefault();
+    if ($("#editPassword").val() != $("#editPassword1").val()) {
+        alert("两次输入的密码不同!");
+    } else {
+        var obj = ajax(
+            "/pc/admin/admin/saveorupdate",
+            {
+                id: $("#editId").val(),
+                password: $("#editPassword").val(),
+                realName: $("#editRealName").val(),
+                phone: $("#editPhone").val()
+            }
+        );
+        alert(obj.error);
+        binddata($("#curPage").val(), pageSize);
+    }
+})
+
+$('#addAdminBtn').on('click', function (e) {
+    e.preventDefault();
+
+    if ($("#addPassword").val() != $("#addPassword1").val()) {
+        alert("两次输入的密码不同!");
+    }else{
+        var obj = ajax(
+            "/pc/admin/admin/saveorupdate",
+            {
+                username: $("#addUsername").val(),
+                password: $("#addPassword").val(),
+                realName: $("#addRealName").val(),
+                phone: $("#addPhone").val()
+            }
+        );
+        alert(obj.error);
+        binddata($("#curPage").val(), pageSize);
+        bindPage(5, $("#curPage").val(), $("#pageCount").val());
+    }
+})
+
 binddata(1, pageSize);
 bindPage(5, $("#curPage").val(), $("#pageCount").val());
+

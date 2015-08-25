@@ -17,7 +17,7 @@ import java.util.List;
 @Repository
 public class AdminDao extends BaseDao<Admin> {
 
-    public boolean login(String username,String pass) {
+    public boolean login(String username, String pass) {
         String hql = " from Admin o where o.username=''{0}'' and o.password=''{1}''";
         return queryCount(MessageFormat.format(hql, username, pass)) == 1;
     }
@@ -34,6 +34,8 @@ public class AdminDao extends BaseDao<Admin> {
     }
 
     public void deleteById(String id) {
+        String hql0 = "delete from Circle o where o.createUser.id=''{0}''";
+        executeHql(MessageFormat.format(hql0, id));
         String hql = "delete from Admin o where o.id=''{0}''";
         executeHql(MessageFormat.format(hql, id));
     }
@@ -41,7 +43,7 @@ public class AdminDao extends BaseDao<Admin> {
     public PageResult<Admin> query(PageResult<Admin> pageResult, String username, String realName,
                                    String startTime, String endTime) {
         List<String> paramList = new ArrayList<String>();
-        String hql = "from Admin o where 1=1";
+        String hql = "from Admin o where 1=1 and o.level=1";
         int i = 0;
 
         //账号
@@ -68,11 +70,13 @@ public class AdminDao extends BaseDao<Admin> {
             paramList.add(endTime);
         }
 
+        hql += "order by o.createTime desc";
+
         return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
     }
 
     public Admin queryByNameAndPass(String username, String pass) {
         String hql = "from Admin o where o.username=''{0}'' and o.id!=''{1}''";
-        return queryUnique(MessageFormat.format(hql,username,pass));
+        return queryUnique(MessageFormat.format(hql, username, pass));
     }
 }

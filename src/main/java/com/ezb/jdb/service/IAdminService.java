@@ -25,4 +25,6 @@ public interface IAdminService {
     String queryCurAdmin(HttpServletRequest request);
 
     String updatePass(HttpServletRequest request,String password);
+
+    String queryById(String id);
 }

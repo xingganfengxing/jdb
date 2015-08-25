@@ -36,11 +36,12 @@ public class AdminServiceImpl implements IAdminService {
         }
         if(StringUtils.isEmpty(admin.getId())){
             admin.setCreateTime(new Date());
-            adminDao.saveOrUpdate(admin);
+            admin.setLevel(1);
+            adminDao.add(admin);
         }else{
             Admin oldAdmin = adminDao.get(Admin.class,admin.getId());
             JdbBeanUtils.copyProperties(admin,oldAdmin);
-            adminDao.saveOrUpdate(oldAdmin);
+            adminDao.update(oldAdmin);
         }
         return ResponseState.SUCCESS;
     }
@@ -82,5 +83,13 @@ public class AdminServiceImpl implements IAdminService {
         admin.setPassword(password);
         adminDao.update(admin);
         return ResponseState.SUCCESS;
+    }
+
+    public String queryById(String id) {
+        Admin admin = adminDao.get(Admin.class,id);
+        if(null == admin){
+            return ResponseState.INVALID_ID;
+        }
+        return ResponseData.getResData(admin);
     }
 }

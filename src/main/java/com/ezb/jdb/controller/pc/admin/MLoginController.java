@@ -33,6 +33,9 @@ public class MLoginController {
         if (null != admin) {
             if (null != request) {
                 request.getSession().setAttribute("admin_id", admin.getId());
+                if(admin.getLevel() == 0){
+                    request.getSession().setAttribute("isSuper",true);
+                }
                 return ResponseState.SUCCESS;
             }
         }
