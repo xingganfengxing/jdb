@@ -3,11 +3,17 @@ var basePath = getBasePath();
 function getData(id) {
     var obj = null;
     if ($("#type" + id).val() == "活动") {
-        obj = ajax("/pc/admin/activity/viewActivity", {id: $("#focusId" + id).val()})
+        obj = ajax("/pc/admin/activity/viewactivity", {id: $("#focusId" + id).val()})
     }
+    if ($("#type" + id).val() == "资讯") {
+        obj = ajax("/pc/admin/news/viewnews", {id: $("#focusId" + id).val()})
+    }
+
     if (obj != null && obj.code == "0") {
-        $("#focusImg" + id).attr("src", basePath + "/mobile/image/showimage?picpath="+obj.data.picPath);
-        $("#viewurl" + id).val();
+        $("#focusImg" + id).attr("src", basePath + "/mobile/image/showimage?picpath=" + obj.data.picPath);
+        $("#focusImg" + id).attr("title", obj.data.title);
+        $("#viewurl" + id).val("" + obj.data.id);
+        $("#refId" + id).val("" + obj.data.refId);
         //TODO 继续完善数据绑定
     } else {
         alert("当前id无数据");
@@ -47,7 +53,7 @@ function buildNewsAndAtvs() {
             "<button class=\"gx-button gx-button-error gx-button-small fr\">清空</button>" +
             "</div>" +
             "<div class=\"homeAction clearfix\">" +
-            "<label>" + obj.data.resultList[i].type + "ID：</label>" +
+            "<label>绑定ID：</label>" +
             "<input id=\"focusId" + i + "\" type=\"text\" placeholder=\"请填写活动编号\" value=\"" + obj.data.resultList[i].id + "\" />" +
             "</div>" +
             "<div class=\"home-pic clearfix\">" +

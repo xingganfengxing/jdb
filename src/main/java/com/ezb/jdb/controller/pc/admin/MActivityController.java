@@ -25,7 +25,7 @@ public class MActivityController {
      *
      * @return
      */
-    @RequestMapping(value = "pc/admin/activity/viewActivity")
+    @RequestMapping(value = "pc/admin/activity/viewactivity")
     public
     @ResponseBody
     String viewActivity(String id) {
