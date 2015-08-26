@@ -151,7 +151,7 @@ function bindCurPage(curPage) {
 $('#cAdmin').on('click', function (e) {
     e.preventDefault();
     createAdmin();
-})
+});
 
 
 $('#query').on('click', function (e) {
@@ -177,7 +177,7 @@ $('#updataAdminBtn').on('click', function (e) {
         alert(obj.error);
         binddata($("#curPage").val(), pageSize);
     }
-})
+});
 
 $('#addAdminBtn').on('click', function (e) {
     e.preventDefault();
@@ -198,7 +198,7 @@ $('#addAdminBtn').on('click', function (e) {
         binddata($("#curPage").val(), pageSize);
         bindPage(5, $("#curPage").val(), $("#pageCount").val());
     }
-})
+});
 
 binddata(1, pageSize);
 bindPage(5, $("#curPage").val(), $("#pageCount").val());

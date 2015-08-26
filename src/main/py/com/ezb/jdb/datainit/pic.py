@@ -34,3 +34,4 @@ if __name__ == '__main__':
     resetPicPath("t_news")
     resetPicPath("t_activity")
     resetPicPath("t_focus")
+    resetPicPath("t_circle")

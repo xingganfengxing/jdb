@@ -21,9 +21,11 @@ def initdata():
     cmt.initAtvCmt()
     friend.initFriends()
     circle.initCircle()
+    pic.resetPicPath("t_circle")
     cmt.initCirCmt()
     message.initmessage()
     focus.initfocus()
+    pic.resetPicPath("t_focus")
     inform.initinform()
 
 if __name__ == '__main__':

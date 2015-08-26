@@ -25,6 +25,9 @@ public class Focus {
     @Column(length = 64)
     private String title;
 
+    @Column(length = 255)
+    private String info;
+
     @Column(length = 64)
     private String picpath;//图片路径
 
