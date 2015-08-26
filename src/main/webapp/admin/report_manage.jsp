@@ -42,46 +42,24 @@
                         <div class="administrator clearfix administrator-margin">
                             <div class="group-item">
                                 <label class="gx-texttitle">
-                                    账号：
+                                    检举人：
                                 </label>
-                                <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                <input id="qrealname" name="realname" type="text" class="gx-textbox" placeholder="请输入检举人">
                             </div>
                             <div class="group-item">
                                 <label class="gx-texttitle">
-                                    注册日期：
+                                    检举日期：
                                 </label>
-                                <input type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
+                                <input id="qstartTime" name="startTime" type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
                                     <span>
                                        到
                                     </span>
-                                <input type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
+                                <input id="qendTime" name="endTime" type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
                             </div>
-                            <button class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
+                            <button id="query" type="button" class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
                         </div>
                         <div class="admin-table">
-                            <table class="tab">
-                                <tr class="tab-h">
-                                    <td>序号</td>
-                                    <td>
-                                        <select class="gx-textbox">
-                                            <option>举报类型</option>
-                                            <option>色情</option>
-                                            <option>重伤</option>
-                                        </select>
-                                    </td>
-                                    <td>检举人</td>
-                                    <td>检举时间</td>
-                                    <td>
-                                        <select class="gx-textbox">
-                                            <option>待处理</option>
-                                            <option>删除</option>
-                                            <option>正常</option>
-                                        </select>
-                                    </td>
-                                    <td>检举描述</td>
-                                    <td>检举页面</td>
-                                    <td>操作</td>
-                                </tr>
+                            <table id="datatable" class="tab">
                                 <tr>
                                     <td>1</td>
                                     <td class="tab-first">色情</td>
@@ -108,14 +86,9 @@
                                 </tr>
                             </table>
                             <div class="clearfix">
-                                <nav class="gx-pager">
-                                    <a class="gx-pager-disabled" href="###"><i class="gx-icon">«</i></a>
-                                    <a class="gx-pager-actived" href="###">1</a>
-                                    <a href="###">2</a>
-                                    ...
-                                    <a href="###">99</a>
-                                    <a href="###">100</a>
-                                    <a href="###"><i class="gx-icon">»</i></a>
+                                <input type="hidden" name="curPage" id="curPage" value="1" />
+                                <input type="hidden" name="pageCount" id="pageCount" value="1" />
+                                <nav id="pageDiv" class="gx-pager">
                                 </nav>
                             </div>
                         </div>
@@ -129,7 +102,8 @@
 <script src="js/admin_yc.js"></script>
 <script src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-
+<script src="js/page.js"></script>
+<script src="js/web/report_manage.js"></script>
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({
         format: 'yyyy-mm-dd hh:ii',

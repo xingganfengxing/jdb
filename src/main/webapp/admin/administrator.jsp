@@ -167,5 +167,6 @@
     });
 
 </script>
+<script src="js/page.js"></script>
 <script src="js/web/admin.js"></script>
 <jsp:include page="footer.jsp" />

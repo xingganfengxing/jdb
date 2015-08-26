@@ -26,7 +26,7 @@
             <div class="top-infor">
                 <span>
                     <i class="fa fa-user"></i>
-                    管理员：<a href="###">Admin</a>
+                    管理员：<a href="###"><%=request.getSession().getAttribute("realName")%></a>
                 </span>
                 <span>
                     <i class="fa fa-wrench"></i>

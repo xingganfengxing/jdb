@@ -43,7 +43,7 @@ public class Inform {
     private String viewurl;//查看页面
 
     @Column
-    private Integer state;//状态 (已处理，待处理)
+    private Integer state;//状态 (1已处理，0待处理)
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "create_userid")

@@ -36,6 +36,7 @@ public class MLoginController {
                 if(admin.getLevel() == 0){
                     request.getSession().setAttribute("isSuper",true);
                 }
+                request.getSession().setAttribute("realName",admin.getRealName());
                 return ResponseState.SUCCESS;
             }
         }
