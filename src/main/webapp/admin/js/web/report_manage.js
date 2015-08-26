@@ -26,6 +26,14 @@ function binddata(curpage, pageSize) {
         "<option>重伤</option>" +
         "</select>" +
         "</td>" +
+        "<td>" +
+        "<select class=\"gx-textbox\">" +
+        "<option>分类</option>" +
+        "<option>活动</option>" +
+        "<option>圈子</option>" +
+        "<option>资讯</option>" +
+        "</select>" +
+        "</td>" +
         "<td>检举人</td>" +
         "<td>检举时间</td>" +
         "<td>" +
@@ -51,10 +59,11 @@ function binddata(curpage, pageSize) {
             "<tr>" +
             "<td>" + obj.data.resultList[i].id + "</td>" +
             "<td class=\"tab-first\">" + obj.data.resultList[i].reason + "</td>" +
-            "<td class=\"tab-two\">" + obj.data.resultList[i].createUser.alumnus.realName + "</td>" +
-            "<td class=\"tab-three\">" + obj.data.resultList[i].createTime + "</td>" +
-            "<td class=\"tab-four\">" + stateStr + "</td>" +
-            "<td class=\"tab-five\">" + obj.data.resultList[i].otherInfo + "</td>" +
+            "<td class=\"tab-two\">" + obj.data.resultList[i].type + "</td>" +
+            "<td class=\"tab-three\">" + obj.data.resultList[i].createUser.alumnus.realName + "</td>" +
+            "<td class=\"tab-four\">" + obj.data.resultList[i].createTime + "</td>" +
+            "<td class=\"tab-five\">" + stateStr + "</td>" +
+            "<td class=\"tab-six\">" + obj.data.resultList[i].otherInfo + "</td>" +
             "<td class=\"tab-sever\">" +
             "<b class=\"gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn\">查看</b>" +
             handleBtn +
