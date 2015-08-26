@@ -156,8 +156,16 @@ $('#cAdmin').on('click', function (e) {
 
 $('#query').on('click', function (e) {
     e.preventDefault();
-    binddata($("#curPage").val(), pageSize);
+    binddata(1, pageSize);
     bindPage(5, $("#curPage").val(), $("#pageCount").val());
+})
+
+$('#reset').on('click', function (e) {
+    e.preventDefault();
+    $("#qusername").val("");
+    $("#qrealName").val("");
+    $("#qstartTime").val("");
+    $("#qendTime").val("");
 })
 
 $('#updataAdminBtn').on('click', function (e) {
