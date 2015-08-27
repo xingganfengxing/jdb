@@ -23,26 +23,26 @@ public class MInformControllerTest {
     private MInformController mInformController;
 
     @Test
-    public void query(){
+    public void query() {
         PageResult<Inform> pageResult = new PageResult<Inform>();
         pageResult.setCurPage(1);
         pageResult.setPageSize(10);
-        log.info(mInformController.query(pageResult, "", "", "", "", ""));
-        log.info(mInformController.query(pageResult, "realname2", "", "", "", ""));
-        log.info(mInformController.query(pageResult,"","2015-08-22","","",""));
-        log.info(mInformController.query(pageResult,"","","2015-08-23","",""));
-        log.info(mInformController.query(pageResult,"","","","reason2",""));
-        log.info(mInformController.query(pageResult,"","","","","0"));
+        log.info(mInformController.query(pageResult, "", "", "", "", "", ""));
+        log.info(mInformController.query(pageResult, "realname2", "", "", "", "", ""));
+        log.info(mInformController.query(pageResult, "", "2015-08-22", "", "", "", ""));
+        log.info(mInformController.query(pageResult, "", "", "2015-08-23", "", "", ""));
+        log.info(mInformController.query(pageResult, "", "", "", "reason2", "", ""));
+        log.info(mInformController.query(pageResult, "", "", "", "", "", "0"));
     }
 
     @Test
-    public void del(){
+    public void del() {
         log.info(mInformController.del("50,51,53"));
     }
 
     @Test
-    public void handle(){
-        log.info(mInformController.handle("54"));
+    public void handle() {
+        log.info(mInformController.offline("54"));
     }
 
 }

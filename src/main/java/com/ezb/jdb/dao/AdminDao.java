@@ -34,10 +34,10 @@ public class AdminDao extends BaseDao<Admin> {
     }
 
     public void deleteById(String id) {
-        String hql0 = "delete from Circle o where o.createUser.id=''{0}''";
-        executeHql(MessageFormat.format(hql0, id));
-        String hql = "delete from Admin o where o.id=''{0}''";
-        executeHql(MessageFormat.format(hql, id));
+        Admin admin = get(Admin.class, id);
+        if (admin != null) {
+            delete(admin);
+        }
     }
 
     public PageResult<Admin> query(PageResult<Admin> pageResult, String username, String realName,

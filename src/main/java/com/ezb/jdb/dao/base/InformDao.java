@@ -20,7 +20,7 @@ public class InformDao extends BaseDao<Inform> {
 
     public PageResult<Inform> query(PageResult<Inform> pageResult,
                                     String realname, String startTime,
-                                    String endTime, String reason, String state) {
+                                    String endTime, String reason, String type, String state) {
         int index = 0;
         List<String> paramList = new ArrayList<String>();
 
@@ -46,6 +46,11 @@ public class InformDao extends BaseDao<Inform> {
             paramList.add(reason);
         }
 
+        if (!StringUtils.isEmpty(type)) {
+            hql += " and o.type like ''%{" + index++ + "}%''";
+            paramList.add(type);
+        }
+
         if (!StringUtils.isEmpty(state)) {
             hql += " and o.state=''{" + index++ + "}''";
             paramList.add(state);
@@ -59,10 +64,5 @@ public class InformDao extends BaseDao<Inform> {
     public int del(String id) {
         String hql = "delete from Inform o where o.id=''{0}''";
         return executeHql(MessageFormat.format(hql, id));
-    }
-
-    public int handle(String id) {
-        String hql = "update Inform o set o.state=1 where id=''{0}''";
-        return executeHql(MessageFormat.format(hql,id));
     }
 }

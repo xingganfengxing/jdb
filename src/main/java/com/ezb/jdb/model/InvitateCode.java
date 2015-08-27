@@ -25,6 +25,10 @@ public class InvitateCode {
     @Column(length = 8)
     private String code;
 
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "create_userid")
+    private User createUser;
+
     @Column(name="createtime")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;

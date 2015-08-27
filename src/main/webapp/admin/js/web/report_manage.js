@@ -2,58 +2,40 @@ var basePath = getBasePath();
 
 //数据加载
 function binddata(curpage, pageSize) {
-    var obj = ajax(
-        "/pc/admin/inform/query",
-        {
-            curPage: curpage,
-            pageSize: pageSize,
-            realname: $("#qrealname").val(),
-            startTime: $("#qstartTime").val(),
-            endTime: $("#qendTime").val()
-        }
-    );
 
+    var params = {
+        curPage: curpage,
+        pageSize: pageSize,
+        realname: $("#qrealname").val(),
+        startTime: $("#qstartTime").val(),
+        endTime: $("#qendTime").val()
+    };
+
+    if ($("#reasonslt").val() != "举报类型") {
+        params.reason = $("#reasonslt").val();
+    }
+
+    if ($("#typeslt").val() != "分类") {
+        params.type = $("#typeslt").val();
+    }
+
+    if ($("#stateslt").val() == "已处理") {
+        params.state = 1;
+    }
+
+    if ($("#stateslt").val() == "待处理") {
+        params.state = 0;
+    }
+
+    var obj = ajax("/pc/admin/inform/query", params);
     $("#pageCount").val(obj.data.pageCount);
-
-    $("#datatable").empty();
-    $("#datatable").append(
-        "<tr class=\"tab-h\">" +
-        "<td>序号</td>" +
-        "<td>" +
-        "<select class=\"gx-textbox\">" +
-        "<option>举报类型</option>" +
-        "<option>色情</option>" +
-        "<option>重伤</option>" +
-        "</select>" +
-        "</td>" +
-        "<td>" +
-        "<select class=\"gx-textbox\">" +
-        "<option>分类</option>" +
-        "<option>活动</option>" +
-        "<option>圈子</option>" +
-        "<option>资讯</option>" +
-        "</select>" +
-        "</td>" +
-        "<td>检举人</td>" +
-        "<td>检举时间</td>" +
-        "<td>" +
-        "<select class=\"gx-textbox\">" +
-        "<option>状态</option>" +
-        "<option>待处理</option>" +
-        "<option>已处理</option>" +
-        "</select>" +
-        "</td>" +
-        "<td>检举描述</td>" +
-        "<td>操作</td>" +
-        "</tr>"
-    );
-
+    $("#datatable tbody tr").eq(0).nextAll().remove();
     for (var i = 0; i < obj.data.resultList.length; i++) {
         var stateStr = "已处理";
-        var handleBtn = "<b class=\"gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn\">已处理</b>";
+        var handleBtn = "<b class=\"gx-button gx-button-info gx-button-small\">已处理</b>";
         if (0 == obj.data.resultList[i].state) {
             stateStr = "待处理";
-            handleBtn = "<b class=\"gx-button gx-button-error gx-button-actived gx-button-small edit-admin-btn\">去处理</b>";
+            handleBtn = "<b onclick=\"offline('" + obj.data.resultList[i].id + "')\" class=\"gx-button gx-button-error gx-button-small\">下&nbsp;&nbsp;线</b>";
         }
         $("#datatable").append(
             "<tr>" +
@@ -63,9 +45,9 @@ function binddata(curpage, pageSize) {
             "<td class=\"tab-three\">" + obj.data.resultList[i].createUser.alumnus.realName + "</td>" +
             "<td class=\"tab-four\">" + obj.data.resultList[i].createTime + "</td>" +
             "<td class=\"tab-five\">" + stateStr + "</td>" +
-            "<td class=\"tab-six\">" + obj.data.resultList[i].otherInfo + "</td>" +
-            "<td class=\"tab-sever\">" +
-            "<b class=\"gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn\">查看</b>" +
+            "<td>" +
+            "<b onclick=\"informInfo('" + obj.data.resultList[i].otherInfo + "')\" class=\"gx-button gx-button-warning gx-button-small\">描述</b> " +
+            "<b class=\"gx-button gx-button-info gx-button-small\">详情</b> " +
             handleBtn +
             "</td>" +
             "</tr>"
@@ -73,11 +55,41 @@ function binddata(curpage, pageSize) {
     }
 }
 
-binddata(1, 10);
-bindPage(5, $("#curPage").val(), $("#pageCount").val());
+function loadPage(curPage) {
+    binddata(curPage, pageSize);
+    bindPage(5, curPage, $("#pageCount").val());
+}
+
+loadPage(1);
 
 $('#query').on('click', function (e) {
     e.preventDefault();
-    binddata(1, pageSize);
-    bindPage(5, $("#curPage").val(), $("#pageCount").val());
-})
+    loadPage(1);
+});
+
+$('#reasonslt,#typeslt,#stateslt').on('change', function (e) {
+    e.preventDefault();
+    loadPage();
+});
+
+function informInfo(info) {
+    $(".inform-info").popUpBox({
+        fn: function () {
+            $("#otherinfo").html(info);
+        },
+        fnN: function () {
+        },
+        fnY: function () {
+        }
+    });
+}
+
+function offline(id) {
+    if (confirm("确定下线举报对应的信息?")) {
+        var obj = ajax("/pc/admin/inform/offline", {id: id});
+        alert(obj.error);
+        if(obj.code == "0"){
+            loadPage($("#curPage").val());
+        }
+    }
+}

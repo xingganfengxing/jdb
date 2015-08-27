@@ -9,7 +9,6 @@ import com.ezb.jdb.service.IUserService;
 import com.ezb.jdb.service.IVerifyCodeService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -64,8 +63,7 @@ public class UserController {
     public
     @ResponseBody
     String makeInvitateCode(String username) {
-        String invitateCode = invitateCodeServiceImpl.generateCode(username);
-        return ResponseData.getResData(invitateCode);
+        return  invitateCodeServiceImpl.generateCode(username);
     }
 
     @RequestMapping(value = "mobile/user/register")

@@ -71,8 +71,8 @@ function binddata(curpage, pageSize) {
             "<td class=\"tab-four\">" + obj.data.resultList[i].phone + "</td>" +
             "<td class=\"tab-five\">" + obj.data.resultList[i].createTime + "</td>" +
             "<td class=\"tab-six\">" +
-            "<b class=\"gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn\">编辑</b>" +
-            "<span class=\"delAdminBtn gx-button gx-button-error gx-button-actived gx-button-small\">删除</span>" +
+            "<b class=\"gx-button gx-button-info gx-button-actived gx-button-small edit-admin-btn\">编辑</b> " +
+            "<b class=\"delAdminBtn gx-button gx-button-error gx-button-actived gx-button-small\">删除</b>" +
             "</td>" +
             "</tr>"
         );

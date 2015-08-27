@@ -16,4 +16,9 @@ public class InvitateCodeDao<InvitateCode> extends BaseDao {
         String hql = "from InvitateCode o where o.code=''{0}''";
         return queryCount(MessageFormat.format(hql,code));
     }
+
+    public int deleteByCode(String phone,String invitateCode) {
+        String hql = "delete from InvitateCode o where o.createUser.username=''{0}'' o.code=''{1}''";
+        return executeHql(MessageFormat.format(hql,phone,invitateCode));
+    }
 }

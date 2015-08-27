@@ -43,7 +43,7 @@ public class MAdminConrollerTest {
 
     @Test
     public void delete() {
-        String ids = "3,4,100,1000";
+        String ids = "3,1000";
         log.info(mAdminController.delete(ids));
     }
 

@@ -6,7 +6,6 @@ import com.ezb.jdb.model.Inform;
 import com.ezb.jdb.service.IInformService;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.annotation.Resource;
@@ -40,11 +39,12 @@ public class MInformController {
             String startTime,
             String endTime,
             String reason,
+            String type,
             String state) {
 
         pageResult = informServiceImpl.query(
                 pageResult,realname,startTime,
-                endTime,reason,state);
+                endTime,reason,type,state);
 
         return ResponseData.getResData(pageResult);
     }
@@ -57,14 +57,14 @@ public class MInformController {
     }
 
     /**
-     * 处理举报
+     * 下线举报对应的圈子、活动或资讯
      * @param id
      * @return
      */
-    @RequestMapping(value = "pc/admin/inform/handle")
+    @RequestMapping(value = "pc/admin/inform/offline")
     public
     @ResponseBody
-    String handle(String id){
-        return informServiceImpl.handle(id);
+    String offline(String id){
+        return informServiceImpl.offline(id);
     }
 }

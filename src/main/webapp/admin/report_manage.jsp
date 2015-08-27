@@ -21,7 +21,7 @@
 </head>
 <body>
 <!-- header-->
-<jsp:include page="header.jsp" />
+<jsp:include page="header.jsp"/>
 <!-- crumbs-->
 <div class="gx-crumbs clearfix">
 
@@ -33,7 +33,7 @@
 </div>
 
 <div class="yx-wrapper clearfix">
-    <jsp:include page="left.jsp" />
+    <jsp:include page="left.jsp"/>
     <aside class="right-side">
         <section class="content">
             <div class="admin-main">
@@ -44,50 +44,61 @@
                                 <label class="gx-texttitle">
                                     检举人：
                                 </label>
-                                <input id="qrealname" name="realname" type="text" class="gx-textbox" placeholder="请输入检举人">
+                                <input id="qrealname" name="realname" type="text" class="gx-textbox"
+                                       placeholder="请输入检举人">
                             </div>
                             <div class="group-item">
                                 <label class="gx-texttitle">
                                     检举日期：
                                 </label>
-                                <input id="qstartTime" name="startTime" type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
+                                <input id="qstartTime" name="startTime" type="text" class="gx-textbox form_datetime"
+                                       placeholder="请选择开始时间" size="16" readonly>
                                     <span>
                                        到
                                     </span>
-                                <input id="qendTime" name="endTime" type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
+                                <input id="qendTime" name="endTime" type="text" class="gx-textbox form_datetime"
+                                       placeholder="请选择结束时间" size="16" readonly>
                             </div>
-                            <button id="query" type="button" class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
+                            <button id="query" type="button"
+                                    class="gx-button gx-button-info gx-button-small admin-btn fr">查询
+                            </button>
                         </div>
                         <div class="admin-table">
                             <table id="datatable" class="tab">
-                                <tr>
-                                    <td>1</td>
-                                    <td class="tab-first">色情</td>
-                                    <td class="tab-two">孙凯</td>
-                                    <td class="tab-three">2015-08-21</td>
-                                    <td class="tab-four">待处理</td>
-                                    <td class="tab-five"></td>
-                                    <td class="tab-six">
-                                        <a href="#">查看</a>
+                                <tbody>
+                                <tr class="tab-h">
+                                    <td>序号</td>
+                                    <td>
+                                        <select id="reasonslt" class="gx-textbox">
+                                            <option>举报类型</option>
+                                            <option>色情</option>
+                                            <option>重伤</option>
+                                            <option>广告</option>
+                                            <option>欺诈</option>
+                                            <option>反动</option>
+                                            <option>其他</option>
+                                        </select>
                                     </td>
-                                    <td class="tab-sever">处理完成</td>
+                                    <td><select id="typeslt" class="gx-textbox">
+                                        <option>分类</option>
+                                        <option>活动</option>
+                                        <option>圈子</option>
+                                        <option>资讯</option>
+                                    </select></td>
+                                    <td>检举人</td>
+                                    <td>检举时间</td>
+                                    <td><select id="stateslt" class="gx-textbox">
+                                        <option>状态</option>
+                                        <option>待处理</option>
+                                        <option>已处理</option>
+                                    </select></td>
+                                    <td>操作</td>
                                 </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td class="tab-first"></td>
-                                    <td class="tab-two">温海峰</td>
-                                    <td class="tab-three"></td>
-                                    <td class="tab-four"></td>
-                                    <td class="tab-five"></td>
-                                    <td class="tab-six">
-                                        <a href="#"></a>
-                                    </td>
-                                    <td class="tab-sever"></td>
-                                </tr>
+                                </tbody>
                             </table>
                             <div class="clearfix">
-                                <input type="hidden" name="curPage" id="curPage" value="1" />
-                                <input type="hidden" name="pageCount" id="pageCount" value="1" />
+                                <input type="hidden" name="curPage" id="curPage" value="1"/>
+                                <input type="hidden" name="pageCount" id="pageCount" value="1"/>
                                 <nav id="pageDiv" class="gx-pager">
                                 </nav>
                             </div>
@@ -98,6 +109,25 @@
         </section>
     </aside>
 </div>
+
+<!-- 举报描述 -->
+<div class="popUpBox inform-info">
+    <h1 class="popUpBoxTit">
+        举报描述
+        <a class="popUpBoxNo"  href="javascript:void(0)"></a>
+    </h1>
+    <div class="popUpBoxCon">
+        <div class="newPop-menu">
+            <ul>
+                <li>
+                    <label><span>*</span>举报描述：</label>
+                    <b><span id="otherinfo"></span></b>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 <script src="js/jquery.min.js"></script>
 <script src="js/admin_yc.js"></script>
 <script src="js/bootstrap-datetimepicker.js"></script>
@@ -107,8 +137,8 @@
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({
         format: 'yyyy-mm-dd hh:ii',
-        language:  'zh-CN'
+        language: 'zh-CN'
     });
 
 </script>
-<jsp:include page="footer.jsp" />
+<jsp:include page="footer.jsp"/>

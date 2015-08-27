@@ -49,6 +49,7 @@ public class AdminServiceImpl implements IAdminService {
     public String delete(String ids) {
         String[] idArr = StringUtils.splitByWholeSeparator(ids,",");
         for(String id : idArr){
+
             adminDao.deleteById(id);
         }
         return ResponseState.SUCCESS;

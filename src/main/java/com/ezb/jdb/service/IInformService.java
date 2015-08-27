@@ -14,9 +14,9 @@ public interface IInformService {
 
     PageResult<Inform> query(PageResult<Inform> pageResult,
                              String realname, String startTime,
-                             String endTime, String reason, String state);
+                             String endTime, String reason, String type,String state);
 
     String del(String ids);
 
-    String handle(String id);
+    String offline(String id);
 }

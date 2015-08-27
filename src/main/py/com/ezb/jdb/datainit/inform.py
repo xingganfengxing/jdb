@@ -14,6 +14,7 @@ def initinform():
 
         type = ["资讯", "活动", "圈子"]
         viewurl = ["pc/admin/news/view", "pc/admin/activity/view", "pc/admin/circle/view"]
+        reason = ["色情","重伤","广告","欺诈","反动","其他"]
 
         for i in range(100):
             typeIndex = random.randint(0, 2)
@@ -24,7 +25,7 @@ def initinform():
                 "title" + str(i),
                 time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
                 "otherinfo" + str(i),
-                "reason" + str(i),
+                reason[random.randint(0,5)],
                 random.randint(0,1),
                 type[typeIndex],
                 viewurl[typeIndex] + "id=" + str(refId),

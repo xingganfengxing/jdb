@@ -7,6 +7,7 @@ import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 /**
  * 系统管理员
@@ -39,7 +40,24 @@ public class Admin {
     @Column(length = 16)
     private String phone;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="create_userid")
+    @JSONField(serialize = false)
+    private Set<Circle> circles;
+
     @Column(name="createtime")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
+
+    public boolean equals(Object obj) {
+        return (this == obj);
+    }
+
+    public int hashCode(){
+        return super.hashCode();
+    }
+
+    public String toString() {
+        return getClass().getName() + "@" + Integer.toHexString(hashCode());
+    }
 }

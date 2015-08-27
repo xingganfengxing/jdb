@@ -77,4 +77,8 @@ public class BaseDao<T> implements DaoSupport<T> {
     public int executeHql(String hql){
         return sessionFactory.getCurrentSession().createQuery(hql).executeUpdate();
     }
+
+    public int executeSql(String sql){
+        return sessionFactory.getCurrentSession().createSQLQuery(sql).executeUpdate();
+    }
 }

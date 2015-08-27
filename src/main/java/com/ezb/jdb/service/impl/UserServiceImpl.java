@@ -50,6 +50,7 @@ public class UserServiceImpl implements IUserService {
                 user.setState(1);
                 user.setCreateTime(new Date());
                 userDao.add(user);
+                invitateCodeDao.deleteByCode(user.getUsername(),invitateCode);
                 return ResponseState.SUCCESS;
             } else {
                 return ResponseState.VERIFYCODE_ERR;

@@ -37,7 +37,7 @@ public class CirCmt extends Fmodel {
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;//评论时间
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     @JoinColumn(name = "comment_userid")
     private User commentUser;//评论人
 
@@ -49,6 +49,11 @@ public class CirCmt extends Fmodel {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "parent_id")
     private CirCmt parentCirCmt;//父评论
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="parent_id")
+    @JSONField(serialize = false)
+    private Set<CirCmt> childCirCmt;
 
     public boolean equals(Object obj) {
         return (this == obj);
