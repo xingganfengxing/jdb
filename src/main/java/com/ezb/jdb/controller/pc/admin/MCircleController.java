@@ -29,6 +29,7 @@ public class MCircleController {
      * @param pageResult
      * @param id         圈子id
      * @param title      圈子名称
+     * @param realName   创建人
      * @param startTime  开始时间
      * @param endTime    结束时间
      * @return
@@ -39,10 +40,11 @@ public class MCircleController {
     String query(PageResult<Circle> pageResult,
                  String id,
                  String title,
+                 String realName,
                  String startTime,
                  String endTime) {
 
-        pageResult = circleServiceImpl.query(pageResult, id, title, startTime, endTime);
+        pageResult = circleServiceImpl.query(pageResult, id, title, realName, startTime, endTime);
         return ResponseData.getResData(pageResult);
     }
 
@@ -73,13 +75,14 @@ public class MCircleController {
 
     /**
      * 圈子下线
+     *
      * @param id
      * @return
      */
     @RequestMapping(value = "pc/admin/circle/offline")
     public
     @ResponseBody
-    String offline(String id){
+    String offline(String id) {
         return circleServiceImpl.offline(id);
     }
 }

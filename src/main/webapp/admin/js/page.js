@@ -1,11 +1,16 @@
 var pageSize = 10;
+
+function bindPage(innerPageSize, curPage, pageCount) {
+    bindPage(innerPageSize,curPage,pageCount,pageSize);
+}
+
 /**
  * 初始化分页
  * @param innerPageSize 展示页面数
  * @param curPage 当前页面
  * @param pageCount 总页数
  */
-function bindPage(innerPageSize, curPage, pageCount) {
+function bindPage(innerPageSize, curPage, pageCount,pageSize) {
     $("#pageDiv").empty();
 
     //页面大小

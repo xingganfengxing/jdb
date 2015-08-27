@@ -41,7 +41,8 @@ public class CircleDao extends BaseDao<Circle> {
         return query(MessageFormat.format(hql, phone, queryWords), pageResult);
     }
 
-    public PageResult<Circle> query(PageResult<Circle> pageResult, String id, String title, String startTime, String endTime) {
+    public PageResult<Circle> query(PageResult<Circle> pageResult, String id,
+                                    String title, String realName, String startTime, String endTime) {
 
         int index = 0;
         List<String> paramList = new ArrayList<String>();
@@ -54,8 +55,13 @@ public class CircleDao extends BaseDao<Circle> {
         }
 
         if (!StringUtils.isEmpty(title)) {
-            hql += " and o.title like ''{" + index++ + "}''";
+            hql += " and o.title like ''%{" + index++ + "}%''";
             paramList.add(title);
+        }
+
+        if (!StringUtils.isEmpty(realName)) {
+            hql += " and o.createUser.realName like ''%{" + index++ + "}%''";
+            paramList.add(realName);
         }
 
         if (!StringUtils.isEmpty(startTime)) {
@@ -75,6 +81,6 @@ public class CircleDao extends BaseDao<Circle> {
 
     public int offline(String id) {
         String hql = "update Circle o set o.state=0 where o.id=''{0}''";
-        return executeHql(MessageFormat.format(hql,id));
+        return executeHql(MessageFormat.format(hql, id));
     }
 }

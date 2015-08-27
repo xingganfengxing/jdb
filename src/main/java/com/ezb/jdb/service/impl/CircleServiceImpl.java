@@ -86,17 +86,21 @@ public class CircleServiceImpl implements ICircleService {
     }
 
     public PageResult<Circle> query(PageResult<Circle> pageResult,
-                                    String id, String title, String startTime,
+                                    String id,
+                                    String title,
+                                    String realName,
+                                    String startTime,
                                     String endTime) {
-        return circleDao.query(pageResult, id, title, startTime, endTime);
+
+        return circleDao.query(pageResult, id, title, realName, startTime, endTime);
     }
 
     public String save(HttpServletRequest request, Circle circle) {
 
         //id获取
         Object adminIdObj = request.getSession().getAttribute("admin_id");
-        if(null == circle.getId()){
-            if(null == adminIdObj){
+        if (null == circle.getId()) {
+            if (null == adminIdObj) {
                 return ResponseState.SESSION_ERR;
             }
         }
@@ -122,9 +126,9 @@ public class CircleServiceImpl implements ICircleService {
     }
 
     public String offline(String id) {
-        if(circleDao.offline(id) == 1){
+        if (circleDao.offline(id) == 1) {
             return ResponseState.SUCCESS;
-        }else{
+        } else {
             return ResponseState.FAIL;
         }
     }

@@ -116,8 +116,6 @@
     </div>
 </div>
 
-<!--<div class="newPop gx-hide"></div>-->
-
 <!-- 信息编辑 -->
 <div class="popUpBox edit-admin">
     <h1 class="popUpBoxTit">

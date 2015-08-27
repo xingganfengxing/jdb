@@ -22,9 +22,9 @@ public interface ICircleService {
 
     Circle queryById(String id);
 
-    PageResult<Circle> query(PageResult<Circle> pageResult, String id, String title, String startTime, String endTime);
+    PageResult<Circle> query(PageResult<Circle> pageResult, String id, String title, String realName, String startTime, String endTime);
 
-    String save(HttpServletRequest request,Circle circle);
+    String save(HttpServletRequest request, Circle circle);
 
     String offline(String id);
 }

@@ -99,12 +99,12 @@ public class InformServiceImpl implements IInformService {
 
         } else if (StringUtils.equals(inform.getType(), NavType.ACTIVITY.toString())) {
             Activity activity = activityDao.get(Activity.class, inform.getAssoId());
-            activity.setState(1);
+            activity.setState(0);
             activityDao.update(activity);
 
         } else if (StringUtils.equals(inform.getType(), NavType.CIRCLE.toString())) {
             Circle circle = circleDao.get(Circle.class, inform.getAssoId());
-            circle.setState(1);
+            circle.setState(0);
             circleDao.update(circle);
 
         } else {
