@@ -18,7 +18,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "T_CIRCLE")
+@Table(name = "circle")
 @DynamicUpdate
 public class Circle {
 
@@ -42,7 +42,7 @@ public class Circle {
     @Transient
     private Integer cmtCount;//评论条数
 
-    @Column(name = "createtime")
+    @Column(name = "c_time")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//圈子创建时间
 
@@ -51,7 +51,7 @@ public class Circle {
     private Admin createUser;//圈子创建人
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "T_JOIN_USER_CIRCLE",
+    @JoinTable(name = "join_user_circle",
             joinColumns = {@JoinColumn(name = "circle_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> members;

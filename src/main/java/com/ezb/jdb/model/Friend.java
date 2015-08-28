@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @Entity
-@Table(name = "T_FRIEND")
+@Table(name = "friend")
 @DynamicUpdate
 public class Friend {
 
@@ -38,11 +38,11 @@ public class Friend {
     @Column
     private Double distance;
 
-    @Column(name="applydate")
+    @Column(name="a_time")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date applyDate;//申请时间
 
-    @Column(name="confiredate")
+    @Column(name="c_time")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date confireDate;//确认时间
 

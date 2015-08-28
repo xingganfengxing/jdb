@@ -19,7 +19,7 @@ def inituser():
                 str(1),
                 "111111" + str(i)
             ]
-            cur.execute('insert into t_user values(%s,%s,%s,%s,%s)', value)
+            cur.execute('insert into user values(%s,%s,%s,%s,%s)', value)
         conn.commit()
         cur.close()
         conn.close()

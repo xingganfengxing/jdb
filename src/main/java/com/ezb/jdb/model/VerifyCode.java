@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Data
 @Entity
-@Table(name = "T_VERIFYCODE")
+@Table(name = "verifycode")
 @DynamicUpdate
 public class VerifyCode {
 
@@ -29,6 +29,6 @@ public class VerifyCode {
     @Column(length = 16)
     private String phone;
 
-    @Column(name="createtime")
+    @Column(name="c_time")
     private Date createTime;
 }

@@ -32,7 +32,7 @@ def initActivity():
             "topic" + str(i),
             str(i)
         ]
-        cur.execute('insert into t_activity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into activity values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()

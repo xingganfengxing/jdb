@@ -18,7 +18,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "T_ATVCMT")
+@Table(name = "atvcmt")
 @DynamicUpdate
 public class AtvCmt {
 
@@ -39,7 +39,7 @@ public class AtvCmt {
     @Column(length = 255)
     private String content;//评论内容
 
-    @Column(name="createtime")
+    @Column(name="c_time")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;//评论时间
 

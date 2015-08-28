@@ -16,7 +16,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "T_ADMIN")
+@Table(name = "admin")
 @DynamicUpdate
 public class Admin {
 
@@ -45,7 +45,7 @@ public class Admin {
     @JSONField(serialize = false)
     private Set<Circle> circles;
 
-    @Column(name="createtime")
+    @Column(name="c_time")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 

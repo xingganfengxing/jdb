@@ -20,7 +20,7 @@ import java.util.Set;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "T_ACTIVITY")
+@Table(name = "activity")
 @DynamicUpdate
 public class Activity extends Fmodel {
     @Id
@@ -34,19 +34,19 @@ public class Activity extends Fmodel {
     @Column(name = "picpath", length = 64)
     private String picPath;//图片路径
 
-    @Column(name = "starttime")
-    @JSONField(format="yyyy-MM-dd")
+    @Column(name = "s_time")
+    @JSONField(format = "yyyy-MM-dd")
     private Date startTime;//举办时间
 
-    @Column(name = "endtime")
-    @JSONField(format="yyyy-MM-dd")
+    @Column(name = "e_time")
+    @JSONField(format = "yyyy-MM-dd")
     private Date endTime;//结束时间
 
-    @Column(name="closetime")
-    @JSONField(format="yyyy-MM-dd")
+    @Column(name = "close_time")
+    @JSONField(format = "yyyy-MM-dd")
     private Date closeTime;//截止时间
 
-    @Column(name="personlimit")
+    @Column(name = "personlimit")
     private Integer personLimit;//人数上限
 
     @Column(length = 16)
@@ -61,23 +61,23 @@ public class Activity extends Fmodel {
     @Column(length = 256)
     private String topic;//核心话题
 
-    @Column(name="joinfee",length = 256)
+    @Column(name = "joinfee", length = 256)
     private String joinFee;//参与费用
 
-    @Column(name="otherinfo",length = 256)
+    @Column(name = "otherinfo", length = 256)
     private String otherInfo;//其他
 
-    @Column(name="contactman",length = 16)
+    @Column(name = "contactman", length = 16)
     private String contactMan;//联系人
 
-    @Column(name="contactphone",length = 16)
+    @Column(name = "contactphone", length = 16)
     private String contactPhone;//联系电话
 
-    @Column(name = "contactemail",length = 32)
+    @Column(name = "contactemail", length = 32)
     private String contactEmail;//联系邮箱
 
-    @Column(name="createtime")
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
+    @Column(name = "c_time")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//活动创建时间
 
     @Column
@@ -88,7 +88,7 @@ public class Activity extends Fmodel {
     private User createUser;//活动创建人
 
     @ManyToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "T_JOIN_USER_ACTIVITY",
+    @JoinTable(name = "join_user_activity",
             joinColumns = {@JoinColumn(name = "activity_id")},
             inverseJoinColumns = {@JoinColumn(name = "user_id")})
     private Set<User> joinUsers;//参加活动的人

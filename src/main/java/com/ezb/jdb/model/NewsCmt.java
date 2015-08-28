@@ -19,7 +19,7 @@ import java.util.Set;
  */
 @Data
 @Entity
-@Table(name = "T_NEWSCMT")
+@Table(name = "newscmt")
 @DynamicUpdate
 public class NewsCmt {
 
@@ -43,7 +43,7 @@ public class NewsCmt {
     @Column(name = "likecount")
     private Integer likeCount;//点赞次数
 
-    @Column(name = "createtime")
+    @Column(name = "c_time")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//评论时间
 

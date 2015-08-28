@@ -24,7 +24,7 @@ def initNews():
             str(1),
             str(i)
         ]
-        cur.execute('insert into t_news values(%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into news values(%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()

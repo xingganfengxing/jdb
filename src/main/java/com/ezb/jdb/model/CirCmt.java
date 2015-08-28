@@ -19,7 +19,7 @@ import java.util.Set;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "T_CIRCMT")
+@Table(name = "circmt")
 public class CirCmt extends Fmodel {
 
     @Id
@@ -33,7 +33,7 @@ public class CirCmt extends Fmodel {
     @Column(name = "likecount")
     private Integer likeCount;//点赞次数
 
-    @Column(name="createtime")
+    @Column(name="c_time")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;//评论时间
 

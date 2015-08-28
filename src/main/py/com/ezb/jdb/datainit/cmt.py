@@ -21,9 +21,9 @@ def initCmt(table):
             random.randint(0, 99),
             random.randint(0, 99)
         ]
-        if table == "t_newscmt":
+        if table == "newscmt":
             value[5] = circleIds[i]
-        if table == "t_circmt" or table == "t_atvcmt":
+        if table == "circmt" or table == "atvcmt":
             value[4] = circleIds[i]
         cur.execute('insert into ' + table + ' values(%s,%s,%s,%s,%s,%s,null)', value)
     conn.commit()
@@ -40,9 +40,9 @@ def initCmt(table):
             random.randint(0, 99),
             parentCmtId
         ]
-        if table == "t_newscmt":
+        if table == "newscmt":
             value[5] = circleIds[parentCmtId]
-        if table == "t_circmt" or table == "t_atvcmt":
+        if table == "circmt" or table == "atvcmt":
             value[4] = circleIds[parentCmtId]
         cur.execute('insert into ' + table + ' values(%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
@@ -52,14 +52,14 @@ def initCmt(table):
 
 def initNewsCmt():
     """资讯评论表"""
-    initCmt("t_newscmt")
+    initCmt("newscmt")
 
 
 def initAtvCmt():
     """活动评论表"""
-    initCmt("t_atvcmt")
+    initCmt("atvcmt")
 
 
 def initCirCmt():
     """圈子评论"""
-    initCmt("t_circmt")
+    initCmt("circmt")

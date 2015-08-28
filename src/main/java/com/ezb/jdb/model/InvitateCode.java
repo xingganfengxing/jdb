@@ -14,7 +14,7 @@ import java.util.Date;
  */
 @Data
 @Entity
-@Table(name = "T_INVITATECODE")
+@Table(name = "invitatecode")
 public class InvitateCode {
 
     @Id
@@ -29,7 +29,7 @@ public class InvitateCode {
     @JoinColumn(name = "create_userid")
     private User createUser;
 
-    @Column(name="createtime")
+    @Column(name="c_time")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 }

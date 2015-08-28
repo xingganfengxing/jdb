@@ -13,7 +13,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "T_FOCUS")
+@Table(name = "focus")
 @DynamicUpdate
 public class Focus {
 

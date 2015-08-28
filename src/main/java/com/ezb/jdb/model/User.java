@@ -18,7 +18,7 @@ import java.util.Date;
 @Entity
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "T_USER")
+@Table(name = "user")
 @DynamicUpdate
 public class User extends Fmodel {
 
@@ -40,6 +40,6 @@ public class User extends Fmodel {
     @Column
     private Integer state;//状态 0停用 1正常
 
-    @Column(name="createtime")
+    @Column(name="c_time")
     private Date createTime;//注册日期
 }

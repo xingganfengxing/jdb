@@ -20,7 +20,7 @@ import java.util.Date;
 @Entity
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
-@Table(name = "T_NEWS")
+@Table(name = "news")
 @DynamicUpdate
 public class News extends Fmodel {
 

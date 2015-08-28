@@ -15,7 +15,7 @@ import java.util.Date;
  */
 @Data
 @Entity
-@Table(name = "T_INFORM")
+@Table(name = "inform")
 @DynamicUpdate
 public class Inform {
 
@@ -49,7 +49,7 @@ public class Inform {
     @JoinColumn(name = "create_userid")
     private User createUser;//举报人
 
-    @Column(name="createtime")
+    @Column(name="c_time")
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;//举报时间
 

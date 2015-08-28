@@ -20,7 +20,7 @@ import java.util.Date;
 @ToString(callSuper = true)
 @EqualsAndHashCode(callSuper = true)
 @Entity
-@Table(name = "T_MESSAGE")
+@Table(name = "message")
 @DynamicUpdate
 public class Message extends Fmodel {
 
@@ -41,7 +41,7 @@ public class Message extends Fmodel {
     @Column
     private Integer state;//0未查看 1已查看
 
-    @Column(name = "createtime")
+    @Column(name = "c_time")
     @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//消息发送时间
 

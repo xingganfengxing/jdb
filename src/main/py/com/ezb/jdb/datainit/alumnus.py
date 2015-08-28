@@ -28,7 +28,7 @@ def initAlumnus():
             "weixin" + str(i),
             str(i)
         ]
-        cur.execute('insert into t_alumnus values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into alumnus values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()

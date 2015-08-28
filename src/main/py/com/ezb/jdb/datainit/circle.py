@@ -20,7 +20,7 @@ def initCircle():
             "title" + str(i),
             random.randint(0, 99)
         ]
-        cur.execute('insert into t_circle values(%s,%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into circle values(%s,%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()

@@ -20,7 +20,7 @@ def initFriends():
             random.randint(0, 99),
             random.randint(0, 99)
         ]
-        cur.execute('insert into t_friend values(%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into friend values(%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()
@@ -40,7 +40,7 @@ def test():
             96,
             str(i)
         ]
-        cur.execute('insert into t_friend values(%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into friend values(%s,%s,%s,%s,%s,%s,%s)', value)
 
     for i in range(20):
         value = [
@@ -52,7 +52,7 @@ def test():
             str(20 + i),
             96
         ]
-        cur.execute('insert into t_friend values(%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into friend values(%s,%s,%s,%s,%s,%s,%s)', value)
 
     conn.commit()
     cur.close()

@@ -31,7 +31,7 @@ def initinform():
                 viewurl[typeIndex] + "id=" + str(refId),
                 random.randint(0, 99)
             ]
-            cur.execute('insert into t_inform values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
+            cur.execute('insert into inform values(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)', value)
         conn.commit()
         cur.close()
         conn.close()

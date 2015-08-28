@@ -23,7 +23,7 @@ def initmessage():
                 str(random.randint(0, 99)),
                 str(random.randint(0, 99))
             ]
-            cur.execute('insert into t_message values(%s,%s,%s,%s,%s,%s,%s,%s)', value)
+            cur.execute('insert into message values(%s,%s,%s,%s,%s,%s,%s,%s)', value)
         conn.commit()
         cur.close()
         conn.close()

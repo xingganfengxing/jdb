@@ -14,7 +14,7 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "T_ALUMNUS")
+@Table(name = "alumnus")
 @DynamicUpdate
 public class Alumnus {
 

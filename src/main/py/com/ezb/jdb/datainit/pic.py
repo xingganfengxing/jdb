@@ -16,7 +16,7 @@ def resetPicPath(table):
     cur = conn.cursor()
 
     totalCount = 100
-    if table == "t_focus":
+    if table == "focus":
         totalCount = 11
 
     for i in range(totalCount):
@@ -25,7 +25,7 @@ def resetPicPath(table):
             i
         ]
         cur.execute('update ' + table + ' set picpath=%s where id=%s', value)
-        if table == "t_circle":
+        if table == "circle":
             cur.execute('update ' + table + ' set iconpath=%s where id=%s', value)
     conn.commit()
     cur.close()
@@ -33,7 +33,7 @@ def resetPicPath(table):
 
 
 if __name__ == '__main__':
-    resetPicPath("t_news")
-    resetPicPath("t_activity")
-    resetPicPath("t_focus")
-    resetPicPath("t_circle")
+    resetPicPath("news")
+    resetPicPath("activity")
+    resetPicPath("focus")
+    resetPicPath("circle")
