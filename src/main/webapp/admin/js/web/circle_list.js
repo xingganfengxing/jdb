@@ -31,7 +31,7 @@ function binddata(curpage, pageSize) {
     }
 
     if ($("#stateslt").val() == "正常") {
-        params.state = 0;
+        params.state = 1;
     }
 
     var obj = ajax("/pc/admin/circle/query", params);

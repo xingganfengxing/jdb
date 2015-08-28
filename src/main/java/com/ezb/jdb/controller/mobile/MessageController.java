@@ -61,7 +61,7 @@ public class MessageController {
     }
 
     /**
-     * 未读消息查收
+     * 消息查收
      * @param pageResult
      * @param phone
      * @return
