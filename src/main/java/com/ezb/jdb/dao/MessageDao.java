@@ -29,4 +29,9 @@ public class MessageDao extends BaseDao<Message> {
                 " or (o.sender.username=''{1}'' and o.receiver.username=''{0}'')) order by o.createTime desc";
         return query(MessageFormat.format(hql,senderPhone,receiverPhone),pageResult);
     }
+
+    public PageResult<Message> allMessage(PageResult<Message> pageResult, String phone) {
+        String hql = "from Message o where o.receiver.username=''{0}'' order by o.createTime desc";
+        return query(MessageFormat.format(hql, phone), pageResult);
+    }
 }

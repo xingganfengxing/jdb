@@ -13,13 +13,14 @@ def initCircle():
         value = [
             str(i),
             time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
+            "iconpath" + str(i),
             "introduce" + str(i),
             "picpath" + str(i),
             str(1),
             "title" + str(i),
             random.randint(0, 99)
         ]
-        cur.execute('insert into t_circle values(%s,%s,%s,%s,%s,%s,%s)', value)
+        cur.execute('insert into t_circle values(%s,%s,%s,%s,%s,%s,%s,%s)', value)
     conn.commit()
     cur.close()
     conn.close()

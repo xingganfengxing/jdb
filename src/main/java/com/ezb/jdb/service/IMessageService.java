@@ -42,4 +42,6 @@ public interface IMessageService {
      * @return
      */
     String delMessage(String id);
+
+    String allMessage(PageResult<Message> pageResult, String phone);
 }

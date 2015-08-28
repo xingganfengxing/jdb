@@ -61,6 +61,19 @@ public class MessageController {
     }
 
     /**
+     * 未读消息查收
+     * @param pageResult
+     * @param phone
+     * @return
+     */
+    @RequestMapping(value = "mobile/message/allmessage")
+    public
+    @ResponseBody
+    String allMessage(PageResult<Message> pageResult, String phone) {
+        return messageServiceImpl.allMessage(pageResult, phone);
+    }
+
+    /**
      * 查询两个用户之间的消息通讯
      *
      * @param senderPhone

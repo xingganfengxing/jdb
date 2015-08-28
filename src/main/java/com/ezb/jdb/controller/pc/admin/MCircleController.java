@@ -41,10 +41,11 @@ public class MCircleController {
                  String id,
                  String title,
                  String realName,
+                 String state,
                  String startTime,
                  String endTime) {
 
-        pageResult = circleServiceImpl.query(pageResult, id, title, realName, startTime, endTime);
+        pageResult = circleServiceImpl.query(pageResult, id, title, realName, state,startTime, endTime);
         return ResponseData.getResData(pageResult);
     }
 

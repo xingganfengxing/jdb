@@ -110,7 +110,7 @@ function buildNewsAndAtvs() {
             "<option " + newSelected + ">资讯</option>" +
             "</select>" +
             "</div>" +
-            "<button type=\"button\" onclick=\"clearData(" + i + ")\" class=\"gx-button gx-button-error gx-button-small fr\">清空</button>" +
+            "<button type=\"button\" onclick=\"clearData('" + i + "')\" class=\"gx-button gx-button-error gx-button-small fr\">清空</button>" +
             "</div>" +
             "<div class=\"homeAction clearfix\">" +
             "<label>绑定ID：</label>" +
@@ -160,7 +160,7 @@ function buildCircle() {
             "<input type=\"hidden\" id=\"circlePicpath" + i + "\" name=\"focuses[" + i + "].picpath\" value=\"" + obj.data.resultList[i].picpath + "\"/>" +
             "<input type=\"hidden\" id=\"circleInfoIpt" + i + "\" name=\"focuses[" + i + "].info\" value=\"" + obj.data.resultList[i].info + "\"/>" +
             "</div>" +
-            "<button type=\"button\" onclick=\"getCircleData(" + i + ")\" class=\"gx-button gx-button-small gx-button-bordered\">绑定</button>" +
+            "<button type=\"button\" onclick=\"getCircleData('" + i + "')\" class=\"gx-button gx-button-small gx-button-bordered\">绑定</button>" +
             "</div>" +
             "</div>"
         );

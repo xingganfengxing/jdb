@@ -26,35 +26,40 @@ function binddata(curpage, pageSize) {
         endTime: $("#qendTime").val()
     };
 
-    if ($("#stateslt").val() != "状态") {
-        params.state = $("#stateslt").val();
+    if ($("#stateslt").val() == "下线") {
+        params.state = 0;
+    }
+
+    if ($("#stateslt").val() == "正常") {
+        params.state = 0;
     }
 
     var obj = ajax("/pc/admin/circle/query", params);
     $("#pageCount").val(obj.data.pageCount);
     $("#datatable tbody tr").eq(0).nextAll().remove();
+
     for (var i = 0; i < obj.data.resultList.length; i++) {
+
         var stateStr = "正常";
-        var handleBtn = "<b class=\"gx-button gx-button-info gx-button-small\">已下线</b>";
+        var handleBtn = "<b onclick=\"offline('" + obj.data.resultList[i].id + "')\" class=\"gx-button gx-button-error gx-button-small\">下&nbsp;&nbsp;线</b>";
+
         if (0 == obj.data.resultList[i].state) {
-            stateStr = "下线";
-            handleBtn = "<b onclick=\"offline('" + obj.data.resultList[i].id + "')\" class=\"gx-button gx-button-error gx-button-small\">下&nbsp;&nbsp;线</b>";
+            stateStr = "已下线";
+            handleBtn = "<b class=\"gx-button gx-button-info gx-button-small\">已下线</b>";
         }
         $("#datatable").append(
             "<tr class=\"gx-table-actived\">" +
             "<td>" + obj.data.resultList[i].id + "</td>" +
-            "<td><img class=\"circle-logo\" width=\"300px\" height=\"300px\" src=\"" + basePath + "/mobile/image/showimage?picpath=" + obj.data.resultList[i].picPath + "\" alt=\"\"/></td>" +
-            "<td><a class=\"links\" href=\"javascript:void(0)\" onclick=\"viewBigPic(" + obj.data.resultList[i].id + ")\">点击查看</a></td>" +
+            "<td><img class=\"circle-logo\" width=\"300px\" height=\"300px\" src=\"" + basePath + "/mobile/image/showimage?picpath=" + obj.data.resultList[i].iconPath + "\"/></td>" +
+            "<td><a class=\"links\" href=\"javascript:void(0)\" onclick=\"viewBigPic('" + obj.data.resultList[i].id + "')\">点击查看</a></td>" +
             "<td>" + obj.data.resultList[i].title + "</td>" +
-            "<td>" + obj.data.resultList[i].introduce + "</td>" +
             "<td class=\"gx-table-info\">" + stateStr + "</td>" +
             "<td>" + obj.data.resultList[i].createTime + "</td>" +
             "<td>" + obj.data.resultList[i].createUser.realName + "</td>" +
             "<td>" + obj.data.resultList[i].members.length + "</td>" +
             "<td>" +
-            "<a class=\"gx-button gx-button-info gx-button-small\" href=\"###\">查看信息</a>" +
-            "<a class=\"gx-button gx-button-warning gx-button-small\" href=\"circle_edit.jsp\">编辑</a>" +
-            "<a class=\"gx-button gx-button-error gx-button-small\" href=\"###\">下线</a>" +
+            "<a class=\"gx-button gx-button-info gx-button-small\" href=\"circle_edit.jsp?id=" + obj.data.resultList[i].id + "\">编辑</a> " +
+            handleBtn +
             "</td>" +
             "</tr>"
         );
@@ -66,6 +71,16 @@ function loadPage(curPage) {
     bindPage(5, curPage, $("#pageCount").val(), pageSize);
 }
 
+function offline(id) {
+    if (confirm("确定下线此圈子?")) {
+        var obj = ajax("/pc/admin/circle/offline", {id: id});
+        alert(obj.error);
+        if (obj.code == "0") {
+            loadPage($("#curPage").val());
+        }
+    }
+}
+
 loadPage(1);
 
 $('#query').on('click', function (e) {
@@ -75,6 +90,6 @@ $('#query').on('click', function (e) {
 
 $('#stateslt').on('change', function (e) {
     e.preventDefault();
-    loadPage();
+    loadPage($("#curPage").val());
 });
 

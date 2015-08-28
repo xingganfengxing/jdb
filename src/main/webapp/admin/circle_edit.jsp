@@ -13,10 +13,10 @@
     <link rel="stylesheet" href="css/font-awesome.min.css"/>
     <link rel="stylesheet" href="css/admin.css"/>
     <link rel="stylesheet" href="css/jdb.css"/>
-
     <script src="js/jquery.min.js"></script>
+    <script src="js/jquery.uploadPreview.js"></script>
+    <script src="js/jquery.form.js"></script>
     <script src="js/admin_yc.js"></script>
-
 </head>
 <body>
 <!-- header-->
@@ -43,33 +43,31 @@
                     <div class="admin-bd">
                         <!-- 编辑圈子 -->
                         <div class="circle-create">
-                            <form action="">
+                            <form name="form1" id="form1" action="<%=basepath%>/pc/admin/circle/save">
+                                <input type="hidden" id="id" name="id" value="<%=request.getParameter("id")%>"/>
                                 <div class="gx-textitem circle-create-item">
                                     <label class="gx-texttitle">
                                         圈子名字：
                                     </label>
                                     <div class="circle-edit-name">
-                                        我们一起撒旦安师大安师
+                                        <input id="title" name="title" type="text" class="gx-textbox circle-create-name" placeholder="请输入内容...">
                                     </div>
-                                    <!--<input type="text" class="gx-textbox circle-create-name" placeholder="请输入内容...">-->
-                                </div>
-                                <div class="gx-textitem circle-create-item">
-                                    <label class="gx-texttitle">
-                                        圈子图表：
-                                    </label>
-                                    <textarea class="gx-textbox" placeholder="请输入内容..." maxlength="80" required></textarea>
                                 </div>
                                 <div class="gx-textitem circle-create-item">
                                     <label class="gx-texttitle">
                                         圈子介绍：
                                     </label>
+                                    <textarea id="introduce" name="introduce" class="gx-textbox" placeholder="请输入内容..." maxlength="80" required></textarea>
+                                </div>
+                                <div class="gx-textitem circle-create-item">
+                                    <label class="gx-texttitle">
+                                        圈子图片：
+                                    </label>
                                     <div class="gx-file-img">
-                                        <div class="file-img-big">
-                                            <span style="background-image:url(img/400x200.png)"></span>
-                                        </div>
+                                        <img id="picpathShow" src="img/400x200.png" width="400px" height="200px"/>
                                         <div class="gx-file-input">
-                                            <input type="file">
-                                            <a href="javascript:;" class="gx-button gx-button-success gx-file-input-btn">上传图片</a>
+                                            <input id="pic" name="pic" type="file">
+                                            <a id="picpathBtn" href="javascript:void(0);" class="gx-button gx-button-success gx-file-input-btn">选择图片</a>
                                         </div>
                                     </div>
                                 </div>
@@ -78,18 +76,16 @@
                                         圈子图标：
                                     </label>
                                     <div class="gx-file-img">
-                                        <div class="file-img-small">
-                                            <span style="background-image:url(img/300x300.png)"></span>
-                                        </div>
+                                        <img id="iconpathShow" src="img/400x200.png" width="80px" height="80px"/>
                                         <div class="gx-file-input">
-                                            <input type="file">
-                                            <a href="javascript:;" class="gx-button gx-button-success gx-file-input-btn">上传图片</a>
+                                            <input id="icon" name="icon" type="file">
+                                            <a id="iconpathBtn" href="javascript:void(0);" class="gx-button gx-button-success gx-file-input-btn">选择图片</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="gx-submit-btn">
-                                    <button class="gx-button gx-button-info">创建</button>
-                                    <button class="gx-button gx-button-error">取消</button>
+                                    <button id="submitBtn" class="gx-button gx-button-info">保存</button>
+                                    <button id="cancelBtn" class="gx-button gx-button-error">取消</button>
                                 </div>
                             </form>
                         </div>
@@ -98,4 +94,5 @@
         </section>
     </aside>
 </div>
+<script src="js/web/circle_edit.js"></script>
 <jsp:include page="footer.jsp" />

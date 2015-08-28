@@ -25,6 +25,8 @@ def resetPicPath(table):
             i
         ]
         cur.execute('update ' + table + ' set picpath=%s where id=%s', value)
+        if table == "t_circle":
+            cur.execute('update ' + table + ' set iconpath=%s where id=%s', value)
     conn.commit()
     cur.close()
     conn.close()

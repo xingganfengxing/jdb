@@ -15,11 +15,16 @@ import com.ezb.jdb.tool.JdbFileUtils;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import java.io.File;
 import java.util.Date;
 import java.util.HashSet;
+import java.util.Iterator;
 
 /**
  * 圈子
@@ -89,10 +94,11 @@ public class CircleServiceImpl implements ICircleService {
                                     String id,
                                     String title,
                                     String realName,
+                                    String state,
                                     String startTime,
                                     String endTime) {
 
-        return circleDao.query(pageResult, id, title, realName, startTime, endTime);
+        return circleDao.query(pageResult, id, title, realName, state, startTime, endTime);
     }
 
     public String save(HttpServletRequest request, Circle circle) {
@@ -105,24 +111,21 @@ public class CircleServiceImpl implements ICircleService {
             }
         }
 
-        //图片上传
-        String rpath = JdbFileUtils.uploadFile(request, uploadWarPath);
-        if (StringUtils.equals(rpath, ResponseState.PIC_SAVE_ERR)) {
+        if (uploadPics(request, circle)) { //图片上传
+            if (null != circle.getId()) {
+                Circle oldCircle = circleDao.get(Circle.class, circle.getId());
+                JdbBeanUtils.copyProperties(circle, oldCircle);
+                circleDao.update(oldCircle);
+            } else {
+                circle.setCreateUser(adminDao.get(Admin.class, (String) adminIdObj));
+                circle.setCreateTime(new Date());
+                circle.setState(1);
+                circleDao.add(circle);
+            }
+            return ResponseState.SUCCESS;
+        } else {
             return ResponseState.PIC_SAVE_ERR_JSON;
         }
-        circle.setPicPath(rpath);
-
-        if (null != circle.getId()) {
-            Circle oldCircle = circleDao.get(Circle.class, circle.getId());
-            JdbBeanUtils.copyProperties(circle, oldCircle);
-            circleDao.update(oldCircle);
-        } else {
-            circle.setCreateUser(adminDao.get(Admin.class, (String) adminIdObj));
-            circle.setCreateTime(new Date());
-            circle.setState(1);
-            circleDao.add(circle);
-        }
-        return ResponseState.SUCCESS;
     }
 
     public String offline(String id) {
@@ -131,5 +134,42 @@ public class CircleServiceImpl implements ICircleService {
         } else {
             return ResponseState.FAIL;
         }
+    }
+
+    /**
+     * 上传图标和不图片，设置circle属性
+     *
+     * @param request
+     * @param circle
+     */
+    private boolean uploadPics(HttpServletRequest request, Circle circle) {
+        CommonsMultipartResolver multipartResolver = new CommonsMultipartResolver(
+                request.getSession().getServletContext());
+
+        if (multipartResolver.isMultipart(request)) {
+            String prePath = request.getSession().getServletContext().getRealPath("/")
+                    + File.separator + uploadWarPath;
+
+            MultipartHttpServletRequest multiRequest = (MultipartHttpServletRequest) request;
+            Iterator<String> iter = multiRequest.getFileNames();
+
+            while (iter.hasNext()) {
+                MultipartFile file = multiRequest.getFile(iter.next());
+
+                if (file != null && !StringUtils.isEmpty(file.getOriginalFilename())) {
+                    String rpath = JdbFileUtils.uploadFile(file, prePath);
+                    if (StringUtils.equals(rpath, ResponseState.PIC_SAVE_ERR)) {
+                        return false;
+                    }
+                    if (StringUtils.equals(file.getName(), "pic")) {
+                        circle.setPicPath(uploadWarPath + rpath);
+                    }
+                    if (StringUtils.equals(file.getName(), "icon")) {
+                        circle.setIconPath(uploadWarPath + rpath);
+                    }
+                }
+            }
+        }
+        return true;
     }
 }

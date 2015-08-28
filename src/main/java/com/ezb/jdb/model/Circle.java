@@ -30,6 +30,9 @@ public class Circle {
     @Column(length = 32)
     private String title;
 
+    @Column(name = "iconpath", length = 64)
+    private String iconPath;//圈子图标
+
     @Column(name = "picpath", length = 64)
     private String picPath;//图片路径
 

@@ -69,6 +69,12 @@ public class MessageServiceImpl implements IMessageService {
         return ResponseState.SUCCESS;
     }
 
+    public String allMessage(PageResult<Message> pageResult, String phone) {
+        List<Message> list = messageDao.allMessage(pageResult, phone).getResultList();
+        chageState(list);
+        return ResponseData.getResData(list);
+    }
+
     /**
      * 设置消息为已查收
      *

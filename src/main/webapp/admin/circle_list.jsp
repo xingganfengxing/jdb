@@ -78,7 +78,6 @@
                                     <td>圈子图标</td>
                                     <td>圈子大图</td>
                                     <td>圈子名称</td>
-                                    <td>圈子介绍</td>
                                     <td>
                                         <select id="stateslt" class="gx-textbox">
                                             <option selected>状态</option>
@@ -129,7 +128,7 @@
         <a class="popUpBoxNo"  href="javascript:void(0)"></a>
     </h1>
     <div class="popUpBoxCon">
-        <img id="circleImg" src=""/>
+        <img width="600" height="500" id="circleImg" src=""/>
     </div>
 </div>
 <script src="js/jquery.min.js"></script>

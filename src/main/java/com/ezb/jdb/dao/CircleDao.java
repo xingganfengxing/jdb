@@ -42,7 +42,7 @@ public class CircleDao extends BaseDao<Circle> {
     }
 
     public PageResult<Circle> query(PageResult<Circle> pageResult, String id,
-                                    String title, String realName, String startTime, String endTime) {
+                                    String title, String realName,String state, String startTime, String endTime) {
 
         int index = 0;
         List<String> paramList = new ArrayList<String>();
@@ -62,6 +62,11 @@ public class CircleDao extends BaseDao<Circle> {
         if (!StringUtils.isEmpty(realName)) {
             hql += " and o.createUser.realName like ''%{" + index++ + "}%''";
             paramList.add(realName);
+        }
+
+        if (!StringUtils.isEmpty(state)) {
+            hql += " and o.state=''{" + index++ + "}''";
+            paramList.add(state);
         }
 
         if (!StringUtils.isEmpty(startTime)) {
