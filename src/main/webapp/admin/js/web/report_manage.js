@@ -6,7 +6,7 @@ function binddata(curpage, pageSize) {
     var params = {
         curPage: curpage,
         pageSize: pageSize,
-        realname: $("#qrealname").val(),
+        realName: $("#qrealname").val(),
         startTime: $("#qstartTime").val(),
         endTime: $("#qendTime").val()
     };
@@ -69,7 +69,7 @@ $('#query').on('click', function (e) {
 
 $('#reasonslt,#typeslt,#stateslt').on('change', function (e) {
     e.preventDefault();
-    loadPage();
+    loadPage($("#curPage").val());
 });
 
 function informInfo(info) {

@@ -3,6 +3,7 @@ package com.ezb.jdb.dao;
 import com.ezb.jdb.common.Constants;
 import com.ezb.jdb.common.PageResult;
 import com.ezb.jdb.dao.base.BaseDao;
+import com.ezb.jdb.model.Admin;
 import com.ezb.jdb.model.Alumnus;
 import com.ezb.jdb.model.User;
 import org.apache.commons.lang.StringUtils;
@@ -135,6 +136,83 @@ public class UserDao extends BaseDao<User> {
 
         String hql = "from User o where o.state=1";
         hql = buildHql(alumnus, orderby, paramList, lat, lng, hql);
+
+        return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
+    }
+
+    public PageResult<User> query(PageResult<User> pageResult, String username, String state,
+                                  Alumnus alumnus, String startTime, String endTime) {
+        List<Object> paramList = new ArrayList<Object>();
+        String hql = "from User o where 1=1";
+        int i = 0;
+
+        if (!StringUtils.isEmpty(username)) {
+            hql += " and o.username like ''%{" + i + "}%''";
+            paramList.add(username);
+            i++;
+        }
+
+        if (!StringUtils.isEmpty(state)) {
+            hql += " and o.state = ''{" + i + "}''";
+            paramList.add(state);
+            i++;
+        }
+
+        if (!StringUtils.isEmpty(startTime)) {
+            hql += " and o.createTime >= ''%{" + i + "}%''";
+            paramList.add(startTime);
+            i++;
+        }
+
+        if (!StringUtils.isEmpty(endTime)) {
+            hql += " and o.createTime <= ''%{" + i + "}%''";
+            paramList.add(endTime);
+            i++;
+        }
+
+        if (null != alumnus) {
+            //姓名
+            if (!StringUtils.isEmpty(alumnus.getRealName())) {
+                hql += " and o.alumnus.realName like ''%{" + i + "}%''";
+                paramList.add(alumnus.getRealName());
+                i++;
+            }
+
+            //性别
+            if (null != alumnus.getSex()) {
+                hql += " and o.alumnus.sex=''{" + i + "}''";
+                paramList.add(alumnus.getSex());
+                i++;
+            }
+
+            //学校
+            if (!StringUtils.isEmpty(alumnus.getSchool())) {
+                hql += " and o.alumnus.school like ''%{" + i + "}%''";
+                paramList.add(alumnus.getSchool());
+                i++;
+            }
+
+            //院系
+            if (!StringUtils.isEmpty(alumnus.getDepartment())) {
+                hql += " and o.alumnus.department like ''%{" + i + "}%''";
+                paramList.add(alumnus.getDepartment());
+                i++;
+            }
+
+            //年级
+            if (!StringUtils.isEmpty(alumnus.getGrade())) {
+                hql += " and o.alumnus.grade=''{" + i + "}''";
+                paramList.add(alumnus.getGrade());
+                i++;
+            }
+
+            //邮箱
+            if (!StringUtils.isEmpty(alumnus.getEmail())) {
+                hql += " and o.alumnus.email like ''%{" + i + "}%''";
+                paramList.add(alumnus.getEmail());
+                i++;
+            }
+        }
 
         return query(MessageFormat.format(hql, paramList.toArray()), pageResult);
     }

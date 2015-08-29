@@ -1,5 +1,6 @@
 package com.ezb.jdb.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
@@ -41,5 +42,6 @@ public class User extends Fmodel {
     private Integer state;//状态 0停用 1正常
 
     @Column(name="c_time")
+    @JSONField(format = "yyyy-MM-dd HH:mm:ss")
     private Date createTime;//注册日期
 }

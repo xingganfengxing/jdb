@@ -50,7 +50,7 @@ public class UserServiceImpl implements IUserService {
                 user.setState(1);
                 user.setCreateTime(new Date());
                 userDao.add(user);
-                invitateCodeDao.deleteByCode(user.getUsername(),invitateCode);
+                invitateCodeDao.deleteByCode(user.getUsername(), invitateCode);
                 return ResponseState.SUCCESS;
             } else {
                 return ResponseState.VERIFYCODE_ERR;
@@ -72,6 +72,7 @@ public class UserServiceImpl implements IUserService {
 
     /**
      * 上传头像
+     *
      * @param request
      * @param phone
      * @return
@@ -164,5 +165,23 @@ public class UserServiceImpl implements IUserService {
 
     public PageResult<User> queryAllUser(PageResult<User> pageResult, String phone, Alumnus alumnus, String orderby) {
         return userDao.queryAllUser(pageResult, phone, alumnus, orderby);
+    }
+
+    public PageResult<User> query(PageResult<User> pageResult, String username, String state, Alumnus alumnus, String startTime, String endTime) {
+        return userDao.query(pageResult, username, state, alumnus, startTime, endTime);
+    }
+
+    public String state(String id) {
+        User user = userDao.get(User.class, id);
+        if (null == user) {
+            return ResponseState.INVALID_ID;
+        }
+        if (1 == user.getState()) {
+            user.setState(0);
+        } else {
+            user.setState(1);
+        }
+        userDao.update(user);
+        return ResponseState.SUCCESS;
     }
 }

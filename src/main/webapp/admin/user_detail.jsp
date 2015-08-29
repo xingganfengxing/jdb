@@ -40,46 +40,15 @@
                     <h3>用户详情</h3>
                 </div>
                 <div class="admin-bd">
-                    <div class="home">
-                        <div class="notice fl">
-                            <div class="group-detdil">
-                                <ul class="detdilLeft fl">
-                                    <li><span>姓名：</span>曹格</li>
-                                    <li><span>英文名：</span>caoge</li>
-                                    <li><span>邮箱：</span>caoge@qq.com</li>
-                                </ul>
-                                <ul class="detdilCenter fl">
-                                    <li><span>性别：</span>男</li>
-                                    <li><span>电话：</span>12345678</li>
-                                    <li><span>微信：</span>345678</li>
-                                </ul>
-                                <div class="detail-right fr">
-                                    <img src="img/banner.png"/>
-                                </div>
-                            </div>
-                            <div class="group-detdil">
-                                <ul class="detdilLeft fl">
-                                    <li><span>学校：</span>北京交通大学</li>
-                                    <li><span>系院：</span>土木工程系</li>
-                                </ul>
-                                <ul class="detdilCenter fl">
-                                    <li><span>年纪：</span>2009</li>
-                                </ul>
-                            </div>
-                            <div class="group-detdil">
-                                <ul class="detdilLeft fl">
-                                    <li><span>职位：</span>总经理</li>
-                                    <li><span>公司：</span>中国对外贸易公司</li>
-                                </ul>
-                            </div>
-                            <div class="group-detdil-btn">
-                                <button class="gx-button gx-button-error gx-button-small">关闭</button>
-                            </div>
-                        </div>
+                    <input type="hidden" id="username-detail" value="<%=request.getParameter("username")%>">
+                    <div id="user-detail" class="home">
+
                     </div>
                 </div>
             </div>
         </section>
     </aside>
 </div>
+<script src="js/admin_yc.js"></script>
+<script src="js/web/user_detail.js"></script>
 <jsp:include page="footer.jsp" />

@@ -11,3 +11,9 @@ def getConn():
         user='root', passwd='root',
         db='jdb', port=3306, charset="utf8"
     )
+
+    # return MySQLdb.connect(
+    #     host='172.16.16.253',
+    #     user='jdb_write', passwd='jdb123879',
+    #     db='jdb', port=3306, charset="utf8"
+    # )

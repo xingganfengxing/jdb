@@ -36,7 +36,6 @@
     <jsp:include page="left.jsp" />
     <aside class="right-side">
         <section class="content">
-            <!-- 职位信息 -->
                 <div class="admin-main">
                     <div class="admin-bd">
                         <div class="user-box home1">
@@ -45,52 +44,52 @@
                                     <label class="gx-texttitle">
                                         账号：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qusername" name="username" type="text" class="gx-textbox" placeholder="请输入账号">
                                     <label class="gx-texttitle">
                                         姓名：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qrealname" name="realName" type="text" class="gx-textbox" placeholder="请输入姓名">
                                     <label class="gx-texttitle">
                                         邮箱：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qemail" name="email" type="text" class="gx-textbox" placeholder="请输入邮箱">
                                 </div>
                                 <div class="group-item">
                                     <label class="gx-texttitle">
                                         注册日期：
                                     </label>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
+                                    <input id="qstartTime" name="startTime" type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
                                     <span>
                                        到
                                     </span>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
+                                    <input id="qendTime" name="endTime" type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
                                 </div>
                                 <div class="group-item">
                                     <label class="gx-texttitle">
-                                        毕业年份：
+                                        年级：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qgrade" name="grade" type="text" class="gx-textbox" placeholder="请输入毕业年份">
                                     <label class="gx-texttitle">
                                         系院：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qdepartment" name="department" type="text" class="gx-textbox" placeholder="请输入毕业系院">
                                 </div>
-                                <button class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
+                                <button id="query" class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
                             </div>
                             <div class="admin-table">
-                                <table class="tab">
+                                <table id="datatable" class="tab">
                                     <tr class="tab-h">
                                         <td>账号</td>
                                         <td>
-                                            <select class="gx-textbox">
+                                            <select id="stateslt" name="stateslt" class="gx-textbox">
                                                 <option>状态</option>
-                                                <option>色情</option>
-                                                <option>重伤</option>
+                                                <option>正常</option>
+                                                <option>停用</option>
                                             </select>
                                         </td>
                                         <td>姓名</td>
                                         <td>
-                                            <select class="gx-textbox">
+                                            <select id="sexslt" name="sexslt" class="gx-textbox">
                                                 <option>性别</option>
                                                 <option>男</option>
                                                 <option>女</option>
@@ -98,64 +97,24 @@
                                         </td>
                                         <td>邮箱 </td>
                                         <td>
-                                            <select class="gx-textbox">
-                                                <option>院校</option>
-                                                <option></option>
-                                                <option></option>
-                                            </select>
+                                            院校
                                         </td>
                                         <td>毕业年份</td>
                                         <td>系院</td>
                                         <td>注册时间</td>
                                         <td>操作</td>
                                     </tr>
-                                    <tr>
-                                        <td>18716786543</td>
-                                        <td>正常</td>
-                                        <td>王磊</td>
-                                        <td>男</td>
-                                        <td>jiaodabang@126.com</td>
-                                        <td></td>
-                                        <td>2009</td>
-                                        <td>计算机科学与技术</td>
-                                        <td>2015-08-21</td>
-                                        <td class="tab-Nine">
-                                            <a hef="#" class="gx-button gx-button-info gx-button-actived gx-button-small">详情</a>
-                                            <button class="gx-button gx-button-error gx-button-actived gx-button-small">停用</button>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>18716786543</td>
-                                        <td>正常</td>
-                                        <td>王磊</td>
-                                        <td>男</td>
-                                        <td>jiaodabang@126.com</td>
-                                        <td></td>
-                                        <td>2009</td>
-                                        <td>计算机科学与技术</td>
-                                        <td>2015-08-21</td>
-                                        <td class="tab-Nine">
-                                            <a hef="#" class="gx-button gx-button-info gx-button-actived gx-button-small">详情</a>
-                                            <button class="gx-button gx-button-error gx-button-actived gx-button-small">启用</button>
-                                        </td>
-                                    </tr>
                                 </table>
                                 <div class="clearfix">
-                                    <nav class="gx-pager">
-                                        <a class="gx-pager-disabled" href="###"><i class="gx-icon">«</i></a>
-                                        <a class="gx-pager-actived" href="###">1</a>
-                                        <a href="###">2</a>
-                                        ...
-                                        <a href="###">99</a>
-                                        <a href="###">100</a>
-                                        <a href="###"><i class="gx-icon">»</i></a>
+                                    <input type="hidden" name="curPage" id="curPage" value="1"/>
+                                    <input type="hidden" name="pageCount" id="pageCount" value="1"/>
+                                    <nav id="pageDiv" class="gx-pager">
                                     </nav>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            <!-- end 职位发布 -->
         </section>
     </aside>
 </div>
@@ -163,7 +122,8 @@
 <script src="js/admin_yc.js"></script>
 <script src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-
+<script src="js/page.js"></script>
+<script src="js/web/user_manage.js"></script>
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({
         format: 'yyyy-mm-dd hh:ii',
