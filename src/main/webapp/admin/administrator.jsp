@@ -64,12 +64,7 @@
                             <div class="admin-table">
                                 <table class="tab" id="datatable">
                                 </table>
-                                <input type="hidden" name="curPage" id="curPage" value="1" />
-                                <input type="hidden" name="pageCount" id="pageCount" value="1" />
-                                <div class="clearfix">
-                                    <nav id="pageDiv" class="gx-pager">
-                                    </nav>
-                                </div>
+                                <jsp:include page="pager.jsp"/>
                             </div>
                         </div>
                     </div>

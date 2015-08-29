@@ -45,4 +45,11 @@ public interface IActivityService {
      * @return
      */
     String sendJoinUsers2Email(String id);
+
+    PageResult<Activity> query(
+            PageResult<Activity> pageResult,String id,String title,
+            String username,String realName,
+            String state,String startTime,String endTime);
+
+    String state(String id);
 }

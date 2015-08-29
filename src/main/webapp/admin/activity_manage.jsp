@@ -44,49 +44,45 @@
                                     <label class="gx-texttitle">
                                         活动编号：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qid" name="id" type="text" class="gx-textbox" placeholder="请输入活动编号">
                                     <label class="gx-texttitle">
                                         活动名称：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qtitle" name="title" type="text" class="gx-textbox" placeholder="请输入活动名称">
                                 </div>
                                 <div class="group-item">
                                     <label class="gx-texttitle">
                                         注册日期：
                                     </label>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
+                                    <input id="qstartTime" name="startTime" type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
                                     <span>
                                        到
                                     </span>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
+                                    <input id="qendTime" name="endTime" type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
                                 </div>
-                                <button class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
-                            </div>
-                            <div class="administrator clearfix administrator-margin">
                                 <div class="group-item">
                                     <label class="gx-texttitle1">
                                         活动创建账号：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qusername" type="text" class="gx-textbox" placeholder="请输入账号">
                                     <label class="gx-texttitle1">
-                                        活动创建着：
+                                        活动创建者：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qrealName" type="text" class="gx-textbox" placeholder="请输入创建者">
                                 </div>
+                                <button id="query" class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
                             </div>
                             <div class="admin-table">
-                                <table class="tab">
+                                <table id="datatable" class="tab">
                                     <tr class="tab-h">
                                         <td>序号</td>
                                         <td>活动编号</td>
                                         <td>活动名称</td>
                                         <td>
-                                            <select class="gx-textbox">
+                                            <select id="stateslt" class="gx-textbox">
                                                 <option>活动状态</option>
                                                 <option>正常</option>
                                                 <option>冻结</option>
-                                                <option>结束</option>
-                                                <option>删除</option>
                                             </select>
                                         </td>
                                         <td>活动创建账号</td>
@@ -94,31 +90,8 @@
                                         <td>活动创建时间</td>
                                         <td>操作</td>
                                     </tr>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>123456</td>
-                                        <td></td>
-                                        <td>正常</td>
-                                        <td>12345678</td>
-                                        <td>孙凯</td>
-                                        <td>2015-08-21</td>
-                                        <td class="tab-Nine">
-                                            <a hef="#" class="gx-button gx-button-info gx-button-actived gx-button-small">查看</a>
-                                            <button class="gx-button gx-button-error gx-button-actived gx-button-small">冻结</button>
-                                        </td>
-                                    </tr>
                                 </table>
-                                <div class="clearfix">
-                                    <nav class="gx-pager">
-                                        <a class="gx-pager-disabled" href="###"><i class="gx-icon">«</i></a>
-                                        <a class="gx-pager-actived" href="###">1</a>
-                                        <a href="###">2</a>
-                                        ...
-                                        <a href="###">99</a>
-                                        <a href="###">100</a>
-                                        <a href="###"><i class="gx-icon">»</i></a>
-                                    </nav>
-                                </div>
+                                <jsp:include page="pager.jsp"/>
                             </div>
                         </div>
                     </div>
@@ -126,16 +99,13 @@
         </section>
     </aside>
 </div>
-<!--<footer>-->
-    <!--<div class="footer">-->
-        <!--<p>一休理财管理 ©2015 yixiu.com 京ICP备888888号</p>-->
-        <!--<p>登录IP:192.168.1.1 2015-5-30 上次登录IP:192.168.1.1 2015-6-23</p>-->
-    <!--</div>-->
-<!--</footer>-->
+
 <script src="js/jquery.min.js"></script>
 <script src="js/admin_yc.js"></script>
 <script src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+<script src="js/page.js"></script>
+<script src="js/web/activity_manage.js"></script>
 
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({

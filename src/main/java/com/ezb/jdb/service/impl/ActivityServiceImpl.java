@@ -13,14 +13,11 @@ import com.ezb.jdb.view.ActivityView;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
-import java.io.File;
 import java.util.Date;
 import java.util.HashSet;
-import java.util.Set;
 
 /**
  * 活动
@@ -67,6 +64,26 @@ public class ActivityServiceImpl implements IActivityService {
         return mailServiceImpl.sendHtmlMail(activity.getContactEmail(), subject, content);
     }
 
+    public PageResult<Activity> query(PageResult<Activity> pageResult, String id, String title,
+                                      String username, String realName,
+                                      String state, String startTime, String endTime) {
+        return activityDao.query(pageResult, id, title, username, realName, state, startTime, endTime);
+    }
+
+    public String state(String id) {
+        Activity activity = activityDao.get(Activity.class, id);
+        if (null == activity) {
+            return ResponseState.INVALID_ID;
+        }
+        if (activity.getState() == 1) {
+            activity.setState(0);
+        }else{
+            activity.setState(1);
+        }
+        activityDao.update(activity);
+        return ResponseState.SUCCESS;
+    }
+
     public Activity queryById(String id) {
         //更新pv
         int affectNum = activityDao.updatePv(id);
@@ -77,12 +94,12 @@ public class ActivityServiceImpl implements IActivityService {
         }
     }
 
-    public String addActivity(HttpServletRequest request,Activity activity,
+    public String addActivity(HttpServletRequest request, Activity activity,
                               String phone) {
         User user = userDao.queryByPhone(phone);
         if (null != user) {
 
-            String rpath = JdbFileUtils.uploadFile(request,uploadWarPath);
+            String rpath = JdbFileUtils.uploadFile(request, uploadWarPath);
             if (StringUtils.equals(rpath, ResponseState.PIC_SAVE_ERR)) {
                 return ResponseState.PIC_SAVE_ERR_JSON;
             }
@@ -116,5 +133,4 @@ public class ActivityServiceImpl implements IActivityService {
             return ResponseState.INVALID_PHONE;
         }
     }
-
 }
