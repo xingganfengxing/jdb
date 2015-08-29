@@ -92,5 +92,5 @@ $('#query').on('click', function (e) {
 
 $('#stateslt,#sexslt').on('change', function (e) {
     e.preventDefault();
-    loadPage($("#curPage").val());
+    loadPage(1);
 });
