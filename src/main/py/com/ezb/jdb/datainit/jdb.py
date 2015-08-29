@@ -16,6 +16,7 @@ def initdata():
     pic.resetPicPath("news")
     cmt.initNewsCmt()
     alumnus.initAlumnus()
+    pic.resetPicPath("alumnus")
     activity.initActivity()
     pic.resetPicPath("activity")
     cmt.initAtvCmt()

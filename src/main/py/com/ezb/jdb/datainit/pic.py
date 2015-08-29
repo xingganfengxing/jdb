@@ -24,7 +24,10 @@ def resetPicPath(table):
             picpath[random.randint(0, 2)],
             i
         ]
-        cur.execute('update ' + table + ' set picpath=%s where id=%s', value)
+        if table == "alumnus":
+            cur.execute('update ' + table + ' set headpic_path=%s where id=%s', value)
+        else:
+            cur.execute('update ' + table + ' set picpath=%s where id=%s', value)
         if table == "circle":
             cur.execute('update ' + table + ' set iconpath=%s where id=%s', value)
     conn.commit()
@@ -37,3 +40,4 @@ if __name__ == '__main__':
     resetPicPath("activity")
     resetPicPath("focus")
     resetPicPath("circle")
+    resetPicPath("alumnus")
