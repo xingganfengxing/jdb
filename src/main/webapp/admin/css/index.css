@@ -407,3 +407,9 @@
 .gx-button{
     cursor: pointer;
 }
+.activity .group-detdil span {
+    width: 100px;
+}
+.activity .content {
+    margin-left: 100px;
+}

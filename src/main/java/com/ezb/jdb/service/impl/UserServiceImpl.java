@@ -1,6 +1,7 @@
 package com.ezb.jdb.service.impl;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.common.ResponseData;
 import com.ezb.jdb.common.ResponseState;
 import com.ezb.jdb.dao.InvitateCodeDao;
 import com.ezb.jdb.dao.UserDao;
@@ -88,9 +89,9 @@ public class UserServiceImpl implements IUserService {
         if (StringUtils.equals(rpath, ResponseState.PIC_SAVE_ERR)) {
             return ResponseState.PIC_SAVE_ERR_JSON;
         }
-        user.getAlumnus().setHeadPicPath(uploadWarPath + rpath);
+        user.getAlumnus().setHeadPicPath(rpath);
         userDao.update(user);
-        return ResponseState.SUCCESS;
+        return ResponseData.getResData(user);
     }
 
     /**

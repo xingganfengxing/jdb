@@ -47,7 +47,7 @@ function binddata(curpage, pageSize) {
             "<td class=\"tab-five\">" + stateStr + "</td>" +
             "<td>" +
             "<b onclick=\"informInfo('" + obj.data.resultList[i].otherInfo + "')\" class=\"gx-button gx-button-warning gx-button-small\">描述</b> " +
-            "<b class=\"gx-button gx-button-info gx-button-small\">详情</b> " +
+            "<b onclick=\"view('" + obj.data.resultList[i].type + "','" + obj.data.resultList[i].assoId + "')\" class=\"gx-button gx-button-info gx-button-small\">详情</b> " +
             handleBtn +
             "</td>" +
             "</tr>"
@@ -88,8 +88,20 @@ function offline(id) {
     if (confirm("确定下线举报对应的信息?")) {
         var obj = ajax("/pc/admin/inform/offline", {id: id});
         alert(obj.error);
-        if(obj.code == "0"){
+        if (obj.code == "0") {
             loadPage($("#curPage").val());
         }
+    }
+}
+
+function view(type, assoId) {
+    if (type == "资讯") {
+        window.location = "news_detail.jsp?id=" + assoId;
+    }
+    if (type == "活动") {
+        window.location = "activity_detail.jsp?id=" + assoId;
+    }
+    if (type == "圈子") {
+        window.location = "circle_detail.jsp?id=" + assoId;
     }
 }

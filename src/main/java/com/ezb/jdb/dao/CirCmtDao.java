@@ -20,7 +20,7 @@ public class CirCmtDao extends BaseDao<CirCmt> {
     }
 
     public PageResult<CirCmt> queryCircmts(PageResult<CirCmt> pageResult, String circleid) {
-        String hql = "from CirCmt o where o.circle.id=''{0}''";
+        String hql = "from CirCmt o where o.circle.id=''{0}'' order by o.createTime desc";
         return query(MessageFormat.format(hql,circleid),pageResult);
     }
 }

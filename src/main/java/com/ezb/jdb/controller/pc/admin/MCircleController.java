@@ -86,4 +86,18 @@ public class MCircleController {
     String offline(String id) {
         return circleServiceImpl.offline(id);
     }
+
+    /**
+     * 查看圈子详情
+     *
+     * @return
+     */
+    @RequestMapping(value = "pc/admin/circle/viewcircle")
+    public
+    @ResponseBody
+    String viewCircle(String id) {
+        Circle circle = circleServiceImpl.queryById(id);
+        return ResponseData.getResData(circle);
+    }
+
 }

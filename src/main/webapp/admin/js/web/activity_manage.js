@@ -9,8 +9,8 @@ function binddata(curpage, pageSize) {
         title: $("#qtitle").val(),
         startTime: $("#qstartTime").val(),
         endTime: $("#qendTime").val(),
-        username:$("#qusername").val(),
-        realName:$("#qrealName").val()
+        username: $("#qusername").val(),
+        realName: $("#qrealName").val()
     };
 
     if ($("#stateslt").val() == "冻结") {
@@ -42,7 +42,7 @@ function binddata(curpage, pageSize) {
             "<td>" + obj.data.resultList[i].createUser.alumnus.realName + "</td>" +
             "<td>" + obj.data.resultList[i].createTime + "</td>" +
             "<td class=\"tab-Nine\">" +
-            "<b hef=\"#\" class=\"gx-button gx-button-info gx-button-actived gx-button-small\">查看</b> " +
+            "<a href=\"activity_detail.jsp?id=" + obj.data.resultList[i].id + "\" class=\"gx-button gx-button-info gx-button-actived gx-button-small\">查看</a> " +
             handleBtn +
             "</td>" +
             "</tr>"

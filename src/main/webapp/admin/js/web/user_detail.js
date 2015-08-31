@@ -22,7 +22,7 @@ function bindData() {
         "<li><span>微信：</span>" + obj.data.alumnus.weixin + "</li>" +
         "</ul>" +
         "<div class=\"detail-right fr\">" +
-        "<img src=\"img/banner.png\"/>" +
+        "<img src=\"" + basePath + "/mobile/image/showimage?picpath=" + obj.data.alumnus.headPicPath + "\"/>" +
         "</div>" +
         "</div>" +
         "<div class=\"group-detdil\">" +
