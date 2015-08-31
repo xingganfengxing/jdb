@@ -44,7 +44,7 @@ public class News extends Fmodel {
     @Column
     private Integer pv;//阅读次数
 
-    @Column
+    @Column(name = "c_time")
     @JSONField(format="yyyy-MM-dd HH:mm")
     private Date createTime;
 

@@ -57,7 +57,7 @@ public class CircleControllerTest {
     @Rollback(false)
     public void createCircmt() {
         Circle circle = new Circle();
-        circle.setId("10");
+        circle.setId("0");
 
         CirCmt cirCmt = new CirCmt();
         cirCmt.setContent("父评论内容");
