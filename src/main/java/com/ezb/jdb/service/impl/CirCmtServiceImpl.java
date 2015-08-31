@@ -9,6 +9,7 @@ import com.ezb.jdb.model.CirCmt;
 import com.ezb.jdb.model.Circle;
 import com.ezb.jdb.model.User;
 import com.ezb.jdb.service.ICirCmtService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -46,6 +47,14 @@ public class CirCmtServiceImpl implements ICirCmtService {
             return ResponseState.INVALID_ID;
         }
         cirCmt.setCircle(circle);
+
+        if(null != cirCmt.getParentCirCmt()){
+            if(!StringUtils.isEmpty(cirCmt.getParentCirCmt().getId())){
+                CirCmt parentCirCmt = cirCmtDao.get(CirCmt.class,cirCmt.getParentCirCmt().getId());
+                cirCmt.setParentCirCmt(parentCirCmt);
+            }
+        }
+
         cirCmt.setCommentUser(user);
         cirCmt.setCreateTime(new Date());
         cirCmt.setLikeCount(0);

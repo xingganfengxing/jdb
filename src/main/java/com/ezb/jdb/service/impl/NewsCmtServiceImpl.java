@@ -8,6 +8,7 @@ import com.ezb.jdb.model.News;
 import com.ezb.jdb.model.NewsCmt;
 import com.ezb.jdb.model.User;
 import com.ezb.jdb.service.INewsCmtService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -41,6 +42,16 @@ public class NewsCmtServiceImpl implements INewsCmtService {
                 return ResponseState.INVALID_ID;
             }
             newsCmt.setNews(news);
+
+            if (null != newsCmt.getParentNewsCmt()
+                    && !StringUtils.isEmpty(
+                    newsCmt.getParentNewsCmt().getId())) {
+
+                NewsCmt parentNewsCmt = newsCmtDao.get(
+                        NewsCmt.class, newsCmt.getParentNewsCmt().getId());
+                newsCmt.setParentNewsCmt(parentNewsCmt);
+            }
+
             newsCmt.setLikeCount(0);
             newsCmt.setCommentUser(user);
             newsCmt.setCreateTime(new Date());

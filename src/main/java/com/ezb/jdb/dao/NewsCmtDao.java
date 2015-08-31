@@ -12,7 +12,7 @@ import java.util.List;
  * create time: 2015/8/7 14:50.
  */
 @Repository
-public class NewsCmtDao<NewsCmt> extends BaseDao {
+public class NewsCmtDao extends BaseDao<NewsCmt> {
 
     public int likeNewsCmt(String id) {
         String hql = "update NewsCmt o set o.likeCount=o.likeCount+1 where o.id=''{0}''";

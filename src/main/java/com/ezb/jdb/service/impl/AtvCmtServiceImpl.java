@@ -8,6 +8,7 @@ import com.ezb.jdb.model.Activity;
 import com.ezb.jdb.model.AtvCmt;
 import com.ezb.jdb.model.User;
 import com.ezb.jdb.service.IAtvCmtService;
+import org.apache.commons.lang.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -42,6 +43,14 @@ public class AtvCmtServiceImpl implements IAtvCmtService {
             Activity activity = activityDao.get(Activity.class, atvCmt.getActivity().getId());
             if (null != activity) {
                 atvCmt.setActivity(activity);
+
+                if(null != atvCmt.getParentAtvCmt()){
+                    if(!StringUtils.isEmpty(atvCmt.getParentAtvCmt().getId())){
+                        AtvCmt parentAtvCmt = atvCmtDao.get(AtvCmt.class,atvCmt.getParentAtvCmt().getId());
+                        atvCmt.setParentAtvCmt(parentAtvCmt);
+                    }
+                }
+
                 atvCmt.setLikeCount(0);
                 atvCmt.setCommentUser(user);
                 atvCmt.setCreateTime(new Date());

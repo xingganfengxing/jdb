@@ -65,6 +65,7 @@ public class InformServiceImpl implements IInformService {
 
             inform.setCreateUser(user);
             inform.setCreateTime(new Date());
+            inform.setState(0);
             informDao.add(inform);
 
             return ResponseState.SUCCESS;
