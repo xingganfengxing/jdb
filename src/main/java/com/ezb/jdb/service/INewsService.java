@@ -18,4 +18,8 @@ public interface INewsService {
     News queryNewsById(String id);
 
     String addNews(HttpServletRequest request, News news, String phone);
+
+    PageResult<News> query(PageResult<News> pageResult, String id, String title, String startTime, String endTime, String username, String realName,String type,String state);
+
+    String state(String id);
 }

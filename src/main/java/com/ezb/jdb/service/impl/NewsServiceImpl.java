@@ -1,6 +1,7 @@
 package com.ezb.jdb.service.impl;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.common.ResponseData;
 import com.ezb.jdb.common.ResponseState;
 import com.ezb.jdb.dao.NewsDao;
 import com.ezb.jdb.dao.UserDao;
@@ -67,9 +68,29 @@ public class NewsServiceImpl implements INewsService {
             news.setPv(0);
             news.setState(1);
             newsDao.add(news);
-            return ResponseState.SUCCESS;
+            return ResponseData.getResData(news);
         } else {
             return ResponseState.INVALID_PHONE;
         }
+    }
+
+    public PageResult<News> query(PageResult<News> pageResult, String id,
+                                  String title, String startTime, String endTime,
+                                  String username, String realName, String type, String state) {
+        return newsDao.query(pageResult, id, title, startTime, endTime, username, realName, type, state);
+    }
+
+    public String state(String id) {
+        News news = newsDao.get(News.class,id);
+        if(null == news){
+            return ResponseState.INVALID_ID;
+        }
+        if(news.getState() == 1){
+            news.setState(0);
+        }else{
+            news.setState(1);
+        }
+        newsDao.update(news);
+        return ResponseState.SUCCESS;
     }
 }

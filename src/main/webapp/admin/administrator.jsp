@@ -58,8 +58,7 @@
                                     </span>
                                     <input id="qendTime" type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
                                 </div>
-                                <button id="query">查询</button>
-                                <button id="reset">重置</button>
+                                <button id="query" class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
                             </div>
                             <div class="admin-table">
                                 <table class="tab" id="datatable">

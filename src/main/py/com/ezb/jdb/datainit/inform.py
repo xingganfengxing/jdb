@@ -14,19 +14,19 @@ def initinform():
 
         type = ["资讯", "活动", "圈子"]
         viewurl = ["pc/admin/news/view", "pc/admin/activity/view", "pc/admin/circle/view"]
-        reason = ["色情","重伤","广告","欺诈","反动","其他"]
+        reason = ["色情", "欺诈", "诋毁侮辱", "广告骚扰", "政治", "非交大校友", "其他"]
 
         for i in range(100):
             typeIndex = random.randint(0, 2)
-            refId = random.randint(0,99)
+            refId = random.randint(0, 99)
             value = [
                 i,
                 refId,
                 "title" + str(i),
                 time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()),
                 "otherinfo" + str(i),
-                reason[random.randint(0,5)],
-                random.randint(0,1),
+                reason[random.randint(0, 5)],
+                random.randint(0, 1),
                 type[typeIndex],
                 viewurl[typeIndex] + "id=" + str(refId),
                 random.randint(0, 99)
@@ -40,5 +40,26 @@ def initinform():
         print "Mysql Error %d: %s" % (e.args[0], e.args[1])
 
 
+def resetReason():
+    try:
+        conn = initconn.getConn()
+        cur = conn.cursor()
+
+        reason = ["色情", "欺诈", "诋毁侮辱", "广告骚扰", "政治", "非交大校友", "其他"]
+
+        for i in range(100):
+            value = [
+                reason[random.randint(0, 6)],
+                str(i)
+            ]
+            cur.execute('update inform set reason=%s where id=%s', value)
+        conn.commit()
+        cur.close()
+        conn.close()
+
+    except MySQLdb.Error, e:
+        print "Mysql Error %d: %s" % (e.args[0], e.args[1])
+
+
 if __name__ == '__main__':
-    initinform()
+    resetReason()

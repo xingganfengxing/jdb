@@ -44,53 +44,58 @@
                                     <label class="gx-texttitle">
                                         资讯编号：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qid" type="text" class="gx-textbox" placeholder="请输入资讯编号">
                                     <label class="gx-texttitle">
                                         资讯名称：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qtitle" type="text" class="gx-textbox" placeholder="请输入资讯名称">
                                 </div>
                                 <div class="group-item">
                                     <label class="gx-texttitle">
                                         创建时间：
                                     </label>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
+                                    <input id="qstartTime" type="text" class="gx-textbox form_datetime" placeholder="请选择开始时间" size="16" readonly>
                                     <span>
                                        到
                                     </span>
-                                    <input type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
+                                    <input id="qendTime" type="text" class="gx-textbox form_datetime" placeholder="请选择结束时间" size="16" readonly>
                                 </div>
-                                <button class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
-                            </div>
-                            <div class="administrator clearfix administrator-margin">
+                                <button id="query" class="gx-button gx-button-info gx-button-small admin-btn fr">查询</button>
                                 <div class="group-item">
                                     <label class="gx-texttitle1">
                                         资讯创建账号：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qusername" type="text" class="gx-textbox" placeholder="请输入创建者账号">
                                     <label class="gx-texttitle1">
                                         资讯创建着：
                                     </label>
-                                    <input type="text" class="gx-textbox" placeholder="请输入您的账号">
+                                    <input id="qrealName" type="text" class="gx-textbox" placeholder="请输入创建者姓名">
                                 </div>
                             </div>
                             <div class="admin-table">
-                                <table class="tab">
+                                <table id="datatable" class="tab">
                                     <tr class="tab-h">
                                         <td>序号</td>
                                         <td>资讯编号</td>
                                         <td>活动名称</td>
                                         <td>
-                                            <select class="gx-textbox">
+                                            <select id="typeslt" class="gx-textbox">
                                                 <option>资讯类型</option>
+                                                <option>投融资</option>
+                                                <option>思源创业</option>
+                                                <option>合作商机</option>
+                                                <option>互帮互助</option>
+                                                <option>校友企业</option>
+                                                <option>求职招聘</option>
+                                                <option>新闻动态</option>
+                                                <option>在水一方</option>
                                             </select>
                                         </td>
                                         <td>
-                                            <select class="gx-textbox">
-                                                <option>资讯状态</option>
+                                            <select id="stateslt" class="gx-textbox">
+                                                <option>状态</option>
                                                 <option>正常</option>
                                                 <option>下线</option>
-                                                <option>删除</option>
                                             </select>
                                         </td>
                                         <td>资讯创建账号</td>
@@ -113,17 +118,7 @@
                                         </td>
                                     </tr>
                                 </table>
-                                <div class="clearfix">
-                                    <nav class="gx-pager">
-                                        <a class="gx-pager-disabled" href="###"><i class="gx-icon">«</i></a>
-                                        <a class="gx-pager-actived" href="###">1</a>
-                                        <a href="###">2</a>
-                                        ...
-                                        <a href="###">99</a>
-                                        <a href="###">100</a>
-                                        <a href="###"><i class="gx-icon">»</i></a>
-                                    </nav>
-                                </div>
+                                <jsp:include page="pager.jsp"/>
                             </div>
                         </div>
                     </div>
@@ -131,11 +126,10 @@
         </section>
     </aside>
 </div>
-<script src="js/jquery.min.js"></script>
-<script src="js/admin_yc.js"></script>
 <script src="js/bootstrap-datetimepicker.js"></script>
 <script type="text/javascript" src="js/locales/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
-
+<script src="js/page.js"></script>
+<script src="js/web/new_manage.js"></script>
 <script type="text/javascript">
     $(".form_datetime").datetimepicker({
         format: 'yyyy-mm-dd hh:ii',

@@ -9,11 +9,11 @@ function binddata(curpage, pageSize) {
         title: $("#qtitle").val(),
         startTime: $("#qstartTime").val(),
         endTime: $("#qendTime").val(),
-        username:$("#qusername").val(),
-        realName:$("#qrealName").val()
+        username: $("#qusername").val(),
+        realName: $("#qrealName").val()
     };
 
-    if ($("#stateslt").val() == "冻结") {
+    if ($("#stateslt").val() == "下线") {
         params.state = 0;
     }
 
@@ -21,14 +21,18 @@ function binddata(curpage, pageSize) {
         params.state = 1;
     }
 
-    var obj = ajax("/pc/admin/activity/query", params);
+    if ($("#typeslt").val() != "资讯类型") {
+        params.type = $("#typeslt").val();
+    }
+
+    var obj = ajax("/pc/admin/news/query", params);
     $("#pageCount").val(obj.data.pageCount);
     $("#datatable tbody tr").eq(0).nextAll().remove();
     for (var i = 0; i < obj.data.resultList.length; i++) {
         var stateStr = "正常";
-        var handleBtn = "<b onclick=\"state('" + obj.data.resultList[i].id + "')\" class=\"gx-button gx-button-error gx-button-small\">冻结</b>";
+        var handleBtn = "<b onclick=\"state('" + obj.data.resultList[i].id + "')\" class=\"gx-button gx-button-error gx-button-small\">下线</b>";
         if (0 == obj.data.resultList[i].state) {
-            stateStr = "冻结";
+            stateStr = "下线";
             handleBtn = "<b onclick=\"state('" + obj.data.resultList[i].id + "')\" class=\"gx-button gx-button-warning gx-button-small\">恢复</b>";
         }
 
@@ -37,6 +41,7 @@ function binddata(curpage, pageSize) {
             "<td>" + ((i + 1) + (curpage - 1) * pageSize) + "</td>" +
             "<td>" + obj.data.resultList[i].id + "</td>" +
             "<td>" + obj.data.resultList[i].title + "</td>" +
+            "<td>" + obj.data.resultList[i].type + "</td>" +
             "<td>" + stateStr + "</td>" +
             "<td>" + obj.data.resultList[i].createUser.username + "</td>" +
             "<td>" + obj.data.resultList[i].createUser.alumnus.realName + "</td>" +
@@ -59,8 +64,8 @@ function loadPage(curPage) {
  *  冻结活动
  */
 function state(id) {
-    if (confirm("确定冻结/恢复此用户?")) {
-        var obj = ajax("/pc/admin/activity/state", {id: id});
+    if (confirm("确定下线/恢复此用户?")) {
+        var obj = ajax("/pc/admin/news/state", {id: id});
         alert(obj.error);
         if (obj.code == "0") {
             loadPage($("#curPage").val());
@@ -75,7 +80,7 @@ $('#query').on('click', function (e) {
     loadPage(1);
 });
 
-$('#stateslt').on('change', function (e) {
+$('#typeslt,#stateslt').on('change', function (e) {
     e.preventDefault();
     loadPage(1);
 });

@@ -72,10 +72,11 @@
                                         <select id="reasonslt" class="gx-textbox">
                                             <option>举报类型</option>
                                             <option>色情</option>
-                                            <option>重伤</option>
-                                            <option>广告</option>
                                             <option>欺诈</option>
-                                            <option>反动</option>
+                                            <option>诋毁侮辱</option>
+                                            <option>广告骚扰</option>
+                                            <option>政治</option>
+                                            <option>非交大校友</option>
                                             <option>其他</option>
                                         </select>
                                     </td>

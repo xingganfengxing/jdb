@@ -1,6 +1,7 @@
 package com.ezb.jdb.service.impl;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.common.ResponseData;
 import com.ezb.jdb.common.ResponseState;
 import com.ezb.jdb.dao.ActivityDao;
 import com.ezb.jdb.dao.UserDao;
@@ -109,7 +110,7 @@ public class ActivityServiceImpl implements IActivityService {
             activity.setPicPath(rpath);
             activity.setPv(0);
             activityDao.add(activity);
-            return ResponseState.SUCCESS;
+            return ResponseData.getResData(activity);
         } else {
             return ResponseState.INVALID_PHONE;
         }
