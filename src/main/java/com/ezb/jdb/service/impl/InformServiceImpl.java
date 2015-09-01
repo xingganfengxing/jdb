@@ -8,7 +8,7 @@ import com.ezb.jdb.dao.ActivityDao;
 import com.ezb.jdb.dao.CircleDao;
 import com.ezb.jdb.dao.NewsDao;
 import com.ezb.jdb.dao.UserDao;
-import com.ezb.jdb.dao.base.InformDao;
+import com.ezb.jdb.dao.InformDao;
 import com.ezb.jdb.model.*;
 import com.ezb.jdb.service.IInformService;
 import org.apache.commons.lang.StringUtils;

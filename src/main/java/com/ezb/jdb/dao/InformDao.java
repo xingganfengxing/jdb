@@ -1,6 +1,7 @@
-package com.ezb.jdb.dao.base;
+package com.ezb.jdb.dao;
 
 import com.ezb.jdb.common.PageResult;
+import com.ezb.jdb.dao.base.BaseDao;
 import com.ezb.jdb.model.Inform;
 import com.ezb.jdb.model.Message;
 import org.apache.commons.lang.StringUtils;
