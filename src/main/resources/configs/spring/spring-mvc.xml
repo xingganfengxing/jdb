@@ -16,7 +16,7 @@
     <mvc:interceptors>
         <mvc:interceptor>
             <mvc:mapping path="/mobile/**"/>
-            <bean class="com.ezb.jdb.interceptor.mobile.LoginInterceptor" />
+            <bean class="com.ezb.jdb.interceptor.mobile.MobileInterceptor" />
         </mvc:interceptor>
         <mvc:interceptor>
             <mvc:mapping path="/pc/admin/**"/>

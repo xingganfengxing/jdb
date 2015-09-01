@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
  * author : liufeng
  * create time: 2015/8/3 9:56.
  */
-public class LoginInterceptor implements HandlerInterceptor {
+public class MobileInterceptor implements HandlerInterceptor {
 
     public boolean preHandle(HttpServletRequest httpServletRequest,
                              HttpServletResponse httpServletResponse,
@@ -22,6 +22,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 //            httpServletResponse.getWriter().println(ResponseState.UNLOGIN);
 //        }
 //        return isLogin;
+        httpServletResponse.setHeader("Access-Control-Allow-Origin","*");
         return true;
     }
 
@@ -34,6 +35,5 @@ public class LoginInterceptor implements HandlerInterceptor {
     public void afterCompletion(HttpServletRequest httpServletRequest,
                                 HttpServletResponse httpServletResponse,
                                 Object o, Exception e) throws Exception {
-
     }
 }

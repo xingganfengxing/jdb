@@ -125,7 +125,7 @@ public class ActivityController {
     }
 
     /**
-     * 资讯创建页
+     * 创建活动
      *
      * @return
      */
