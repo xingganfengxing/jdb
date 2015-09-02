@@ -61,13 +61,13 @@ public class UserServiceImpl implements IUserService {
         }
     }
 
-    public boolean login(User user) {
+    public User login(User user) {
         if (!StringUtils.isEmpty(user.getUsername())) {
             if (!StringUtils.isEmpty(user.getPassword())) {
-                return userDao.login(user) != null;
+                return userDao.login(user);
             }
         }
-        return false;
+        return null;
     }
 
 

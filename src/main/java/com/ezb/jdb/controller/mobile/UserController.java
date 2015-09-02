@@ -32,9 +32,9 @@ public class UserController {
     public
     @ResponseBody
     String login(HttpServletRequest request, User user) throws IOException {
-        if (userServiceImpl.login(user)) {
+        if (userServiceImpl.login(user) != null) {
             request.getSession().setAttribute("isLogin", true);
-            return ResponseState.SUCCESS;
+            return ResponseData.getResData(user);
         }
         return ResponseState.LOGIN_ERR;
     }
@@ -63,7 +63,7 @@ public class UserController {
     public
     @ResponseBody
     String makeInvitateCode(String username) {
-        return  invitateCodeServiceImpl.generateCode(username);
+        return invitateCodeServiceImpl.generateCode(username);
     }
 
     @RequestMapping(value = "mobile/user/register")
@@ -81,8 +81,8 @@ public class UserController {
     @RequestMapping(value = "mobile/user/uploadheadpic")
     public
     @ResponseBody
-    String uploadHeadPic(HttpServletRequest request,String phone) {
-        return userServiceImpl.uploadHeadPic(request,phone);
+    String uploadHeadPic(HttpServletRequest request, String phone) {
+        return userServiceImpl.uploadHeadPic(request, phone);
     }
 
     /**

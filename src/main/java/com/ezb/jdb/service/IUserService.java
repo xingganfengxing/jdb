@@ -15,7 +15,7 @@ public interface IUserService {
 
     String register(User user, String invitateCode, String verifyCode);
 
-    boolean login(User user);
+    User login(User user);
 
     String uploadHeadPic(HttpServletRequest request, String phone);
 
