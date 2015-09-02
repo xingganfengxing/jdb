@@ -32,9 +32,10 @@ public class UserController {
     public
     @ResponseBody
     String login(HttpServletRequest request, User user) throws IOException {
-        if (userServiceImpl.login(user) != null) {
+        User sUser = userServiceImpl.login(user);
+        if (sUser != null) {
             request.getSession().setAttribute("isLogin", true);
-            return ResponseData.getResData(user);
+            return ResponseData.getResData(sUser);
         }
         return ResponseState.LOGIN_ERR;
     }
