@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="css/login.css"/>
     <script src="js/jquery.min.js"></script>
     <script src="js/jquery.validate.min.js"></script>
+    <script src="js/jquery.cookie.js"></script>
     <script src="js/base.js"></script>
     <script src="js/web/login.js"></script>
 </head>
@@ -43,7 +44,7 @@
                 </li>
             </ul>
             <div class="ui-btn">
-                <input type="checkbox" class="uiBtn">
+                <input id="rmbUser" name="rmbUser" type="checkbox" class="uiBtn">
                 <b>记住登陆状态</b>
                 <input id="inputSub" type="submit" class="inputSub" value="登陆">
             </div>

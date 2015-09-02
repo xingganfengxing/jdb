@@ -10,6 +10,7 @@ $(function () {
         focusInvalid: false,
         onkeyup: false,
         submitHandler: function (form) {
+
             var obj = ajax(
                 "/pc/login/dologin",
                 {
@@ -18,6 +19,20 @@ $(function () {
                 }
             );
             if (obj.code == "0") {
+
+                //记住登录状态
+                if ($('#rmbUser').is(':checked')) {
+                    var userName = $("#username").val();
+                    var passWord = $("#password").val();
+                    $.cookie("rmbUser", "true", {expires: 7}); // 存储一个带7天期限的 cookie
+                    $.cookie("username", userName, {expires: 7}); // 存储一个带7天期限的 cookie
+                    $.cookie("password", passWord, {expires: 7}); // 存储一个带7天期限的 cookie
+                }else {
+                    $.cookie("rmbUser", "false", {expires: -1});
+                    $.cookie("username", '', {expires: -1});
+                    $.cookie("password", '', {expires: -1});
+                }
+
                 window.location = basePath + "/admin/index.jsp";
             } else {
                 alert(obj.error);
@@ -57,6 +72,12 @@ $(function () {
             }
         }
     });
+
+    if ($.cookie("rmbUser") == "true") {
+        $("#rmbUser").attr("checked", true);
+        $("#username").val($.cookie("username"));
+        $("#password").val($.cookie("password"));
+    }
 });
 
 function chgUrl(url) {
