@@ -28,6 +28,11 @@ public class MessageServiceImpl implements IMessageService {
     private UserDao userDao;
 
     public String sendMessage(Message message) {
+
+        if(message.getReceiver() == null || message.getSender() == null){
+            return ResponseState.INVALID_PHONE;
+        }
+
         User sender = userDao.queryByPhone(message.getSender().getUsername());
         User receiver = userDao.queryByPhone(message.getReceiver().getUsername());
 
