@@ -29,7 +29,7 @@ public class UserControllerTest {
     @Test
     @Rollback(value = false)
     public void verifycode(){
-        log.info(userController.verifycode("111111"));
+        log.info(userController.verifycode("13521849772"));
     }
 
     @Test
